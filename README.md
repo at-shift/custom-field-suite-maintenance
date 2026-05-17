@@ -37,6 +37,14 @@ Current maintenance version: 2.6.7.11
 Plugin download:
 https://github.com/at-shift/custom-field-suite-maintenance/archive/refs/heads/main.zip
 
+GitHub ZIP downloads are extracted as `custom-field-suite-maintenance-main`.
+Before installing or replacing an existing WordPress plugin, rename the extracted
+folder to `custom-field-suite` and place it at:
+
+```text
+wp-content/plugins/custom-field-suite
+```
+
 Versioning follows the upstream 2.6.7 base version with an additional maintenance
 suffix. Future stabilization updates should increment the final number, for
 example 2.6.7.12, 2.6.7.13, and so on.
@@ -79,7 +87,7 @@ audit.
 
 ## Installation
 
-Copy the `custom-field-suite` directory to:
+Copy the renamed `custom-field-suite` directory to:
 
 ```text
 wp-content/plugins/custom-field-suite
