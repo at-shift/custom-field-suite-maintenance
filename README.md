@@ -33,6 +33,12 @@ is a maintenance build, not an official upstream release by the original author.
 
 元作者の表記および GPLv2 ライセンス表記は保持しています。このリポジトリはメンテナンスビルドであり、元作者による公式の上流リリースではありません。
 
+This repository is not a GitHub fork of the upstream repository. It is an
+independent GPLv2 maintenance redistribution based on the upstream 2.6.7 source
+code.
+
+このリポジトリは GitHub 上の fork ではありません。上流版 2.6.7 のソースコードをベースに、GPLv2 に基づいて独立して再配布しているメンテナンス版です。
+
 ## License
 
 This maintenance build is distributed under the GNU General Public License
