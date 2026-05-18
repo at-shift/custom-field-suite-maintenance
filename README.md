@@ -87,6 +87,55 @@ example 2.6.7.12, 2.6.7.13, and so on.
 
 バージョン番号は、上流版 2.6.7 をベースにメンテナンス用の末尾番号を追加する形式です。今後の安定化更新では、2.6.7.12、2.6.7.13 のように最後の番号を増やします。
 
+## Planned Feature Additions
+
+The next local maintenance build is planned to add two new list-based field
+types:
+
+- Checkbox
+- Radio Button
+
+These fields are intended to make it easier to migrate existing Custom Field
+Suite sites while keeping front-end output flexible for theme developers. The
+plugin stores and returns data only; it does not generate fixed front-end HTML
+for these fields.
+
+Planned behavior:
+
+- Checkbox fields can define choices one per line and save multiple selected
+  values.
+- Radio Button fields can define choices one per line and save one selected
+  value.
+- Both fields support the existing required-field validation setting.
+- Both fields use the existing Notes field for editor-facing descriptions.
+- Both fields are expected to work inside Loop fields.
+- Post edit screen choices are displayed with flexible horizontal wrapping so
+  short and long labels can be mixed.
+
+If you would like to test these planned field additions before they are
+published, please send a tester request to the email address registered with the
+maintainer's GitHub account.
+
+## 機能追加予定
+
+次期ローカルメンテナンスビルドでは、以下のリスト系フィールドタイプの追加を予定しています。
+
+- チェックボックス
+- ラジオボタン
+
+これらのフィールドは、既存の Custom Field Suite サイトを移行しやすくしつつ、フロントエンド出力はテーマ開発者が自由にデザインできるようにすることを目的としています。プラグイン側では値の保存と取得を行い、固定のフロントエンド HTML は出力しません。
+
+予定している動作:
+
+- チェックボックスフィールドでは、選択肢を1行ずつ定義し、複数の選択値を保存できます。
+- ラジオボタンフィールドでは、選択肢を1行ずつ定義し、1つの選択値を保存できます。
+- どちらのフィールドも既存の入力必須設定に対応します。
+- どちらのフィールドも、編集者向けの説明には既存の概要欄（Notes）を使用します。
+- どちらのフィールドも Loop フィールド内で利用できる想定です。
+- 投稿編集画面では、短い選択肢と長い選択肢が混在しても扱いやすいよう、横並びと折り返し表示に対応する予定です。
+
+公開前にこれらの追加フィールドをテストしたい場合は、メンテナーの GitHub アカウントに登録されているメールアドレス宛に、テスター希望の旨をご連絡ください。
+
 ## Security and Compatibility Changes
 
 This build includes security and compatibility hardening on top of upstream
