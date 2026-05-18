@@ -3,6 +3,10 @@
 This repository contains a security and compatibility maintenance build of
 Custom Field Suite, based on the upstream Custom Field Suite 2.6.7 codebase.
 
+This maintenance build fixes known vulnerabilities up to Custom Field Suite
+2.6.7. It is intended to reduce the effort required to replace websites built
+with Custom Field Suite with alternative plugins.
+
 このメンテナンスビルドは、Custom Field Suite 2.6.7 までの既知の脆弱性を修正するものです。Custom Field Suite を利用して構築した Web サイトを他の代替プラグインに置き換える手間を軽減するためのものです。
 
 このリポジトリは、上流版 Custom Field Suite 2.6.7 をベースにした、セキュリティおよび互換性維持のためのメンテナンスビルドです。
