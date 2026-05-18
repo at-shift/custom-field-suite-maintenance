@@ -120,6 +120,45 @@ Main changes:
 - PHP 8.2 以降の管理画面投稿編集ページとの互換性を安定化しました。
 - CFS WYSIWYG フィールドで TinyMCE code プラグインが正しく読み込まれるように修正しました。
 
+## Planned Feature Additions
+
+The next local maintenance build is planned to add two new list-based field
+types:
+
+次期ローカルメンテナンスビルドでは、以下のリスト系フィールドタイプの追加を予定しています。
+
+- Checkbox (チェックボックス)
+- Radio Button (ラジオボタン)
+
+These fields are intended to make it easier to migrate existing Custom Field
+Suite sites while keeping front-end output flexible for theme developers. The
+plugin stores and returns data only; it does not generate fixed front-end HTML
+for these fields.
+
+これらのフィールドは、既存の Custom Field Suite サイトを移行しやすくしつつ、フロントエンド出力はテーマ開発者が自由にデザインできるようにすることを目的としています。プラグイン側では値の保存と取得を行い、固定のフロントエンド HTML は出力しません。
+
+Planned behavior (予定している動作):
+
+- Checkbox fields can define choices one per line and save multiple selected values.
+- Radio Button fields can define choices one per line and save one selected value.
+- Both fields support the existing required-field validation setting.
+- Both fields use the existing Notes field for editor-facing descriptions.
+- Both fields are expected to work inside Loop fields.
+- Post edit screen choices are displayed with flexible horizontal wrapping so short and long labels can be mixed.
+- チェックボックスフィールドでは、選択肢を1行ずつ定義し、複数の選択値を保存できます。
+- ラジオボタンフィールドでは、選択肢を1行ずつ定義し、1つの選択値を保存できます。
+- どちらのフィールドも既存の入力必須設定に対応します。
+- どちらのフィールドも、編集者向けの説明には既存の概要欄（Notes）を使用します。
+- どちらのフィールドも Loop フィールド内で利用できる想定です。
+- 投稿編集画面では、短い選択肢と長い選択肢が混在しても扱いやすいよう、横並びと折り返し表示に対応する予定です。
+
+If you would like to test these planned field additions before they are
+published, please send a tester request to the email address registered with the
+maintainer's GitHub account.
+
+投稿編集画面では、短い選択肢と長い選択肢が混在しても扱いやすいよう、横並びと折り返し表示に対応する予定です。
+公開前にこれらの追加フィールドをテストしたい場合は、メンテナーの GitHub アカウントに登録されているメールアドレス宛に、テスター希望の旨をご連絡ください。
+
 ## Verification
 
 The maintenance build was locally verified against:
