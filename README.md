@@ -154,7 +154,7 @@ browser.
 
 これは既存の Custom Field Suite サイトとの互換性を維持するためです。ただし、直接出力するということは、そのフィールドに保存された HTML がブラウザでそのまま解釈される可能性があるということでもあります。攻撃者や低権限の編集者が悪意ある内容をフィールドに保存できる場合、直接出力は保存型 XSS、意図しない HTML 挿入、レイアウト崩れ、不正リンク、訪問者のブラウザ上での JavaScript 実行につながる可能性があります。
 
-Avoid direct output like this (以下のような直接出力は避けてください):
+It is safer to avoid direct output like this when possible (以下のような直接出力はできれば避ける方が安全です):
 
 ```php
 echo CFS()->get( 'text_field' );
