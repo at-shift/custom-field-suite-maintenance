@@ -445,3 +445,57 @@ msgstr "Összes CFS adat törlése és a bővítmény kikapcsolása."
 #: ../templates/page_tools.php:124
 msgid "Delete everything"
 msgstr "Minden törlése"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "A tartalomszerkesztő elrejtése (nem vonatkozik a Gutenberg / blokkszerkesztő tartalmi területére)"
+
+msgid "Checkbox"
+msgstr "Jelölőnégyzet"
+
+msgid "File Type"
+msgstr "Fájltípus"
+
+msgid "Any"
+msgstr "Bármely"
+
+msgid "Image"
+msgstr "Kép"
+
+msgid "Audio"
+msgstr "Hang"
+
+msgid "Video"
+msgstr "Videó"
+
+msgid "Radio Button"
+msgstr "Választógomb"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "A mező megjelenítése Select2-vel"
+
+msgid "Term"
+msgstr "Kifejezés"
+
+msgid "Search terms"
+msgstr "Kifejezések keresése"
+
+msgid "Taxonomies"
+msgstr "Taxonómiák"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Kifejezések korlátozása a következő taxonómiákra"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Egy vagy több mező érvényesítési hibát tartalmaz. További információ alább található."
+
+msgid "Toggle row visibility"
+msgstr "Sor láthatóságának váltása"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "CFS eszközök"

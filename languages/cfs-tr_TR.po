@@ -486,3 +486,57 @@ msgstr "Her şeyi sil"
 
 #~ msgid "Post Title"
 #~ msgstr "Yazı Başlığı"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "İçerik düzenleyiciyi gizle (Gutenberg / blok düzenleyici içerik alanı için geçerli değildir)"
+
+msgid "Checkbox"
+msgstr "Onay kutusu"
+
+msgid "File Type"
+msgstr "Dosya türü"
+
+msgid "Any"
+msgstr "Herhangi biri"
+
+msgid "Image"
+msgstr "Görsel"
+
+msgid "Audio"
+msgstr "Ses"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Radio Button"
+msgstr "Radyo düğmesi"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Bu alanı Select2 ile göster"
+
+msgid "Term"
+msgstr "Terim"
+
+msgid "Search terms"
+msgstr "Terimleri ara"
+
+msgid "Taxonomies"
+msgstr "Taksonomiler"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Terimleri aşağıdaki taksonomilerle sınırla"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Alanlarınızdan birinde veya daha fazlasında doğrulama hataları var. Daha fazla bilgi aşağıda yer almaktadır."
+
+msgid "Toggle row visibility"
+msgstr "Satır görünürlüğünü değiştir"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "CFS Araçları"

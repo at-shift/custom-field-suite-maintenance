@@ -252,6 +252,27 @@ span.cfs_delete_field:hover {
     vertical-align: top;
 }
 
+#cfs_rules table {
+    table-layout: fixed;
+}
+
+#cfs_rules table td {
+    box-sizing: border-box;
+}
+
+#cfs_rules table td.cfs-rule-label {
+    width: 120px;
+}
+
+#cfs_rules table td.cfs-rule-operator {
+    width: 120px;
+    vertical-align: top;
+}
+
+#cfs_rules table td.cfs-rule-value {
+    min-width: 0;
+}
+
 #cfs_rules table td.label label,
 #cfs_extras table td.label label {
     color: #333;
@@ -279,6 +300,40 @@ span.cfs_delete_field:hover {
 
 #wpcontent #cfs_extras table select.multiple {
     height: 60px;
+}
+
+#cfs_rules table td.cfs-rule-operator select,
+#cfs_rules table td.cfs-rule-value select,
+#cfs_rules table td.cfs-rule-value input.select2-ajax,
+#cfs_rules table td.cfs-rule-value .select2-container {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100% !important;
+}
+
+#cfs_rules table td.cfs-rule-operator select {
+    min-width: 100px;
+    padding-right: 28px;
+}
+
+#cfs_rules table td.cfs-rule-value .select2-container {
+    display: block;
+}
+
+@media screen and (max-width: 782px) {
+    #cfs_rules table,
+    #cfs_rules table tbody,
+    #cfs_rules table tr,
+    #cfs_rules table td {
+        display: block;
+        width: 100% !important;
+    }
+
+    #cfs_rules table td.cfs-rule-operator,
+    #cfs_rules table td.cfs-rule-value {
+        border-top: 0;
+        padding-top: 0;
+    }
 }
 
 /*---------------------------------------------------------------------------------------------

@@ -596,3 +596,57 @@ msgstr "Alles löschen"
 # @ cfs
 #~ msgid "Debug information"
 #~ msgstr "Debugging-Informationen"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Den Inhaltseditor ausblenden (gilt nicht für den Inhaltsbereich von Gutenberg / Block-Editor)"
+
+msgid "Checkbox"
+msgstr "Kontrollkästchen"
+
+msgid "File Type"
+msgstr "Dateityp"
+
+msgid "Any"
+msgstr "Beliebig"
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Radio Button"
+msgstr "Optionsfeld"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Dieses Feld mit Select2 anzeigen"
+
+msgid "Term"
+msgstr "Begriff"
+
+msgid "Search terms"
+msgstr "Begriffe suchen"
+
+msgid "Taxonomies"
+msgstr "Taxonomien"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Begriffe auf die folgenden Taxonomien beschränken"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Eines oder mehrere deiner Felder enthalten Validierungsfehler. Weitere Informationen findest du unten."
+
+msgid "Toggle row visibility"
+msgstr "Zeilensichtbarkeit umschalten"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "CFS-Werkzeuge"

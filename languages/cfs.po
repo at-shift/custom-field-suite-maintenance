@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.5\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
@@ -397,7 +397,7 @@ msgid "Display Settings"
 msgstr ""
 
 #: ../templates/meta_box_extras.php:64
-msgid "Hide the content editor"
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
 msgstr ""
 
 #: ../templates/meta_box_fields.php:60
@@ -442,4 +442,72 @@ msgstr ""
 
 #: ../templates/page_tools.php:124
 msgid "Delete everything"
+msgstr ""
+
+#: ../includes/fields/checkbox.php:8
+msgid "Checkbox"
+msgstr ""
+
+#: ../includes/fields/file.php:44
+msgid "File Type"
+msgstr ""
+
+#: ../includes/fields/file.php:53
+msgid "Any"
+msgstr ""
+
+#: ../includes/fields/file.php:54
+msgid "Image"
+msgstr ""
+
+#: ../includes/fields/file.php:55
+msgid "Audio"
+msgstr ""
+
+#: ../includes/fields/file.php:56
+msgid "Video"
+msgstr ""
+
+#: ../includes/fields/radio.php:8
+msgid "Radio Button"
+msgstr ""
+
+#: ../includes/fields/select.php:133
+msgid "Select2"
+msgstr ""
+
+#: ../includes/fields/select.php:142
+msgid "Render this field with Select2"
+msgstr ""
+
+#: ../includes/fields/term.php:8
+msgid "Term"
+msgstr ""
+
+#: ../includes/fields/term.php:69
+msgid "Search terms"
+msgstr ""
+
+#: ../includes/fields/term.php:97
+msgid "Taxonomies"
+msgstr ""
+
+#: ../includes/fields/term.php:98
+msgid "Limit terms to the following taxonomies"
+msgstr ""
+
+#: ../includes/form.php:247
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr ""
+
+#: ../includes/form.php:444
+msgid "Toggle row visibility"
+msgstr ""
+
+#: ../includes/init.php:60
+msgid "Custom Field Suite"
+msgstr ""
+
+#: ../includes/init.php:154
+msgid "CFS Tools"
 msgstr ""

@@ -466,3 +466,57 @@ msgstr "Verwijder alles"
 
 #~ msgid "Learn more"
 #~ msgstr "Lees er meer over"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Verberg de inhoudseditor (geldt niet voor het inhoudsgebied van Gutenberg / blok-editor)"
+
+msgid "Checkbox"
+msgstr "Selectievakje"
+
+msgid "File Type"
+msgstr "Bestandstype"
+
+msgid "Any"
+msgstr "Alle"
+
+msgid "Image"
+msgstr "Afbeelding"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Radio Button"
+msgstr "Keuzerondje"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Dit veld weergeven met Select2"
+
+msgid "Term"
+msgstr "Term"
+
+msgid "Search terms"
+msgstr "Termen zoeken"
+
+msgid "Taxonomies"
+msgstr "Taxonomieën"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Beperk termen tot de volgende taxonomieën"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Een of meer velden bevatten validatiefouten. Meer informatie is hieronder beschikbaar."
+
+msgid "Toggle row visibility"
+msgstr "Rijzichtbaarheid wisselen"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "CFS-gereedschappen"

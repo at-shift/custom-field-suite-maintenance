@@ -595,3 +595,57 @@ msgstr "Cancella tutto"
 # @ cfs
 #~ msgid "Debug information"
 #~ msgstr "Informazioni Debug"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Nascondi l’editor dei contenuti (non si applica all’area contenuto di Gutenberg / editor a blocchi)"
+
+msgid "Checkbox"
+msgstr "Casella di controllo"
+
+msgid "File Type"
+msgstr "Tipo di file"
+
+msgid "Any"
+msgstr "Qualsiasi"
+
+msgid "Image"
+msgstr "Immagine"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Radio Button"
+msgstr "Pulsante di opzione"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Visualizza questo campo con Select2"
+
+msgid "Term"
+msgstr "Termine"
+
+msgid "Search terms"
+msgstr "Cerca termini"
+
+msgid "Taxonomies"
+msgstr "Tassonomie"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Limita i termini alle seguenti tassonomie"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Uno o più campi contengono errori di validazione. Ulteriori informazioni sono disponibili qui sotto."
+
+msgid "Toggle row visibility"
+msgstr "Attiva/disattiva visibilità della riga"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "Strumenti CFS"

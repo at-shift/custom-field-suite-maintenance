@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.8.5\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
@@ -401,8 +401,8 @@ msgid "Display Settings"
 msgstr "表示設定"
 
 #: ../templates/meta_box_extras.php:64
-msgid "Hide the content editor"
-msgstr "コンテンツエディタを隠す"
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "コンテンツエディタを隠す (Gutenberg / ブロックエディタの本文入力エリアには対応していません)"
 
 #: ../templates/meta_box_fields.php:60
 msgid "Add New Field"
@@ -447,6 +447,74 @@ msgstr "CFSデータを削除し、プラグインを無効化します"
 #: ../templates/page_tools.php:124
 msgid "Delete everything"
 msgstr "全てを削除"
+
+#: ../includes/fields/checkbox.php:8
+msgid "Checkbox"
+msgstr "チェックボックス"
+
+#: ../includes/fields/file.php:44
+msgid "File Type"
+msgstr "ファイルタイプ"
+
+#: ../includes/fields/file.php:53
+msgid "Any"
+msgstr "すべて"
+
+#: ../includes/fields/file.php:54
+msgid "Image"
+msgstr "画像"
+
+#: ../includes/fields/file.php:55
+msgid "Audio"
+msgstr "音声"
+
+#: ../includes/fields/file.php:56
+msgid "Video"
+msgstr "動画"
+
+#: ../includes/fields/radio.php:8
+msgid "Radio Button"
+msgstr "ラジオボタン"
+
+#: ../includes/fields/select.php:133
+msgid "Select2"
+msgstr "Select2"
+
+#: ../includes/fields/select.php:142
+msgid "Render this field with Select2"
+msgstr "このフィールドを Select2 で表示"
+
+#: ../includes/fields/term.php:8
+msgid "Term"
+msgstr "ターム"
+
+#: ../includes/fields/term.php:69
+msgid "Search terms"
+msgstr "タームを検索"
+
+#: ../includes/fields/term.php:97
+msgid "Taxonomies"
+msgstr "タクソノミー"
+
+#: ../includes/fields/term.php:98
+msgid "Limit terms to the following taxonomies"
+msgstr "以下のタクソノミーにタームを限定"
+
+#: ../includes/form.php:247
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "1つ以上のフィールドで入力エラーが発生しました。詳細は以下を確認してください。"
+
+#: ../includes/form.php:444
+msgid "Toggle row visibility"
+msgstr "行の表示を切り替え"
+
+#: ../includes/init.php:60
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+#: ../includes/init.php:154
+msgid "CFS Tools"
+msgstr "CFS ツール"
 
 #~ msgid "Use This File"
 #~ msgstr "このファイルを使用"

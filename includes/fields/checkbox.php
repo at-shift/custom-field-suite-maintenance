@@ -34,15 +34,16 @@ class cfs_checkbox extends cfs_field
 
     function options_html( $key, $field ) {
 
+        $choices = $this->get_option( $field, 'choices' );
         if ( isset( $field->options['choices'] ) && is_array( $field->options['choices'] ) ) {
-            foreach ( $field->options['choices'] as $choice_key => $choice_val ) {
-                $field->options['choices'][ $choice_key ] = "$choice_key : $choice_val";
+            foreach ( $choices as $choice_key => $choice_val ) {
+                $choices[ $choice_key ] = "$choice_key : $choice_val";
             }
 
-            $field->options['choices'] = implode( "\n", $field->options['choices'] );
+            $choices = implode( "\n", $choices );
         }
         else {
-            $field->options['choices'] = '';
+            $choices = '';
         }
     ?>
         <tr class="field_option field_option_<?php echo esc_attr( $this->name ); ?>">
@@ -55,7 +56,7 @@ class cfs_checkbox extends cfs_field
                     CFS()->create_field( [
                         'type' => 'textarea',
                         'input_name' => 'cfs[fields][' . absint( $key ) . '][options][choices]',
-                        'value' => $this->get_option( $field, 'choices' ),
+                        'value' => $choices,
                     ] );
                 ?>
             </td>

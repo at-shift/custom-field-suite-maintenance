@@ -464,3 +464,57 @@ msgstr "删除一切"
 
 #~ msgid "Learn more"
 #~ msgstr "了解更多"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "隐藏内容编辑器（不适用于 Gutenberg / 区块编辑器的内容区域）"
+
+msgid "Checkbox"
+msgstr "复选框"
+
+msgid "File Type"
+msgstr "文件类型"
+
+msgid "Any"
+msgstr "任意"
+
+msgid "Image"
+msgstr "图片"
+
+msgid "Audio"
+msgstr "音频"
+
+msgid "Video"
+msgstr "视频"
+
+msgid "Radio Button"
+msgstr "单选按钮"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "使用 Select2 渲染此字段"
+
+msgid "Term"
+msgstr "项目"
+
+msgid "Search terms"
+msgstr "搜索项目"
+
+msgid "Taxonomies"
+msgstr "分类法"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "将项目限制为以下分类法"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "一个或多个字段存在验证错误。更多信息如下。"
+
+msgid "Toggle row visibility"
+msgstr "切换行可见性"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "CFS 工具"

@@ -61,7 +61,7 @@ if ( ! isset( $extras['context'] ) ) {
                         'input_name'    => "cfs[extras][hide_editor]",
                         'input_class'   => 'true_false',
                         'value'         => $extras['hide_editor'],
-                        'options'       => [ 'message' => __( 'Hide the content editor', 'cfs' ) ],
+                        'options'       => [ 'message' => __( 'Hide the content editor (does not apply to the Gutenberg / block editor content area)', 'cfs' ) ],
                     ] );
                 ?>
             </div>

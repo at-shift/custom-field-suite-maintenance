@@ -516,3 +516,57 @@ msgstr "Supprimer tout"
 
 #~ msgid "Attach file"
 #~ msgstr "Attacher le fichier"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Masquer l’éditeur de contenu (ne s’applique pas à la zone de contenu Gutenberg / éditeur de blocs)"
+
+msgid "Checkbox"
+msgstr "Case à cocher"
+
+msgid "File Type"
+msgstr "Type de fichier"
+
+msgid "Any"
+msgstr "Tous"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Vidéo"
+
+msgid "Radio Button"
+msgstr "Bouton radio"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Afficher ce champ avec Select2"
+
+msgid "Term"
+msgstr "Terme"
+
+msgid "Search terms"
+msgstr "Rechercher des termes"
+
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Limiter les termes aux taxonomies suivantes"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Un ou plusieurs champs comportent des erreurs de validation. Des informations supplémentaires sont disponibles ci-dessous."
+
+msgid "Toggle row visibility"
+msgstr "Basculer la visibilité de la ligne"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "Outils CFS"

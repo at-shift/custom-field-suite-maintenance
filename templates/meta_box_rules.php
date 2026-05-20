@@ -148,10 +148,10 @@ foreach ( $templates as $template_name => $filename ) {
 
 <table>
     <tr>
-        <td class="label">
+        <td class="label cfs-rule-label">
             <label><?php _e( 'Post Types', 'cfs' ); ?></label>
         </td>
-        <td style="width:80px; vertical-align:top">
+        <td class="cfs-rule-operator">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -167,7 +167,7 @@ foreach ( $templates as $template_name => $filename ) {
                 ] );
             ?>
         </td>
-        <td>
+        <td class="cfs-rule-value">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -181,10 +181,10 @@ foreach ( $templates as $template_name => $filename ) {
     </tr>
     <?php if ( current_theme_supports( 'post-formats' ) && count( $post_formats ) ) : ?>
         <tr>
-            <td class="label">
+            <td class="label cfs-rule-label">
                 <label><?php _e( 'Post Formats', 'cfs' ); ?></label>
             </td>
-            <td style="width:80px; vertical-align:top">
+            <td class="cfs-rule-operator">
                 <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -200,7 +200,7 @@ foreach ( $templates as $template_name => $filename ) {
                 ] );
                 ?>
             </td>
-            <td>
+            <td class="cfs-rule-value">
                 <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -214,10 +214,10 @@ foreach ( $templates as $template_name => $filename ) {
         </tr>
     <?php endif; ?>
     <tr>
-        <td class="label">
+        <td class="label cfs-rule-label">
             <label><?php _e( 'User Roles', 'cfs' ); ?></label>
         </td>
-        <td style="width:80px; vertical-align:top">
+        <td class="cfs-rule-operator">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -233,7 +233,7 @@ foreach ( $templates as $template_name => $filename ) {
                 ] );
             ?>
         </td>
-        <td>
+        <td class="cfs-rule-value">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -246,10 +246,10 @@ foreach ( $templates as $template_name => $filename ) {
         </td>
     </tr>
     <tr>
-        <td class="label">
+        <td class="label cfs-rule-label">
             <label><?php _e('Posts', 'cfs'); ?></label>
         </td>
-        <td style="width:80px; vertical-align:top">
+        <td class="cfs-rule-operator">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -265,15 +265,15 @@ foreach ( $templates as $template_name => $filename ) {
                 ] );
             ?>
         </td>
-        <td>
+        <td class="cfs-rule-value">
             <input type="hidden" name="cfs[rules][post_ids]" class="select2-ajax" value="<?php echo esc_attr( implode( ',', array_map( 'absint', $post_ids ) ) ); ?>" style="width:99.95%" />
         </td>
     </tr>
     <tr>
-        <td class="label">
+        <td class="label cfs-rule-label">
             <label><?php _e( 'Taxonomy Terms', 'cfs' ); ?></label>
         </td>
-        <td style="width:80px; vertical-align:top">
+        <td class="cfs-rule-operator">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -289,7 +289,7 @@ foreach ( $templates as $template_name => $filename ) {
                 ] );
             ?>
         </td>
-        <td>
+        <td class="cfs-rule-value">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -302,10 +302,10 @@ foreach ( $templates as $template_name => $filename ) {
         </td>
     </tr>
     <tr>
-        <td class="label">
+        <td class="label cfs-rule-label">
             <label><?php _e( 'Page Templates', 'cfs' ); ?></label>
         </td>
-        <td style="width:80px; vertical-align:top">
+        <td class="cfs-rule-operator">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',
@@ -321,7 +321,7 @@ foreach ( $templates as $template_name => $filename ) {
                 ] );
             ?>
         </td>
-        <td>
+        <td class="cfs-rule-value">
             <?php
                 CFS()->create_field( [
                     'type' => 'select',

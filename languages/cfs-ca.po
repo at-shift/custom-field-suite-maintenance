@@ -468,3 +468,57 @@ msgstr "Eliminar tot"
 
 #~ msgid "Learn more"
 #~ msgstr "Saber més"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Amaga l'editor de contingut (no s'aplica a l'àrea de contingut de Gutenberg / editor de blocs)"
+
+msgid "Checkbox"
+msgstr "Casella de selecció"
+
+msgid "File Type"
+msgstr "Tipus de fitxer"
+
+msgid "Any"
+msgstr "Qualsevol"
+
+msgid "Image"
+msgstr "Imatge"
+
+msgid "Audio"
+msgstr "Àudio"
+
+msgid "Video"
+msgstr "Vídeo"
+
+msgid "Radio Button"
+msgstr "Botó d'opció"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Mostra aquest camp amb Select2"
+
+msgid "Term"
+msgstr "Terme"
+
+msgid "Search terms"
+msgstr "Cerca termes"
+
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Limita els termes a les taxonomies següents"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Un o més camps tenen errors de validació. Hi ha més informació a continuació."
+
+msgid "Toggle row visibility"
+msgstr "Commuta la visibilitat de la fila"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "Eines CFS"

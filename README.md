@@ -68,7 +68,7 @@ See [LICENSE](LICENSE) for the full GPLv2 license text. GPLv2 の全文は [LICE
 
 ## Maintenance Version (このバージョンについて)
 
-Current maintenance version: 2.6.7.20 (現在のメンテナンスバージョン: 2.6.7.20)
+Current maintenance version: 2.6.7.21 (現在のメンテナンスバージョン: 2.6.7.21)
 
 Plugin download (プラグインのダウンロード):
 https://github.com/at-shift/custom-field-suite-maintenance/archive/refs/heads/main.zip
@@ -92,9 +92,9 @@ wp-content/plugins/custom-field-suite
 
 Versioning follows the upstream 2.6.7 base version with an additional
 maintenance suffix. Future stabilization updates should increment the final
-number, for example 2.6.7.21, 2.6.7.22, and so on.
+number, for example 2.6.7.22, 2.6.7.23, and so on.
 
-バージョン番号は、上流版 2.6.7 をベースにメンテナンス用の末尾番号を追加する形式です。今後の安定化更新では、2.6.7.21、2.6.7.22 のように最後の番号を増やします。
+バージョン番号は、上流版 2.6.7 をベースにメンテナンス用の末尾番号を追加する形式です。今後の安定化更新では、2.6.7.22、2.6.7.23 のように最後の番号を増やします。
 
 ## Security and Compatibility Changes (脆弱性対策と互換性)
 
@@ -116,6 +116,11 @@ Main changes (脆弱性に対する対策):
 - Escaped admin field output across field settings, tabs, file links, selected
   Relationship / Term / User labels, and generated JSON.
 - Stabilized PHP 8.2+ admin edit screen compatibility.
+- Fixed PHP 8.2+ deprecated dynamic property notices in Checkbox, Radio Button,
+  and Select field settings.
+- Fixed Field Group Placement Rules layout overflow in the WordPress admin
+  screen.
+- Updated bundled translation files for the added and changed admin strings.
 - Fixed TinyMCE code plugin loading for CFS WYSIWYG fields.
 
 - Loop フィールドの `eval()` による描画を削除し、構造化された参照ロジックに置き換えました。
@@ -125,6 +130,9 @@ Main changes (脆弱性に対する対策):
 - セッション SQL、インポート/エクスポート処理、逆引き Relationship のフィルタリング、シリアライズ済みフィールドデータの読み込みを強化しました。
 - フィールド設定、タブ、ファイルリンク、選択済み Relationship / Term / User ラベル、生成 JSON など、管理画面の出力エスケープを強化しました。
 - PHP 8.2 以降の管理画面投稿編集ページとの互換性を安定化しました。
+- Checkbox、Radio Button、Select フィールド設定で発生していた PHP 8.2 以降の動的プロパティ Deprecated 通知を修正しました。
+- WordPress 管理画面内の Field Group Placement Rules レイアウトが横にはみ出す問題を修正しました。
+- 追加・変更された管理画面文字列に対応する同梱翻訳ファイルを更新しました。
 - CFS WYSIWYG フィールドで TinyMCE code プラグインが正しく読み込まれるように修正しました。
 
 ## Safe Front-End Output (フロントエンドでの安全な出力方法)
@@ -320,7 +328,7 @@ support manually with `remove_post_type_support()` in your theme's
 
 Custom Field Suite (CFS) は、WordPress のクラシックメタボックス互換機能を通じて Gutenberg をサポートしています。
 
-フィールドグループ内の設定「Hide the content editor」は Classic Editor (`postdivrich`) を対象としており、Gutenberg の本文ブロックエリアは非表示になりません。
+フィールドグループ内の設定「コンテンツエディターを隠す」は Classic Editor (`postdivrich`) を対象としており、Gutenberg の本文ブロックエリアは非表示になりません。
 
 これは Custom Field Suite (CFS) の不具合ではなく、WordPress ブロックエディタとの互換仕様によるものです。
 

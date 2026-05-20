@@ -500,3 +500,57 @@ msgstr "Удалить все"
 
 #~ msgid "Write a review"
 #~ msgstr "Написать отзыв"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Скрыть редактор содержимого (не применяется к области содержимого Gutenberg / редактора блоков)"
+
+msgid "Checkbox"
+msgstr "Флажок"
+
+msgid "File Type"
+msgstr "Тип файла"
+
+msgid "Any"
+msgstr "Любой"
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "Audio"
+msgstr "Аудио"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "Radio Button"
+msgstr "Переключатель"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Отображать это поле с помощью Select2"
+
+msgid "Term"
+msgstr "Термин"
+
+msgid "Search terms"
+msgstr "Искать термины"
+
+msgid "Taxonomies"
+msgstr "Таксономии"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Ограничить термины следующими таксономиями"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Одно или несколько полей содержат ошибки проверки. Дополнительная информация доступна ниже."
+
+msgid "Toggle row visibility"
+msgstr "Переключить видимость строки"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "Инструменты CFS"

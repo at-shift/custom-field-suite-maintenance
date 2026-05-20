@@ -563,3 +563,57 @@ msgstr "Usuń wszystko"
 
 #~ msgid "Attach File"
 #~ msgstr "Załącz plik"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Ukryj edytor treści (nie dotyczy obszaru treści Gutenberga / edytora blokowego)"
+
+msgid "Checkbox"
+msgstr "Pole wyboru"
+
+msgid "File Type"
+msgstr "Typ pliku"
+
+msgid "Any"
+msgstr "Dowolny"
+
+msgid "Image"
+msgstr "Obraz"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Video"
+msgstr "Wideo"
+
+msgid "Radio Button"
+msgstr "Przycisk opcji"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "Wyświetl to pole za pomocą Select2"
+
+msgid "Term"
+msgstr "Termin"
+
+msgid "Search terms"
+msgstr "Szukaj terminów"
+
+msgid "Taxonomies"
+msgstr "Taksonomie"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Ogranicz terminy do następujących taksonomii"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Co najmniej jedno pole zawiera błędy walidacji. Więcej informacji znajduje się poniżej."
+
+msgid "Toggle row visibility"
+msgstr "Przełącz widoczność wiersza"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "Narzędzia CFS"

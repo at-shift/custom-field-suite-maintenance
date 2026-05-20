@@ -512,3 +512,57 @@ msgstr "حذف و غیرفعال سازی"
 
 #~ msgid "Attach file"
 #~ msgstr "پیوست فایل"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "پنهان کردن ویرایشگر محتوا (برای ناحیه محتوای گوتنبرگ / ویرایشگر بلوک اعمال نمی‌شود)"
+
+msgid "Checkbox"
+msgstr "چک‌باکس"
+
+msgid "File Type"
+msgstr "نوع فایل"
+
+msgid "Any"
+msgstr "هرکدام"
+
+msgid "Image"
+msgstr "تصویر"
+
+msgid "Audio"
+msgstr "صدا"
+
+msgid "Video"
+msgstr "ویدئو"
+
+msgid "Radio Button"
+msgstr "دکمه رادیویی"
+
+msgid "Select2"
+msgstr "Select2"
+
+msgid "Render this field with Select2"
+msgstr "نمایش این فیلد با Select2"
+
+msgid "Term"
+msgstr "ترم"
+
+msgid "Search terms"
+msgstr "جستجوی ترم‌ها"
+
+msgid "Taxonomies"
+msgstr "طبقه‌بندی‌ها"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "محدود کردن ترم‌ها به طبقه‌بندی‌های زیر"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "یک یا چند فیلد دارای خطای اعتبارسنجی است. اطلاعات بیشتر در ادامه موجود است."
+
+msgid "Toggle row visibility"
+msgstr "تغییر نمایش ردیف"
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "ابزارهای CFS"

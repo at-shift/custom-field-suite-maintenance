@@ -631,3 +631,33 @@ msgstr "Excluir tudo"
 # @ cfs
 #~ msgid "Debug information"
 #~ msgstr "Información de depuración"
+
+msgid "Hide the content editor (does not apply to the Gutenberg / block editor content area)"
+msgstr "Ocultar o editor de conteúdo (não se aplica à área de conteúdo do Gutenberg / editor de blocos)"
+
+msgid "Checkbox"
+msgstr "Caixa de seleção"
+
+msgid "Radio Button"
+msgstr "Botão de opção"
+
+msgid "Term"
+msgstr "Termo"
+
+msgid "Search terms"
+msgstr "Pesquisar termos"
+
+msgid "Taxonomies"
+msgstr "Taxonomias"
+
+msgid "Limit terms to the following taxonomies"
+msgstr "Limitar termos às seguintes taxonomias"
+
+msgid "One (or more) of your fields had validation errors. More information is available below."
+msgstr "Um ou mais campos tiveram erros de validação. Mais informações estão disponíveis abaixo."
+
+msgid "Custom Field Suite"
+msgstr "Custom Field Suite"
+
+msgid "CFS Tools"
+msgstr "Ferramentas CFS"
