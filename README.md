@@ -183,14 +183,70 @@ echo nl2br( esc_html( CFS()->get( 'textarea_field' ) ) );
 // WYSIWYG or other content where limited post HTML should be allowed.
 echo wp_kses_post( CFS()->get( 'wysiwyg_field' ) );
 
-// URL output.
-echo esc_url( CFS()->get( 'url_field' ) );
+// Hyperlink output when the field is configured to return a PHP array.
+$link = (array) CFS()->get( 'hyperlink_field' );
+if ( ! empty( $link['url'] ) ) {
+    printf(
+        '<a href="%s" target="%s">%s</a>',
+        esc_url( $link['url'] ),
+        esc_attr( $link['target'] ?? '_self' ),
+        esc_html( $link['text'] ?? $link['url'] )
+    );
+}
 
 // HTML attribute output.
 echo esc_attr( CFS()->get( 'attribute_field' ) );
 
-// Numeric IDs, including File, Relationship, Term, and User raw values.
-$ids = array_map( 'intval', (array) CFS()->get( 'relationship_field', false, [ 'format' => 'raw' ] ) );
+// Date output.
+echo esc_html( CFS()->get( 'date_field' ) );
+
+// Color value used in an HTML attribute.
+echo esc_attr( CFS()->get( 'color_field' ) );
+
+// True / False output.
+if ( CFS()->get( 'true_false_field' ) ) {
+    echo esc_html__( 'Yes', 'your-theme-textdomain' );
+}
+
+// Select output. CFS returns an array even for single-select fields.
+$select_values = (array) CFS()->get( 'select_field' );
+foreach ( $select_values as $select_value ) {
+    echo esc_html( $select_value );
+}
+
+// Checkbox output.
+$checkbox_values = (array) CFS()->get( 'checkbox_field' );
+foreach ( $checkbox_values as $checkbox_value ) {
+    echo esc_html( $checkbox_value );
+}
+
+// Radio Button output.
+echo esc_html( CFS()->get( 'radio_field' ) );
+
+// File URL output.
+$file_id  = (int) CFS()->get( 'file_field', false, [ 'format' => 'raw' ] );
+$file_url = wp_get_attachment_url( $file_id );
+if ( $file_url ) {
+    echo esc_url( $file_url );
+}
+
+// Relationship IDs.
+$relationship_ids = array_map( 'intval', (array) CFS()->get( 'relationship_field', false, [ 'format' => 'raw' ] ) );
+
+// Term IDs.
+$term_ids = array_map( 'intval', (array) CFS()->get( 'term_field', false, [ 'format' => 'raw' ] ) );
+
+// User IDs.
+$user_ids = array_map( 'intval', (array) CFS()->get( 'user_field', false, [ 'format' => 'raw' ] ) );
+
+// Loop output. Escape each sub-field according to its own output context.
+$rows = (array) CFS()->get( 'loop_field' );
+foreach ( $rows as $row ) {
+    echo esc_html( $row['text_sub_field'] ?? '' );
+}
+
+// Tab fields are layout-only fields in the admin screen and do not need
+// front-end output escaping.
 ```
 
 The correct escaping function depends on the output context: use `esc_html()`
