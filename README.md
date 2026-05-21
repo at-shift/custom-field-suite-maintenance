@@ -133,7 +133,8 @@ strict minimum requirements. In addition to local checks, replacement and
 compatibility have been verified on several live sites, but operation in other
 environments is not guaranteed unless separately verified.
 
-上記はローカルで動作確認を行った環境であり、厳密な最低動作要件を示すものではありません。ローカル検証に加えて、数サイトの実運用環境でも置き換えと互換性を確認していますが、その他の環境での動作は、個別に検証されていない限り保証されません。
+上記はローカルで動作確認を行った環境であり、厳密な最低動作要件を示すものではありません。
+ローカル検証に加えて、数サイトの実運用環境でも置き換えと互換性を確認していますが、その他の環境での動作は、個別に検証されていない限り保証されません。
 ```
 
 ## Safe Front-End Output (フロントエンドでの安全な出力方法)
