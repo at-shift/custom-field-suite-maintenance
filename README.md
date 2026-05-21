@@ -340,10 +340,11 @@ The maintenance build was locally verified against:
 - 元の上流版 2.6.7 プラグインからこのメンテナンスビルドへの置き換え確認。
 - PHP 8.3 上での WordPress 7.0 管理画面、Field Group 編集、CFS メタボックス、WYSIWYG フィールド、File メディアモーダルの互換性確認。
 
-These checks are local verification only and are not a third-party security
-audit.
+After A.I.-assisted or manual local verification, replacement from Custom Field
+Suite 2.6.7, compatibility, and feature preservation have been confirmed on
+several sites. However, this is not a third-party security audit.
 
-これらはローカル検証であり、第三者によるセキュリティ監査ではありません。
+A.I.または手動によるローカル検証後に、数サイトでの Custom Field Suite 2.6.7 からの置き換え、互換性の確認、機能維持確認を実証済み。ただし、第三者によるセキュリティ監査はおこなっていません。
 
 ## Attribution (帰属表示)
 
