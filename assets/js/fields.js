@@ -89,10 +89,16 @@
         $(document).on('change', '.field_form .field_type select', function() {
             var type = $(this).val();
             var input_name = $(this).attr('name').replace('[type]', '');
-            var html = CFS.options_html[type].replace(/cfs\[fields\]\[clone\]/g, input_name);
-            $(this).closest('.field').find('.field_meta .field_type').html(type);
+            var $options = $(CFS.options_html[type]);
+            var $named_options = $options.filter('[name]').add($options.find('[name]'));
+
+            $named_options.each(function() {
+                this.name = this.name.replace(/cfs\[fields\]\[clone\]/g, input_name);
+            });
+
+            $(this).closest('.field').find('.field_meta .field_type').text(type);
             $(this).closest('.field').find('.field_option').remove();
-            $(this).closest('.field_basics').after(html);
+            $(this).closest('.field_basics').after($options);
             init_tooltip();
         });
 

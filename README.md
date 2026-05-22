@@ -93,7 +93,7 @@ if ( '' !== $value ) {
 
 ## Installation (インストール方法)
 
-Current maintenance version: 2.6.7.22 (現在のメンテナンスバージョン: 2.6.7.22)
+Current maintenance version: 2.6.7.23 (現在のメンテナンスバージョン: 2.6.7.23)
 
 Plugin download (プラグインのダウンロード): https://github.com/at-shift/custom-field-suite-maintenance/archive/refs/heads/main.zip
 
@@ -334,6 +334,32 @@ add_action( 'init', function() {
     remove_post_type_support( 'information', 'editor' );
 } );
 ```
+
+## Maintenance Release Notes (メンテナンスリリース履歴)
+
+### 2.6.7.23
+
+- Hardened Field Group type switching JavaScript so field type labels are
+  written as text and generated option controls are updated through DOM
+  attributes instead of string-rewritten HTML.
+- Replaced an unnecessary jQuery object wrapper in the bundled datepicker
+  parser with array filtering to reduce CodeQL unsafe jQuery plugin findings.
+- Verified the updated Field Group field-type switching behavior directly in
+  Safari, including option row insertion, field name replacement, and new field
+  indexing.
+
+- フィールドタイプ切り替え時の管理画面 JavaScript を強化し、フィールドタイプ表示はテキストとして書き込み、生成されるオプション入力の更新は文字列 HTML の再解釈ではなく DOM 属性の更新で行うようにしました。
+- 同梱 datepicker のパーサー内で不要な jQuery オブジェクト化を配列フィルタリングに置き換え、CodeQL の unsafe jQuery plugin 検出を低減しました。
+- Safari で、更新後の Field Group フィールドタイプ切り替え動作を直接検証しました。オプション行の挿入、フィールド名の置換、新規フィールド index の更新を確認しています。
+
+### 2.6.7.22
+
+- Verified WordPress 7.0 admin compatibility for Field Group editing, CFS meta
+  boxes, WYSIWYG fields, and File media modal handling.
+- Moved Field Group admin asset loading to WordPress enqueue APIs.
+
+- WordPress 7.0 管理画面での Field Group 編集、CFS メタボックス、WYSIWYG フィールド、File メディアモーダル処理の互換性を検証しました。
+- Field Group 管理画面のアセット読み込みを WordPress の enqueue API に移行しました。
 
 ## Security and Compatibility Changes (脆弱性対策と互換性)
 

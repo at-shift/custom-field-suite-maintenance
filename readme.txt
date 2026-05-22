@@ -63,6 +63,11 @@ When redistributing this package, keep the GPLv2 license notice, preserve the or
 
 == Changelog ==
 
+= 2.6.7.23 =
+* Hardened Field Group type switching JavaScript so field type labels are written as text and generated option controls are updated through DOM attributes instead of string-rewritten HTML.
+* Replaced an unnecessary jQuery object wrapper in the bundled datepicker parser with array filtering to reduce CodeQL unsafe jQuery plugin findings.
+* Verified the updated Field Group field-type switching behavior directly in Safari, including option row insertion, field name replacement, and new field indexing.
+
 = 2.6.7.22 =
 * Verified WordPress 7.0 admin compatibility for Field Group editing, CFS meta boxes, WYSIWYG fields, and File media modal handling.
 * Moved Field Group admin asset loading to WordPress enqueue APIs.
