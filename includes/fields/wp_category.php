@@ -36,7 +36,18 @@ class cfs_wp_category extends cfs_field
             $children[ (int) $term->parent ][] = $term;
         }
 
-        echo '<div class="cfs-wp-category-list">';
+        $auto_select_children = 0 < (int) $this->get_option( $field, 'auto_select_children' );
+        $auto_select_parents = 0 < (int) $this->get_option( $field, 'auto_select_parents' );
+    ?>
+        <div class="cfs-wp-category-tools">
+            <input type="search" class="cfs-wp-category-search" autocomplete="off" placeholder="<?php esc_attr_e( 'Search categories', 'cfs' ); ?>" />
+            <label class="cfs-wp-category-selected-only">
+                <input type="checkbox" class="cfs-wp-category-selected-only-toggle" />
+                <?php esc_html_e( 'Show selected only', 'cfs' ); ?>
+            </label>
+        </div>
+    <?php
+        echo '<div class="cfs-wp-category-list" data-auto-select-children="' . esc_attr( $auto_select_children ? '1' : '0' ) . '" data-auto-select-parents="' . esc_attr( $auto_select_parents ? '1' : '0' ) . '">';
         $this->render_terms( $children, 0, $selected, $field->input_name );
         echo '</div>';
     }
@@ -50,9 +61,20 @@ class cfs_wp_category extends cfs_field
         echo '<ul>';
         foreach ( $children[ $parent_id ] as $term ) {
             $term_id = (int) $term->term_id;
-            echo '<li>';
+            $is_selected = in_array( $term_id, $selected, true );
+            $has_children = ! empty( $children[ $term_id ] );
+            $classes = [ 'cfs-wp-category-item' ];
+
+            if ( $is_selected ) {
+                $classes[] = 'is-selected';
+            }
+            if ( $has_children ) {
+                $classes[] = 'has-children';
+            }
+
+            echo '<li class="' . esc_attr( implode( ' ', $classes ) ) . '" data-term-name="' . esc_attr( strtolower( $term->name ) ) . '">';
             echo '<label>';
-            echo '<input type="checkbox" name="' . esc_attr( $input_name ) . '[]" value="' . absint( $term_id ) . '"' . checked( in_array( $term_id, $selected, true ), true, false ) . ' /> ';
+            echo '<input type="checkbox" name="' . esc_attr( $input_name ) . '[]" value="' . absint( $term_id ) . '"' . checked( $is_selected, true, false ) . ' /> ';
             echo esc_html( $term->name );
             echo '</label>';
             $this->render_terms( $children, $term_id, $selected, $input_name );
@@ -72,5 +94,106 @@ class cfs_wp_category extends cfs_field
         }
 
         return [];
+    }
+
+
+    function options_html( $key, $field ) {
+    ?>
+        <tr class="field_option field_option_<?php echo esc_attr( $this->name ); ?>">
+            <td class="label">
+                <label><?php esc_html_e( 'Category Selection', 'cfs' ); ?></label>
+            </td>
+            <td>
+                <?php
+                    CFS()->create_field( [
+                        'type' => 'true_false',
+                        'input_name' => 'cfs[fields][' . absint( $key ) . '][options][auto_select_children]',
+                        'input_class' => 'true_false',
+                        'value' => $this->get_option( $field, 'auto_select_children' ),
+                        'options' => [ 'message' => __( 'Selecting a parent also selects all child categories', 'cfs' ) ],
+                    ] );
+                ?>
+                <br />
+                <?php
+                    CFS()->create_field( [
+                        'type' => 'true_false',
+                        'input_name' => 'cfs[fields][' . absint( $key ) . '][options][auto_select_parents]',
+                        'input_class' => 'true_false',
+                        'value' => $this->get_option( $field, 'auto_select_parents' ),
+                        'options' => [ 'message' => __( 'Selecting a child also selects its parent categories', 'cfs' ) ],
+                    ] );
+                ?>
+            </td>
+        </tr>
+    <?php
+    }
+
+
+    function input_head( $field = null ) {
+    ?>
+        <script>
+        (function($) {
+            function refreshCategoryState($list) {
+                $list.find('.cfs-wp-category-item').each(function() {
+                    var $item = $(this);
+                    var checked = $item.children('label').find('input[type="checkbox"]').prop('checked');
+                    $item.toggleClass('is-selected', checked);
+                });
+            }
+
+            function applyCategoryFilter($field) {
+                var query = $.trim($field.find('.cfs-wp-category-search').val()).toLowerCase();
+                var selectedOnly = $field.find('.cfs-wp-category-selected-only-toggle').prop('checked');
+                var $items = $field.find('.cfs-wp-category-item');
+
+                $items.removeClass('is-filter-hidden is-filter-match');
+
+                $items.each(function() {
+                    var $item = $(this);
+                    var name = $item.attr('data-term-name') || '';
+                    var matchesQuery = '' === query || -1 < name.indexOf(query);
+                    var matchesSelected = !selectedOnly || $item.children('label').find('input[type="checkbox"]').prop('checked');
+
+                    if (matchesQuery && matchesSelected) {
+                        $item.addClass('is-filter-match');
+                        $item.parents('.cfs-wp-category-item').addClass('is-filter-match');
+                    }
+                });
+
+                if ('' !== query || selectedOnly) {
+                    $items.not('.is-filter-match').addClass('is-filter-hidden');
+                }
+            }
+
+            $(document).on('change', '.cfs-wp-category-list input[type="checkbox"]', function() {
+                var $input = $(this);
+                var $item = $input.closest('.cfs-wp-category-item');
+                var $list = $input.closest('.cfs-wp-category-list');
+                var checked = $input.prop('checked');
+
+                if ('1' === $list.attr('data-auto-select-children')) {
+                    $item.find('ul input[type="checkbox"]').prop('checked', checked);
+                }
+
+                if (checked && '1' === $list.attr('data-auto-select-parents')) {
+                    $item.parents('.cfs-wp-category-item').children('label').find('input[type="checkbox"]').prop('checked', true);
+                }
+
+                refreshCategoryState($list);
+                applyCategoryFilter($input.closest('.field'));
+            });
+
+            $(document).on('input change', '.cfs-wp-category-search, .cfs-wp-category-selected-only-toggle', function() {
+                applyCategoryFilter($(this).closest('.field'));
+            });
+
+            $(function() {
+                $('.cfs-wp-category-list').each(function() {
+                    refreshCategoryState($(this));
+                });
+            });
+        })(jQuery);
+        </script>
+    <?php
     }
 }

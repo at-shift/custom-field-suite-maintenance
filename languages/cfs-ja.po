@@ -614,3 +614,18 @@ msgstr "画像を選択"
 
 msgid "Remove Image"
 msgstr "画像を削除"
+
+msgid "Search categories"
+msgstr "カテゴリーを検索"
+
+msgid "Show selected only"
+msgstr "選択済みだけ表示"
+
+msgid "Category Selection"
+msgstr "カテゴリー選択"
+
+msgid "Selecting a parent also selects all child categories"
+msgstr "親を選択したとき子カテゴリーもすべて選択する"
+
+msgid "Selecting a child also selects its parent categories"
+msgstr "子を選択したとき親カテゴリーも選択する"

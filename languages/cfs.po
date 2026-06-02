@@ -613,3 +613,18 @@ msgstr ""
 
 msgid "Remove Image"
 msgstr ""
+
+msgid "Search categories"
+msgstr ""
+
+msgid "Show selected only"
+msgstr ""
+
+msgid "Category Selection"
+msgstr ""
+
+msgid "Selecting a parent also selects all child categories"
+msgstr ""
+
+msgid "Selecting a child also selects its parent categories"
+msgstr ""
