@@ -57,6 +57,14 @@ else {
         // Store field group IDs as an array for front-end forms
         CFS()->group_ids = array_keys( $field_groups );
 
+        if (
+            function_exists( 'use_block_editor_for_post' ) &&
+            use_block_editor_for_post( $post ) &&
+            apply_filters( 'cfs_hide_metaboxes_in_block_editor', false, $post, $field_groups )
+        ) {
+            return;
+        }
+
         // Support for multiple metaboxes
         foreach ( $field_groups as $group_id => $title ) {
 

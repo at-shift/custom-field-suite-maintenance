@@ -24,6 +24,12 @@ class cfs_init
         add_action( 'wp_ajax_cfs_ajax_handler',         [ $this, 'ajax_handler' ] );
         add_filter( 'manage_cfs_posts_columns',         [ $this, 'cfs_columns' ] );
         add_action( 'manage_cfs_posts_custom_column',   [ $this, 'cfs_column_content' ], 10, 2 );
+        add_action( 'enqueue_block_editor_assets',      [ $this, 'enqueue_block_editor_assets' ] );
+        add_filter( 'block_categories_all',             [ $this, 'block_categories' ], 10, 2 );
+
+        if ( version_compare( get_bloginfo( 'version' ), '5.8', '<' ) ) {
+            add_filter( 'block_categories',             [ $this, 'block_categories' ], 10, 2 );
+        }
 
         include( CFS_DIR . '/includes/api.php' );
         include( CFS_DIR . '/includes/upgrade.php' );
@@ -37,6 +43,7 @@ class cfs_init
 
         $this->register_post_type();
         CFS()->fields = $this->get_field_types();
+        $this->register_blocks();
 
         // CFS is ready
         do_action( 'cfs_init' );
@@ -154,6 +161,223 @@ class cfs_init
         wp_enqueue_style( 'cfs-fields', CFS_URL . '/assets/css/fields.css', [], CFS_VERSION );
         wp_enqueue_style( 'cfs-select2', CFS_URL . '/assets/js/select2/select2.css', [], CFS_VERSION );
         wp_enqueue_style( 'jquery-powertip', CFS_URL . '/assets/js/jquery-powertip/jquery.powertip.css', [], CFS_VERSION );
+    }
+
+
+    /**
+     * Add the CFS block inserter category.
+     */
+    function block_categories( $categories, $post ) {
+        foreach ( $categories as $category ) {
+            if ( 'cfs' === $category['slug'] ) {
+                return $categories;
+            }
+        }
+
+        array_unshift( $categories, [
+            'slug'  => 'cfs',
+            'title' => __( 'CFS Field Groups', 'cfs' ),
+            'icon'  => null,
+        ] );
+
+        return $categories;
+    }
+
+
+    /**
+     * Register one dynamic block for each published CFS field group.
+     */
+    function register_blocks() {
+        if ( ! function_exists( 'register_block_type' ) ) {
+            return;
+        }
+
+        $field_groups = CFS()->field_group->load_field_groups();
+
+        foreach ( $field_groups as $group_id => $group ) {
+            $block_name = 'cfs/field-group-' . absint( $group_id );
+
+            if ( WP_Block_Type_Registry::get_instance()->is_registered( $block_name ) ) {
+                continue;
+            }
+
+            register_block_type( $block_name, [
+                'api_version'     => 3,
+                'attributes'      => [
+                    'groupId' => [
+                        'type'    => 'number',
+                        'default' => absint( $group_id ),
+                    ],
+                ],
+                'render_callback' => [ $this, 'render_field_group_block' ],
+            ] );
+        }
+    }
+
+
+    /**
+     * Load the no-build block registrations for the editor.
+     */
+    function enqueue_block_editor_assets() {
+        global $post;
+
+        $field_groups = CFS()->field_group->load_field_groups();
+        $group_ids = array_keys( $field_groups );
+        $groups = [];
+
+        if ( $post instanceof WP_Post && 'cfs' !== $post->post_type ) {
+            $matching_groups = CFS()->api->get_matching_groups( $post->ID );
+            $group_ids = array_keys( $matching_groups );
+        }
+
+        foreach ( $group_ids as $group_id ) {
+            if ( ! isset( $field_groups[ $group_id ] ) ) {
+                continue;
+            }
+
+            $group = $field_groups[ $group_id ];
+            $fields = isset( $group['fields'] ) && is_array( $group['fields'] ) ? $group['fields'] : [];
+
+            $groups[] = [
+                'id'         => absint( $group_id ),
+                'name'       => 'cfs/field-group-' . absint( $group_id ),
+                'title'      => $group['title'],
+                'blockTitle' => sprintf( __( 'CFS Field Group: %s', 'cfs' ), $group['title'] ),
+                'fieldCount' => count( $fields ),
+            ];
+        }
+
+        wp_enqueue_script(
+            'cfs-block-editor',
+            CFS_URL . '/assets/js/block-editor.js',
+            [ 'wp-blocks', 'wp-element', 'wp-i18n' ],
+            CFS_VERSION,
+            true
+        );
+        wp_enqueue_style( 'cfs-block-editor', CFS_URL . '/assets/css/block-editor.css', [], CFS_VERSION );
+
+        wp_add_inline_script(
+            'cfs-block-editor',
+            'window.CFSBlockEditor = ' . wp_json_encode( [
+                'groups'       => $groups,
+                'description'  => __( 'Displays a CFS field group.', 'cfs' ),
+                'fieldGroup'   => __( 'Field Group', 'cfs' ),
+                'fieldCount'   => __( 'Fields', 'cfs' ),
+                'noFields'     => __( 'No fields in this group.', 'cfs' ),
+            ] ) . ';',
+            'before'
+        );
+    }
+
+
+    /**
+     * Render a CFS field group block on the front end.
+     */
+    function render_field_group_block( $attributes, $content, $block ) {
+        $group_id = isset( $attributes['groupId'] ) ? absint( $attributes['groupId'] ) : 0;
+
+        if ( 0 === $group_id && is_object( $block ) && isset( $block->name ) && preg_match( '/^cfs\/field-group-(\d+)$/', $block->name, $matches ) ) {
+            $group_id = absint( $matches[1] );
+        }
+
+        if ( 0 === $group_id ) {
+            return '';
+        }
+
+        $field_groups = CFS()->field_group->load_field_groups();
+
+        if ( ! isset( $field_groups[ $group_id ] ) ) {
+            return '';
+        }
+
+        $post_id = get_the_ID();
+
+        if ( empty( $post_id ) ) {
+            return '';
+        }
+
+        $matching_groups = CFS()->api->get_matching_groups( $post_id, true );
+
+        if ( ! isset( $matching_groups[ $group_id ] ) ) {
+            return '';
+        }
+
+        $values = CFS()->api->get_fields( $post_id, [ 'format' => 'api' ] );
+        $fields = CFS()->api->find_input_fields( [ 'group_id' => $group_id ] );
+        $items = [];
+
+        foreach ( $fields as $field ) {
+            if ( empty( $field['name'] ) || in_array( $field['type'], [ 'tab', 'group' ], true ) ) {
+                continue;
+            }
+
+            $value = isset( $values[ $field['name'] ] ) ? $values[ $field['name'] ] : null;
+            $rendered_value = $this->render_block_field_value( $value );
+
+            if ( '' === $rendered_value ) {
+                continue;
+            }
+
+            $items[] = sprintf(
+                '<div class="cfs-block-field cfs-block-field-%1$s"><dt>%2$s</dt><dd>%3$s</dd></div>',
+                esc_attr( sanitize_html_class( $field['name'] ) ),
+                esc_html( ! empty( $field['label'] ) ? $field['label'] : $field['name'] ),
+                $rendered_value
+            );
+        }
+
+        if ( empty( $items ) ) {
+            return '';
+        }
+
+        return sprintf(
+            '<section class="cfs-block-field-group cfs-block-field-group-%1$d"><h2>%2$s</h2><dl>%3$s</dl></section>',
+            absint( $group_id ),
+            esc_html( $field_groups[ $group_id ]['title'] ),
+            implode( '', $items )
+        );
+    }
+
+
+    /**
+     * Convert saved CFS values to safe, compact block output.
+     */
+    private function render_block_field_value( $value ) {
+        if ( null === $value || '' === $value || [] === $value ) {
+            return '';
+        }
+
+        if ( is_array( $value ) ) {
+            $parts = [];
+
+            foreach ( $value as $item ) {
+                $rendered = $this->render_block_field_value( $item );
+
+                if ( '' !== $rendered ) {
+                    $parts[] = $rendered;
+                }
+            }
+
+            return implode( '<br />', $parts );
+        }
+
+        if ( is_object( $value ) ) {
+            if ( isset( $value->post_title ) ) {
+                return esc_html( $value->post_title );
+            }
+
+            if ( isset( $value->display_name ) ) {
+                return esc_html( $value->display_name );
+            }
+
+            if ( isset( $value->name ) ) {
+                return esc_html( $value->name );
+            }
+
+            return '';
+        }
+
+        return esc_html( (string) $value );
     }
 
 
