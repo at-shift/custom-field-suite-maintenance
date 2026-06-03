@@ -100,6 +100,10 @@ Category behavior (カテゴリーの動作):
 
 ### Horizontal Group (横並びグループ)
 
+#### Caution (注意)
+- A bug has been discovered in the current v2.6.7.40 where horizontally arranged fields cannot be saved correctly within a Loop. A corrected version is scheduled to be released today.
+- 現在の v2.6.7.40 において、Loop 内に横並びフィールをが正常に保存できない不具合が発見されています。修正版は本日中にリリース予定です。
+
 Horizontal Group is a layout field for arranging multiple child fields side by
 side in the post edit screen. It is useful for related fields such as first /
 last name, phone / email, or date / time combinations.
