@@ -629,14 +629,19 @@ class cfs_init
     private function get_github_update_status() {
         $repo_url = 'https://github.com/at-shift/custom-field-suite-maintenance';
         $fallback = [
-            'state'   => 'unknown',
-            'version' => '',
-            'url'     => $repo_url,
+            'state'                   => 'unknown',
+            'version'                 => '',
+            'url'                     => $repo_url,
+            'checked_current_version' => CFS_VERSION,
         ];
 
         $cached = get_transient( 'cfs_github_update_status' );
 
-        if ( is_array( $cached ) && isset( $cached['state'], $cached['url'] ) ) {
+        if (
+            is_array( $cached ) &&
+            isset( $cached['state'], $cached['url'], $cached['checked_current_version'] ) &&
+            CFS_VERSION === $cached['checked_current_version']
+        ) {
             return $cached;
         }
 
@@ -681,9 +686,10 @@ class cfs_init
         }
 
         $status = [
-            'state'   => version_compare( CFS_VERSION, $latest_version, '<' ) ? 'update' : 'current',
-            'version' => $latest_tag,
-            'url'     => $repo_url . '/releases',
+            'state'                   => version_compare( CFS_VERSION, $latest_version, '<' ) ? 'update' : 'current',
+            'version'                 => $latest_tag,
+            'url'                     => $repo_url . '/releases',
+            'checked_current_version' => CFS_VERSION,
         ];
 
         set_transient( 'cfs_github_update_status', $status, 12 * HOUR_IN_SECONDS );
