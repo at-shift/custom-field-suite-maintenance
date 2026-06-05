@@ -38,6 +38,8 @@ The version numbering for this repository is based on the upstream Custom Field
 Suite 2.6.7 release, with an additional maintenance suffix appended to the
 version number.
 
+# Custom Field Suite (CFS) メンテナンス版
+
 Custom Field Suite (CFS) は、投稿、固定ページ、カスタム投稿タイプにカスタムフィールドを追加するための WordPress プラグインです。
 
 ### Custom Field Suite (CFS) はwordpressで以下のカスタムフィールドが利用できます:
