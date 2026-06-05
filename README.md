@@ -78,7 +78,7 @@ This maintenance build adds the following field types and editor features:
 - Phone (電話番号)
 - Email Address (メールアドレス)
 - Number (数字)
-- URL (ハイパーリンクではない)
+- URL (Not Hyperlink / ハイパーリンクではない)
 - Time (時間)
 - Checkbox (チェックボックス)
 - Radio Button (ラジオボタン)
