@@ -567,6 +567,9 @@ msgstr "4 oszlop"
 msgid "Add new field below"
 msgstr "Uj mezo hozzaadasa ala"
 
+msgid "Add field inside"
+msgstr "Mezo hozzaadasa belulre"
+
 msgid "CFS Field Groups"
 msgstr "CFS mezocsoportok"
 

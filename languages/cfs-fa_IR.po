@@ -614,6 +614,9 @@ msgstr "۴ ستون"
 msgid "Add new field below"
 msgstr "افزودن فیلد جدید در پایین"
 
+msgid "Add field inside"
+msgstr "افزودن فیلد در داخل"
+
 msgid "CFS Field Groups"
 msgstr "گروه‌های فیلد CFS"
 

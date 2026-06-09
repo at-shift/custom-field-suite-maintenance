@@ -604,7 +604,10 @@ msgstr "左寄せ"
 
 #: ../templates/field_html.php:84
 msgid "Add new field below"
-msgstr "この下に新規フィールドを追加"
+msgstr "この下に新規フィールドを作る。"
+
+msgid "Add field inside"
+msgstr "この中に新規フィールドを作る。"
 
 msgid "CFS Field Groups"
 msgstr "CFSフィールドグループ"

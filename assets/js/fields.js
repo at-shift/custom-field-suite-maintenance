@@ -87,6 +87,18 @@
             }).append('<ul></ul>');
         }
 
+        function update_add_field_button_labels($context) {
+            $context.find('.cfs_add_field_below').each(function() {
+                var $button = $(this);
+                var $item = $button.closest('li');
+                var label = ('loop' == get_item_type($item) || 'group' == get_item_type($item)) ?
+                    (CFS.messages && CFS.messages.add_field_inside ? CFS.messages.add_field_inside : 'Add field inside') :
+                    (CFS.messages && CFS.messages.add_field_below ? CFS.messages.add_field_below : 'Add new field below');
+
+                $button.val(label);
+            });
+        }
+
         function init_sortables($containers) {
             $containers.each(function() {
                 var $container = $(this);
@@ -100,12 +112,25 @@
                     connectWith: 'ul.fields, ul.fields ul',
                     placeholder: 'ui-sortable-placeholder',
                     handle: '.field_order',
+                    start: function() {
+                        $('ul.fields li.loop > ul').addClass('cfs-drop-target');
+                    },
+                    stop: function() {
+                        $('ul.fields li.loop > ul').removeClass('cfs-drop-target cfs-drop-target-active');
+                    },
+                    over: function() {
+                        $(this).addClass('cfs-drop-target-active');
+                    },
+                    out: function() {
+                        $(this).removeClass('cfs-drop-target-active');
+                    },
                     update: function(event, ui) {
                         zebra_stripes();
                         enforce_group_child_rules(ui.item);
                         ensure_child_containers($('ul.fields'));
                         init_sortables($('ul.fields, ul.fields ul'));
                         sync_parent_ids();
+                        update_add_field_button_labels($('ul.fields'));
                     }
                 });
             });
@@ -116,6 +141,7 @@
         ensure_child_containers($('ul.fields'));
         init_sortables($('ul.fields, ul.fields ul'));
         sync_parent_ids();
+        update_add_field_button_labels($('ul.fields'));
 
         // Setup checkboxes
         $(document).on('change click', 'input[type="checkbox"]', function() {
@@ -134,6 +160,7 @@
             CFS.field_index = CFS.field_index + 1;
             init_tooltip();
             sync_parent_ids();
+            update_add_field_button_labels($('ul.fields'));
         });
 
         // Add a new field immediately below the current field
@@ -142,16 +169,28 @@
             var $current = $(this).closest('li');
             var parent_id = $current.children('.field').find('.parent_id').first().val();
             var $new_field = $('<li>' + html + '</li>');
+            var current_type = get_item_type($current);
 
             $new_field.find('.field_key').first().val(CFS.field_index);
             $new_field.find('.parent_id').first().val(parent_id);
-            $current.after($new_field);
+
+            if ('loop' == current_type || 'group' == current_type) {
+                ensure_child_containers($current);
+                $current.children('ul').first().append($new_field);
+            }
+            else {
+                $current.after($new_field);
+            }
+
             $new_field.find('.field_label a').click();
             $new_field.find('.field_type select').change();
             CFS.field_index = CFS.field_index + 1;
             zebra_stripes();
             init_tooltip();
+            ensure_child_containers($('ul.fields'));
+            init_sortables($('ul.fields, ul.fields ul'));
             sync_parent_ids();
+            update_add_field_button_labels($('ul.fields'));
         });
 
         // Delete a field
@@ -197,6 +236,7 @@
             init_tooltip();
             enforce_group_child_rules($item);
             sync_parent_ids();
+            update_add_field_button_labels($('ul.fields'));
         });
 
         $(document).on('submit', '#post', function() {

@@ -581,6 +581,9 @@ msgstr "4 列"
 msgid "Add new field below"
 msgstr "在下方添加新字段"
 
+msgid "Add field inside"
+msgstr "在内部添加字段"
+
 msgid "CFS Field Groups"
 msgstr "CFS 字段组"
 

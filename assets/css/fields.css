@@ -60,7 +60,18 @@
 }
 
 #cfs_fields .fields li.loop ul {
-    min-height: 10px;
+    min-height: 28px;
+    padding-bottom: 8px;
+}
+
+#cfs_fields .fields li.loop > ul.cfs-drop-target {
+    outline: 1px dashed rgba(255, 255, 255, 0.7);
+    outline-offset: -4px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#cfs_fields .fields li.loop > ul.cfs-drop-target-active {
+    background: rgba(255, 255, 255, 0.22);
 }
 
 #cfs_fields .field.form_open {

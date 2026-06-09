@@ -598,6 +598,9 @@ msgstr "4 sutun"
 msgid "Add new field below"
 msgstr "Asagiya yeni alan ekle"
 
+msgid "Add field inside"
+msgstr "Icine alan ekle"
+
 msgid "CFS Field Groups"
 msgstr "CFS alan gruplari"
 

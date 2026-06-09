@@ -605,6 +605,9 @@ msgstr "4 колонки"
 msgid "Add new field below"
 msgstr "Добавить новое поле ниже"
 
+msgid "Add field inside"
+msgstr "Добавить поле внутрь"
+
 msgid "CFS Field Groups"
 msgstr "Группы полей CFS"
 

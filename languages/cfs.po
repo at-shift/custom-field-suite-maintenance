@@ -605,6 +605,9 @@ msgstr ""
 msgid "Add new field below"
 msgstr ""
 
+msgid "Add field inside"
+msgstr ""
+
 msgid "CFS Field Groups"
 msgstr ""
 

@@ -652,6 +652,9 @@ msgstr "4 kolumny"
 msgid "Add new field below"
 msgstr "Dodaj nowe pole ponizej"
 
+msgid "Add field inside"
+msgstr "Dodaj pole wewnatrz"
+
 msgid "CFS Field Groups"
 msgstr "Grupy pol CFS"
 
