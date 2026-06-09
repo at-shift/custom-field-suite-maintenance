@@ -624,6 +624,9 @@ msgstr "Kotelezo"
 msgid "Please select..."
 msgstr "Valasszon..."
 
+msgid "Please select a language..."
+msgstr "Valasszon nyelvet..."
+
 msgid "Alignment"
 msgstr "Igazitas"
 

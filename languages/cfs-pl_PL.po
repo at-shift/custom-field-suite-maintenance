@@ -709,6 +709,9 @@ msgstr "Wymagane"
 msgid "Please select..."
 msgstr "Wybierz..."
 
+msgid "Please select a language..."
+msgstr "Wybierz jezyk..."
+
 msgid "Alignment"
 msgstr "Wyrownanie"
 

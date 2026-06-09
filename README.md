@@ -105,9 +105,9 @@ Behavior (動作):
   in the post edit screen.
 - Time fields use hour and minute select menus. The configured minute interval
   is reflected in the minute options.
-- Code View fields render saved code as escaped `<pre><code>` output with an
-  optional copy button, so the code is displayed for copying and is not executed
-  in place.
+- Code View fields let editors choose a language per entry and render saved
+  code as escaped `<pre><code>` output with a language label and optional copy
+  button, so the code is displayed for copying and is not executed in place.
 - Post Categories, Post Tags, and Featured Image fields edit the native
   WordPress taxonomy / featured image data, not CFS-only post meta.
 - Horizontal Group fields arrange multiple child fields side by side in the
@@ -116,7 +116,7 @@ Behavior (動作):
 - ラジオボタンフィールドでは、選択肢を1行ずつ定義し、1つの選択値を保存できます。
 - 電話番号、メールアドレス、数字、URL、時間フィールドは、投稿編集画面で形式チェックを行います。
 - 時間フィールドは時・分のセレクトメニュー形式で、設定した分の刻み幅が分の選択肢に反映されます。
-- コードフィールドは、保存したコードをエスケープ済みの `<pre><code>` として表示し、任意でコピーボタンを付けられます。コードはその場では実行されず、コピー用として表示されます。
+- コードフィールドは、投稿編集画面で入力ごとに言語を選択でき、保存したコードを言語ラベル付きのエスケープ済み `<pre><code>` として表示します。任意でコピーボタンを付けられ、コードはその場では実行されず、コピー用として表示されます。
 - 投稿カテゴリー、投稿タグ、アイキャッチ画像フィールドは、CFS 独自メタではなく WordPress 標準のタクソノミー / アイキャッチ画像データを編集します。
 - 横並びグループは、複数の子フィールドを投稿編集画面で横に並べ、狭い画面では縦並びに切り替わります。
 

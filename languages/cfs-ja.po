@@ -170,6 +170,10 @@ msgstr "セレクト（ドロップダウンリスト）"
 msgid "Please select..."
 msgstr "選択してください..."
 
+#: ../includes/fields/code_view.php:210
+msgid "Please select a language..."
+msgstr "言語を選択してください..."
+
 #: ../includes/fields/select.php:86
 msgid "Choices"
 msgstr "選択肢"

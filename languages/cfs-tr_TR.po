@@ -655,6 +655,9 @@ msgstr "Zorunlu"
 msgid "Please select..."
 msgstr "Lutfen secin..."
 
+msgid "Please select a language..."
+msgstr "Bir dil secin..."
+
 msgid "Alignment"
 msgstr "Hizalama"
 

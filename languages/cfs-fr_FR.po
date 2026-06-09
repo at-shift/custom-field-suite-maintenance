@@ -670,6 +670,9 @@ msgstr "Obligatoire"
 msgid "Please select..."
 msgstr "Veuillez selectionner..."
 
+msgid "Please select a language..."
+msgstr "Selectionnez une langue..."
+
 msgid "1 minute"
 msgstr "1 minute"
 

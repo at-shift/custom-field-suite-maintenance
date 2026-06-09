@@ -758,6 +758,9 @@ msgstr "Obligatorio"
 msgid "Please select..."
 msgstr "Selecciona..."
 
+msgid "Please select a language..."
+msgstr "Selecciona un idioma..."
+
 msgid "Alignment"
 msgstr "Alineacion"
 

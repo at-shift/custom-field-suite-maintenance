@@ -97,6 +97,14 @@
                     return '' != val && null != val && regex.test(val);
                 }
             },
+            'required_code_view': {
+                'error': 'Please select a language and enter code',
+                'validate': function(val, el) {
+                    var language = $.trim(el.find('.cfs-code-view-language').val() || '');
+                    var code = $.trim(el.find('textarea').val() || '');
+                    return '' != language && '' != code;
+                }
+            },
             'limit': {
                 'error': function(el) {
                     var limits = el.attr('data-validator').split('|')[1].split(',');

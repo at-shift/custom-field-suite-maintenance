@@ -1,6 +1,25 @@
 .cfs-code-view {
-    position: relative;
     margin: 1em 0;
+}
+
+.cfs-code-view-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 32px;
+    padding: 6px 10px;
+    border: 1px solid #dcdcde;
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    background: #fff;
+}
+
+.cfs-code-view-language-label {
+    color: #50575e;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 .cfs-code-view pre {
@@ -8,7 +27,7 @@
     padding: 14px 16px;
     overflow: auto;
     border: 1px solid #dcdcde;
-    border-radius: 4px;
+    border-radius: 0 0 4px 4px;
     background: #f6f7f7;
     color: #1d2327;
     font-size: 13px;
@@ -21,9 +40,6 @@
 }
 
 .cfs-code-view-copy {
-    position: absolute;
-    top: 8px;
-    right: 8px;
     min-height: 28px;
     padding: 3px 10px;
     border: 1px solid #8c8f94;

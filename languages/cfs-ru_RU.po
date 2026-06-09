@@ -662,6 +662,9 @@ msgstr "Обязательно"
 msgid "Please select..."
 msgstr "Пожалуйста, выберите..."
 
+msgid "Please select a language..."
+msgstr "Выберите язык..."
+
 msgid "Alignment"
 msgstr "Выравнивание"
 

@@ -640,6 +640,9 @@ msgstr "Obligatori"
 msgid "Please select..."
 msgstr "Seleccioneu..."
 
+msgid "Please select a language..."
+msgstr "Seleccioneu un idioma..."
+
 msgid "Alignment"
 msgstr "Alineacio"
 

@@ -638,6 +638,9 @@ msgstr "必填"
 msgid "Please select..."
 msgstr "请选择..."
 
+msgid "Please select a language..."
+msgstr "请选择一种语言..."
+
 msgid "Alignment"
 msgstr "对齐方式"
 

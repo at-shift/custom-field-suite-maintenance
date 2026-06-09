@@ -638,6 +638,9 @@ msgstr "Vereist"
 msgid "Please select..."
 msgstr "Selecteer..."
 
+msgid "Please select a language..."
+msgstr "Selecteer een taal..."
+
 msgid "Alignment"
 msgstr "Uitlijning"
 

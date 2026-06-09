@@ -760,6 +760,9 @@ msgstr "Erforderlich"
 msgid "Please select..."
 msgstr "Bitte auswaehlen..."
 
+msgid "Please select a language..."
+msgstr "Sprache auswaehlen..."
+
 msgid "Alignment"
 msgstr "Ausrichtung"
 

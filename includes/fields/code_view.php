@@ -12,9 +12,17 @@ class cfs_code_view extends cfs_field
 
 
     function html( $field ) {
-        $field->value = null === $field->value ? '' : $field->value;
+        $field->value = $this->normalize_value_with_default( $field->value, '' );
     ?>
-        <textarea name="<?php echo esc_attr( $field->input_name ); ?>" class="<?php echo esc_attr( $field->input_class ); ?>" rows="8" spellcheck="false"><?php echo esc_textarea( $field->value ); ?></textarea>
+        <div class="cfs-code-view-language-control" style="margin-bottom:10px;">
+            <label style="display:block;margin-bottom:3px;"><?php esc_html_e( 'Language', 'cfs' ); ?><?php echo $this->is_required_field( $field ) ? $this->required_badge() : ''; ?></label>
+            <select name="<?php echo esc_attr( $field->input_name ); ?>[language]" class="cfs-code-view-language">
+                <?php foreach ( $this->get_input_languages() as $language => $label ) : ?>
+                    <option value="<?php echo esc_attr( $language ); ?>"<?php selected( $field->value['language'], $language ); ?>><?php echo esc_html( $label ); ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <textarea name="<?php echo esc_attr( $field->input_name ); ?>[code]" class="<?php echo esc_attr( $field->input_class ); ?>" rows="8" spellcheck="false"><?php echo esc_textarea( $field->value['code'] ); ?></textarea>
     <?php
     }
 
@@ -31,32 +39,6 @@ class cfs_code_view extends cfs_field
                         'type' => 'textarea',
                         'input_name' => 'cfs[fields][' . absint( $key ) . '][options][default_value]',
                         'value' => $this->get_option( $field, 'default_value' ),
-                    ] );
-                ?>
-            </td>
-        </tr>
-        <tr class="field_option field_option_<?php echo esc_attr( $this->name ); ?>">
-            <td class="label">
-                <label><?php _e( 'Language', 'cfs' ); ?></label>
-            </td>
-            <td>
-                <?php
-                    CFS()->create_field( [
-                        'type' => 'select',
-                        'input_name' => 'cfs[fields][' . absint( $key ) . '][options][language]',
-                        'options' => [
-                            'choices' => [
-                                'plain_text' => __( 'Plain text', 'cfs' ),
-                                'html' => 'HTML',
-                                'css' => 'CSS',
-                                'javascript' => 'JavaScript',
-                                'php' => 'PHP',
-                                'bash' => 'Bash',
-                                'json' => 'JSON',
-                            ],
-                            'force_single' => true,
-                        ],
-                        'value' => $this->get_option( $field, 'language', 'plain_text' ),
                     ] );
                 ?>
             </td>
@@ -104,20 +86,29 @@ class cfs_code_view extends cfs_field
 
 
     function pre_save( $value, $field = null ) {
-        if ( is_array( $value ) ) {
-            $value = reset( $value );
-        }
+        $value = $this->normalize_value( $this->normalize_posted_value( $value ) );
 
-        return is_scalar( $value ) ? (string) $value : '';
+        return serialize( $value );
+    }
+
+
+    function prepare_value( $value, $field = null ) {
+        $stored_value = isset( $value[0] ) ? $value[0] : '';
+        $unserialized = @unserialize( $stored_value, [ 'allowed_classes' => false ] );
+
+        return $this->normalize_value( is_array( $unserialized ) ? $unserialized : $stored_value );
     }
 
 
     function format_value_for_api( $value, $field = null ) {
-        if ( '' === (string) $value ) {
+        $value = $this->normalize_value( $value );
+
+        if ( '' === $value['code'] ) {
             return '';
         }
 
-        $language = $this->get_option( $field, 'language', 'plain_text' );
+        $language = $this->sanitize_language( $value['language'] );
+        $language_label = $this->get_language_label( $language );
         $language_class = sanitize_html_class( 'language-' . str_replace( '_', '-', $language ) );
         $copy_button = 0 < (int) $this->get_option( $field, 'copy_button', 1 );
 
@@ -131,10 +122,112 @@ class cfs_code_view extends cfs_field
         }
 
         return sprintf(
-            '<div class="cfs-code-view"><pre><code class="%1$s">%2$s</code></pre>%3$s</div>',
+            '<div class="cfs-code-view"><div class="cfs-code-view-header"><span class="cfs-code-view-language-label">%1$s</span>%2$s</div><pre><code class="%3$s">%4$s</code></pre></div>',
+            esc_html( $language_label ),
+            $button,
             esc_attr( $language_class ),
-            esc_html( (string) $value ),
-            $button
+            esc_html( $value['code'] )
         );
+    }
+
+
+    function format_value_for_input( $value, $field = null ) {
+        return $this->normalize_value( $value );
+    }
+
+
+    private function normalize_posted_value( $value ) {
+        if ( isset( $value['code'] ) || isset( $value['language'] ) ) {
+            return $value;
+        }
+
+        if ( is_array( $value ) ) {
+            $normalized = [];
+
+            foreach ( $value as $item ) {
+                if ( ! is_array( $item ) ) {
+                    continue;
+                }
+
+                if ( isset( $item['code'] ) ) {
+                    $normalized['code'] = $item['code'];
+                }
+
+                if ( isset( $item['language'] ) ) {
+                    $normalized['language'] = $item['language'];
+                }
+            }
+
+            if ( ! empty( $normalized ) ) {
+                return $normalized;
+            }
+
+            return reset( $value );
+        }
+
+        return $value;
+    }
+
+
+    private function normalize_value( $value ) {
+        return $this->normalize_value_with_default( $value, 'plain_text' );
+    }
+
+
+    private function normalize_value_with_default( $value, $default_language ) {
+        if ( is_array( $value ) ) {
+            return [
+                'code'     => isset( $value['code'] ) && is_scalar( $value['code'] ) ? (string) $value['code'] : '',
+                'language' => $this->sanitize_language( isset( $value['language'] ) ? $value['language'] : $default_language, $default_language ),
+            ];
+        }
+
+        return [
+            'code'     => is_scalar( $value ) ? (string) $value : '',
+            'language' => $default_language,
+        ];
+    }
+
+
+    private function sanitize_language( $language, $default = 'plain_text' ) {
+        $language = is_scalar( $language ) ? (string) $language : $default;
+        $languages = $this->get_languages();
+
+        return isset( $languages[ $language ] ) ? $language : $default;
+    }
+
+
+    private function get_language_label( $language ) {
+        $languages = $this->get_languages();
+
+        return isset( $languages[ $language ] ) ? $languages[ $language ] : $languages['plain_text'];
+    }
+
+
+    private function get_languages() {
+        return [
+            'plain_text' => __( 'Plain text', 'cfs' ),
+            'html'       => 'HTML',
+            'css'        => 'CSS',
+            'javascript' => 'JavaScript',
+            'php'        => 'PHP',
+            'bash'       => 'Bash',
+            'json'       => 'JSON',
+        ];
+    }
+
+
+    private function get_input_languages() {
+        return [ '' => __( 'Please select a language...', 'cfs' ) ] + $this->get_languages();
+    }
+
+
+    private function is_required_field( $field ) {
+        return isset( $field->options['required'] ) && 0 < (int) $field->options['required'];
+    }
+
+
+    private function required_badge() {
+        return ' <span class="cfs-required-badge">' . esc_html__( 'Required', 'cfs' ) . '</span>';
     }
 }

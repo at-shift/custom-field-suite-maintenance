@@ -445,6 +445,9 @@ CFS['loop_buffer'] = [];
                 elseif ( 'color' == $field->type ) {
                     $validator = 'valid_color';
                 }
+                elseif ( 'code_view' == $field->type ) {
+                    $validator = 'required_code_view';
+                }
                 elseif ( isset( $format_validators[ $field->type ] ) ) {
                     $validator = 'required_' . $field->type;
                 }

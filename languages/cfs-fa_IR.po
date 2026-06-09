@@ -671,6 +671,9 @@ msgstr "ضروری"
 msgid "Please select..."
 msgstr "لطفاً انتخاب کنید..."
 
+msgid "Please select a language..."
+msgstr "یک زبان را انتخاب کنید..."
+
 msgid "Alignment"
 msgstr "تراز"
 

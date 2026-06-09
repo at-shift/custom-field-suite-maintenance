@@ -169,6 +169,10 @@ msgstr ""
 msgid "Please select..."
 msgstr ""
 
+#: ../includes/fields/code_view.php:210
+msgid "Please select a language..."
+msgstr ""
+
 #: ../includes/fields/select.php:86
 msgid "Choices"
 msgstr ""
