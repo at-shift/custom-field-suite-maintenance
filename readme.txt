@@ -113,6 +113,12 @@ When redistributing this package, keep the GPLv2 license notice, preserve the or
 
 == Changelog ==
 
+= 2.6.7.41.4 =
+* Improved drag-and-drop behavior when moving fields into Loop (repeatable field) and Horizontal Group fields in the Field Group editor.
+* Improved the "Add new field below" button in the Field Group editor so fields can be added directly inside Loop (repeatable field) and Horizontal Group fields.
+* フィールドグループ内の「ループ(複製フィールド)」と「横並びグループ」へフィールドをドラッグ移動しやすくしました。
+* フィールドグループ内の「この下に新規フィールドを作る。」ボタンを改善し、「ループ(複製フィールド)」と「横並びグループ」内へ直接フィールドを追加できるようにしました。
+
 = 2.6.7.41.3 =
 * Added a Code View field for showing examples such as HTML code on the front end.
 * Fixed display issues after saving in some field inputs.

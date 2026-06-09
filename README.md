@@ -164,7 +164,7 @@ Behavior (動作):
 
 ## Installation (インストール方法)
 
-Current maintenance version: 2.6.7.41.3 (現在のメンテナンスバージョン: 2.6.7.41.3)
+Current maintenance version: 2.6.7.41.4 (現在のメンテナンスバージョン: 2.6.7.41.4)
 
 Plugin download (プラグインのダウンロード): https://github.com/at-shift/custom-field-suite-maintenance/archive/refs/heads/main.zip
 
@@ -461,6 +461,16 @@ add_action( 'init', function() {
 ```
 
 ## Maintenance Release Notes (メンテナンスリリース履歴)
+
+### 2.6.7.41.4
+
+- Improved drag-and-drop behavior when moving fields into Loop (repeatable
+  field) and Horizontal Group fields in the Field Group editor.
+- Improved the "Add new field below" button in the Field Group editor so fields
+  can be added directly inside Loop (repeatable field) and Horizontal Group
+  fields.
+- フィールドグループ内の「ループ(複製フィールド)」と「横並びグループ」へフィールドをドラッグ移動しやすくしました。
+- フィールドグループ内の「この下に新規フィールドを作る。」ボタンを改善し、「ループ(複製フィールド)」と「横並びグループ」内へ直接フィールドを追加できるようにしました。
 
 ### 2.6.7.41.3
 
