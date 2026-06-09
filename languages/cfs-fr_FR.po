@@ -714,3 +714,24 @@ msgstr "Ajoutez au moins deux champs a ce groupe horizontal."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Les onglets, les boucles et les groupes horizontaux ne peuvent pas etre places dans un groupe horizontal."
+
+msgid "Code View"
+msgstr "Affichage du code"
+
+msgid "Plain text"
+msgstr "Texte brut"
+
+msgid "Copy Button"
+msgstr "Bouton de copie"
+
+msgid "Show copy button"
+msgstr "Afficher le bouton de copie"
+
+msgid "Copy"
+msgstr "Copier"
+
+msgid "Copied"
+msgstr "Copie"
+
+msgid "Language"
+msgstr "Langue"

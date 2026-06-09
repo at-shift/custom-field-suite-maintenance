@@ -128,6 +128,9 @@
             'textarea': function(el) {
                 return el.find('textarea').val();
             },
+            'code_view': function(el) {
+                return el.find('textarea').val();
+            },
             'select': function(el) {
                 return el.find('select').val();
             },

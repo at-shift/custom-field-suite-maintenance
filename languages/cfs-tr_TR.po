@@ -684,3 +684,24 @@ msgstr "Bu yatay gruba iki veya daha fazla alan ekleyin."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Sekmeler, donguler ve yatay gruplar bir yatay grubun icine yerlestirilemez."
+
+msgid "Code View"
+msgstr "Kod gorunumu"
+
+msgid "Plain text"
+msgstr "Duz metin"
+
+msgid "Copy Button"
+msgstr "Kopyalama dugmesi"
+
+msgid "Show copy button"
+msgstr "Kopyalama dugmesini goster"
+
+msgid "Copy"
+msgstr "Kopyala"
+
+msgid "Copied"
+msgstr "Kopyalandi"
+
+msgid "Language"
+msgstr "Dil"

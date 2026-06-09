@@ -57,8 +57,4 @@ class cfs_phone extends cfs_field
         return preg_match( '/^[0-9+\-().\s]+$/', $value ) ? $value : '';
     }
 
-
-    function format_value_for_input( $value, $field = null ) {
-        return htmlspecialchars( $value, ENT_QUOTES );
-    }
 }

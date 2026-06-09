@@ -116,6 +116,7 @@ class cfs_init
             'time'          => CFS_DIR . '/includes/fields/time.php',
             'file'          => CFS_DIR . '/includes/fields/file.php',
             'color'         => CFS_DIR . '/includes/fields/color/color.php',
+            'code_view'     => CFS_DIR . '/includes/fields/code_view.php',
             'wp_category'   => CFS_DIR . '/includes/fields/wp_category.php',
             'wp_tag'        => CFS_DIR . '/includes/fields/wp_tag.php',
             'featured_image' => CFS_DIR . '/includes/fields/featured_image.php',

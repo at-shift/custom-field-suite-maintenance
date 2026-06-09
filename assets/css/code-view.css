@@ -1,0 +1,42 @@
+.cfs-code-view {
+    position: relative;
+    margin: 1em 0;
+}
+
+.cfs-code-view pre {
+    margin: 0;
+    padding: 14px 16px;
+    overflow: auto;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    background: #f6f7f7;
+    color: #1d2327;
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: pre;
+}
+
+.cfs-code-view code {
+    font-family: Consolas, Monaco, monospace;
+}
+
+.cfs-code-view-copy {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    min-height: 28px;
+    padding: 3px 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    background: #fff;
+    color: #1d2327;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.cfs-code-view-copy:hover,
+.cfs-code-view-copy:focus {
+    border-color: #2271b1;
+    color: #0a4b78;
+}

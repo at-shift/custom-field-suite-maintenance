@@ -97,8 +97,4 @@ class cfs_number extends cfs_field
         return $value;
     }
 
-
-    function format_value_for_input( $value, $field = null ) {
-        return htmlspecialchars( $value, ENT_QUOTES );
-    }
 }

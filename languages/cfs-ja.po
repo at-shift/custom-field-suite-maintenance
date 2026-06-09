@@ -25,7 +25,7 @@ msgstr "単一行テキスト"
 #: ../includes/fields/textarea.php:58 ../includes/fields/true_false.php:45
 #: ../includes/fields/wysiwyg.php:54
 msgid "Validation"
-msgstr "バリデーション"
+msgstr "入力チェック"
 
 #: ../includes/field.php:51 ../includes/fields/file.php:73
 #: ../includes/fields/select.php:126 ../includes/fields/text.php:39
@@ -676,3 +676,24 @@ msgstr "横並びグループには複数のフィールドを登録してくだ
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "タブ、ループ、横並びグループは、横並びグループの中には配置できません。"
+
+msgid "Code View"
+msgstr "コード"
+
+msgid "Plain text"
+msgstr "プレーンテキスト"
+
+msgid "Copy Button"
+msgstr "コピーボタン"
+
+msgid "Show copy button"
+msgstr "コピーボタンを表示"
+
+msgid "Copy"
+msgstr "コピー"
+
+msgid "Copied"
+msgstr "コピーしました"
+
+msgid "Language"
+msgstr "言語"

@@ -789,3 +789,24 @@ msgstr "Fuegen Sie dieser horizontalen Gruppe mindestens zwei Felder hinzu."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Tabs, Schleifen und horizontale Gruppen koennen nicht innerhalb einer horizontalen Gruppe platziert werden."
+
+msgid "Code View"
+msgstr "Code-Ansicht"
+
+msgid "Plain text"
+msgstr "Klartext"
+
+msgid "Copy Button"
+msgstr "Kopierbutton"
+
+msgid "Show copy button"
+msgstr "Kopierbutton anzeigen"
+
+msgid "Copy"
+msgstr "Kopieren"
+
+msgid "Copied"
+msgstr "Kopiert"
+
+msgid "Language"
+msgstr "Sprache"

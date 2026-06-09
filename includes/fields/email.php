@@ -57,8 +57,4 @@ class cfs_email extends cfs_field
         return is_email( $value ) ? $value : '';
     }
 
-
-    function format_value_for_input( $value, $field = null ) {
-        return htmlspecialchars( $value, ENT_QUOTES );
-    }
 }

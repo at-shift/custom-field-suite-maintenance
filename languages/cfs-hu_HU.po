@@ -653,3 +653,24 @@ msgstr "Adjon hozza legalabb ket mezot ehhez a vizszintes csoporthoz."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Lapok, ismetlok es vizszintes csoportok nem helyezhetok vizszintes csoportba."
+
+msgid "Code View"
+msgstr "Kod nezet"
+
+msgid "Plain text"
+msgstr "Egyszeru szoveg"
+
+msgid "Copy Button"
+msgstr "Masolas gomb"
+
+msgid "Show copy button"
+msgstr "Masolas gomb megjelenitese"
+
+msgid "Copy"
+msgstr "Masolas"
+
+msgid "Copied"
+msgstr "Masolva"
+
+msgid "Language"
+msgstr "Nyelv"

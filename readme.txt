@@ -113,6 +113,12 @@ When redistributing this package, keep the GPLv2 license notice, preserve the or
 
 == Changelog ==
 
+= 2.6.7.41.3 =
+* Added a Code View field for showing examples such as HTML code on the front end.
+* Fixed display issues after saving in some field inputs.
+* フロントエンドでHTMLコードなどの例を記載できるコードフィールドを追加しました。
+* フィールドの一部で保存後に表示が崩れる問題を修正しました。
+
 = 2.6.7.41.2 =
 * Fixed an issue where required fields rendered inside Loop rows did not show the Required badge.
 * Added and completed bundled translations for recently added admin strings across supported non-Japanese language files.

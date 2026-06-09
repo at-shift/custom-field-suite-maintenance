@@ -667,3 +667,24 @@ msgstr "请向此横向分组添加两个或更多字段。"
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "选项卡、循环和横向分组不能放在横向分组内。"
+
+msgid "Code View"
+msgstr "代码视图"
+
+msgid "Plain text"
+msgstr "纯文本"
+
+msgid "Copy Button"
+msgstr "复制按钮"
+
+msgid "Show copy button"
+msgstr "显示复制按钮"
+
+msgid "Copy"
+msgstr "复制"
+
+msgid "Copied"
+msgstr "已复制"
+
+msgid "Language"
+msgstr "语言"

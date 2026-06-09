@@ -79,6 +79,7 @@ This maintenance build adds the following field types and editor features:
 - Number (数字)
 - URL (Not Hyperlink / ハイパーリンクではない)
 - Time (時間)
+- Code View (コード)
 - Checkbox (チェックボックス)
 - Radio Button (ラジオボタン)
 - Post Categories (投稿カテゴリー - WordPress 標準)
@@ -89,9 +90,10 @@ This maintenance build adds the following field types and editor features:
 These fields are intended to make it easier to migrate existing Custom Field
 Suite sites while keeping front-end output flexible for theme developers. The
 plugin stores and returns data only; it does not generate fixed front-end HTML
-for these fields.
+for most fields. Code View returns escaped display markup for showing code
+examples on the front end.
 
-これらのフィールドは、既存の Custom Field Suite サイトを移行しやすくしつつ、フロントエンド出力はテーマ開発者が自由にデザインできるようにすることを目的としています。プラグイン側では値の保存と取得を行い、固定のフロントエンド HTML は出力しません。
+これらのフィールドは、既存の Custom Field Suite サイトを移行しやすくしつつ、フロントエンド出力はテーマ開発者が自由にデザインできるようにすることを目的としています。多くのフィールドでは値の保存と取得のみを行います。Code View では、フロントエンドでコード例を表示するためのエスケープ済み表示用マークアップを返します。
 
 Behavior (動作):
 
@@ -103,6 +105,9 @@ Behavior (動作):
   in the post edit screen.
 - Time fields use hour and minute select menus. The configured minute interval
   is reflected in the minute options.
+- Code View fields render saved code as escaped `<pre><code>` output with an
+  optional copy button, so the code is displayed for copying and is not executed
+  in place.
 - Post Categories, Post Tags, and Featured Image fields edit the native
   WordPress taxonomy / featured image data, not CFS-only post meta.
 - Horizontal Group fields arrange multiple child fields side by side in the
@@ -111,6 +116,7 @@ Behavior (動作):
 - ラジオボタンフィールドでは、選択肢を1行ずつ定義し、1つの選択値を保存できます。
 - 電話番号、メールアドレス、数字、URL、時間フィールドは、投稿編集画面で形式チェックを行います。
 - 時間フィールドは時・分のセレクトメニュー形式で、設定した分の刻み幅が分の選択肢に反映されます。
+- コードフィールドは、保存したコードをエスケープ済みの `<pre><code>` として表示し、任意でコピーボタンを付けられます。コードはその場では実行されず、コピー用として表示されます。
 - 投稿カテゴリー、投稿タグ、アイキャッチ画像フィールドは、CFS 独自メタではなく WordPress 標準のタクソノミー / アイキャッチ画像データを編集します。
 - 横並びグループは、複数の子フィールドを投稿編集画面で横に並べ、狭い画面では縦並びに切り替わります。
 
@@ -158,7 +164,7 @@ Behavior (動作):
 
 ## Installation (インストール方法)
 
-Current maintenance version: 2.6.7.41.2 (現在のメンテナンスバージョン: 2.6.7.41.2)
+Current maintenance version: 2.6.7.41.3 (現在のメンテナンスバージョン: 2.6.7.41.3)
 
 Plugin download (プラグインのダウンロード): https://github.com/at-shift/custom-field-suite-maintenance/archive/refs/heads/main.zip
 
@@ -439,6 +445,14 @@ add_action( 'init', function() {
 ```
 
 ## Maintenance Release Notes (メンテナンスリリース履歴)
+
+### 2.6.7.41.3
+
+- Added a Code View field for showing examples such as HTML code on the front
+  end.
+- Fixed display issues after saving in some field inputs.
+- フロントエンドでHTMLコードなどの例を記載できるコードフィールドを追加しました。
+- フィールドの一部で保存後に表示が崩れる問題を修正しました。
 
 ### 2.6.7.41.2
 

@@ -672,3 +672,24 @@ msgstr ""
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr ""
+
+msgid "Code View"
+msgstr ""
+
+msgid "Plain text"
+msgstr ""
+
+msgid "Copy Button"
+msgstr ""
+
+msgid "Show copy button"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Copied"
+msgstr ""
+
+msgid "Language"
+msgstr ""

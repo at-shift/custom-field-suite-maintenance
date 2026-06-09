@@ -667,3 +667,24 @@ msgstr "Voeg twee of meer velden toe aan deze horizontale groep."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Tabs, loops en horizontale groepen kunnen niet in een horizontale groep worden geplaatst."
+
+msgid "Code View"
+msgstr "Codeweergave"
+
+msgid "Plain text"
+msgstr "Platte tekst"
+
+msgid "Copy Button"
+msgstr "Kopieerknop"
+
+msgid "Show copy button"
+msgstr "Kopieerknop tonen"
+
+msgid "Copy"
+msgstr "Kopieren"
+
+msgid "Copied"
+msgstr "Gekopieerd"
+
+msgid "Language"
+msgstr "Taal"

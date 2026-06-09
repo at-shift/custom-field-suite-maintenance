@@ -738,3 +738,24 @@ msgstr "Dodaj co najmniej dwa pola do tej grupy poziomej."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Zakladki, petle i grupy poziome nie moga byc umieszczane wewnatrz grupy poziomej."
+
+msgid "Code View"
+msgstr "Widok kodu"
+
+msgid "Plain text"
+msgstr "Zwykly tekst"
+
+msgid "Copy Button"
+msgstr "Przycisk kopiowania"
+
+msgid "Show copy button"
+msgstr "Pokaz przycisk kopiowania"
+
+msgid "Copy"
+msgstr "Kopiuj"
+
+msgid "Copied"
+msgstr "Skopiowano"
+
+msgid "Language"
+msgstr "Jezyk"

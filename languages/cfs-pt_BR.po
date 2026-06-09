@@ -796,3 +796,24 @@ msgstr "Adicione dois ou mais campos a este grupo horizontal."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Abas, loops e grupos horizontais nao podem ser colocados dentro de um grupo horizontal."
+
+msgid "Code View"
+msgstr "Visualizacao de codigo"
+
+msgid "Plain text"
+msgstr "Texto simples"
+
+msgid "Copy Button"
+msgstr "Botao de copia"
+
+msgid "Show copy button"
+msgstr "Mostrar botao de copia"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Copied"
+msgstr "Copiado"
+
+msgid "Language"
+msgstr "Idioma"

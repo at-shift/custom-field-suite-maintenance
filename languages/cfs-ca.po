@@ -669,3 +669,24 @@ msgstr "Afegiu dos o mes camps a aquest grup horitzontal."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Les pestanyes, els bucles i els grups horitzontals no es poden col locar dins d un grup horitzontal."
+
+msgid "Code View"
+msgstr "Vista de codi"
+
+msgid "Plain text"
+msgstr "Text pla"
+
+msgid "Copy Button"
+msgstr "Boto de copia"
+
+msgid "Show copy button"
+msgstr "Mostra el boto de copia"
+
+msgid "Copy"
+msgstr "Copia"
+
+msgid "Copied"
+msgstr "Copiat"
+
+msgid "Language"
+msgstr "Idioma"

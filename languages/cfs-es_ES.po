@@ -787,3 +787,24 @@ msgstr "Anade dos o mas campos a este grupo horizontal."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Las pestanas, los bucles y los grupos horizontales no se pueden colocar dentro de un grupo horizontal."
+
+msgid "Code View"
+msgstr "Vista de codigo"
+
+msgid "Plain text"
+msgstr "Texto sin formato"
+
+msgid "Copy Button"
+msgstr "Boton de copia"
+
+msgid "Show copy button"
+msgstr "Mostrar boton de copia"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Copied"
+msgstr "Copiado"
+
+msgid "Language"
+msgstr "Idioma"

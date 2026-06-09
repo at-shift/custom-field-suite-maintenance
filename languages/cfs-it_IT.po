@@ -787,3 +787,24 @@ msgstr "Aggiungi due o piu campi a questo gruppo orizzontale."
 
 msgid "Tabs, loops, and horizontal groups cannot be placed inside a horizontal group."
 msgstr "Schede, loop e gruppi orizzontali non possono essere inseriti all interno di un gruppo orizzontale."
+
+msgid "Code View"
+msgstr "Vista codice"
+
+msgid "Plain text"
+msgstr "Testo semplice"
+
+msgid "Copy Button"
+msgstr "Pulsante copia"
+
+msgid "Show copy button"
+msgstr "Mostra pulsante copia"
+
+msgid "Copy"
+msgstr "Copia"
+
+msgid "Copied"
+msgstr "Copiato"
+
+msgid "Language"
+msgstr "Lingua"
