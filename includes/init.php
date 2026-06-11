@@ -125,6 +125,7 @@ class cfs_init
             'user'          => CFS_DIR . '/includes/fields/user.php',
             'loop'          => CFS_DIR . '/includes/fields/loop.php',
             'tab'           => CFS_DIR . '/includes/fields/tab.php',
+            'accordion'     => CFS_DIR . '/includes/fields/accordion.php',
             'group'         => CFS_DIR . '/includes/fields/group.php',
         ] );
 
@@ -331,7 +332,7 @@ class cfs_init
         $items = [];
 
         foreach ( $fields as $field ) {
-            if ( empty( $field['name'] ) || in_array( $field['type'], [ 'tab', 'group' ], true ) ) {
+            if ( empty( $field['name'] ) || in_array( $field['type'], [ 'tab', 'group', 'accordion' ], true ) ) {
                 continue;
             }
 
@@ -536,10 +537,10 @@ class cfs_init
         $just_saved = (bool) get_transient( 'cfs_empty_rules_notice_' . $post_id );
         delete_transient( 'cfs_empty_rules_notice_' . $post_id );
 
-        $message = __( 'This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional.', 'cfs' );
+        $message = __( 'This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional.', 'cfs' );
 
         if ( $just_saved ) {
-            $message = __( 'Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional.', 'cfs' );
+            $message = __( 'Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional.', 'cfs' );
         }
 
         printf(
@@ -760,7 +761,7 @@ class cfs_init
             }
 
             if ( ! $this->has_placement_rules( $rules ) ) {
-                echo '<div class="cfs-placement-warning"><strong>' . esc_html__( 'No placement rules', 'cfs' ) . '</strong><br />' . esc_html__( 'This field group can match every editable post screen.', 'cfs' ) . '</div>';
+                echo '<div class="cfs-placement-warning"><strong>' . esc_html__( 'No placement rules', 'cfs' ) . '</strong><br />' . esc_html__( 'This field group will appear on all editable post screens.', 'cfs' ) . '</div>';
                 return;
             }
 

@@ -30,7 +30,17 @@ $render_fields = function( $parent_id ) use ( &$render_fields, $fields_by_parent
     }
 
     foreach ( $fields_by_parent[ $parent_id ] as $field ) {
-        echo in_array( $field->type, [ 'loop', 'group' ], true ) ? '<li class="loop">' : '<li>';
+        $classes = [];
+
+        if ( in_array( $field->type, [ 'loop', 'group', 'accordion' ], true ) ) {
+            $classes[] = 'loop';
+        }
+
+        if ( in_array( $field->type, [ 'tab', 'loop', 'group', 'accordion' ], true ) ) {
+            $classes[] = 'cfs-structure-' . $field->type;
+        }
+
+        echo '<li' . ( empty( $classes ) ? '' : ' class="' . esc_attr( implode( ' ', $classes ) ) . '"' ) . '>';
 
         CFS()->field_html( $field );
 

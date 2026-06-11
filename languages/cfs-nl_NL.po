@@ -656,16 +656,16 @@ msgstr "Links uitgelijnd"
 msgid "CFS placement warning:"
 msgstr "CFS-plaatsingswaarschuwing:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Deze veldgroep heeft geen plaatsingsregels. Daardoor kan deze op elk bewerkbaar berichtscherm verschijnen. Stel daarom een berichttype of een andere plaatsingsregel in, tenzij dit de bedoeling is."
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Opgeslagen, maar deze veldgroep heeft geen plaatsingsregels. Daardoor kan deze op elk bewerkbaar berichtscherm verschijnen. Stel daarom een berichttype of een andere plaatsingsregel in, tenzij dit de bedoeling is."
 
 msgid "No placement rules"
 msgstr "Geen plaatsingsregels"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "Deze veldgroep kan op elk bewerkbaar berichtscherm verschijnen."
 
 msgid "Add two or more fields to this horizontal group."

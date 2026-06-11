@@ -1,28 +1,32 @@
 (function($) {
     $(function() {
+        var validationMessage = function(key, fallback) {
+            return CFS.validation_messages && CFS.validation_messages[key] ? CFS.validation_messages[key] : fallback;
+        };
+
         CFS.validators = {
             'required': {
-                'error': 'Please enter a value',
+                'error': validationMessage('enter_value', 'Please enter a value'),
                 'validate': function(val) {
                     return ('' != val && null != val);
                 }
             },
             'valid_date': {
-                'error': 'Please enter a valid date (YYYY-MM-DD HH:MM)',
+                'error': validationMessage('valid_date', 'Please enter a valid date (YYYY-MM-DD HH:MM)'),
                 'validate': function(val) {
                     var regex = /^\d{4}-\d{2}-\d{2}/;
                     return regex.test(val);
                 }
             },
             'valid_color': {
-                'error': 'Please enter a valid color HEX (#ff0000)',
+                'error': validationMessage('valid_color', 'Please enter a valid color HEX (#ff0000)'),
                 'validate': function(val) {
                     var regex = /^#[0-9a-zA-Z]{3,}$/;
                     return regex.test(val);
                 }
             },
             'valid_phone': {
-                'error': 'Please enter a valid phone number',
+                'error': validationMessage('valid_phone', 'Please enter a valid phone number'),
                 'validate': function(val) {
                     val = $.trim(val);
                     var regex = /^[0-9+\-().\s]+$/;
@@ -30,7 +34,11 @@
                 }
             },
             'required_phone': {
-                'error': 'Please enter a valid phone number',
+                'error': function(el, val) {
+                    return '' == $.trim(val || '') ?
+                        validationMessage('enter_phone', 'Please enter a phone number') :
+                        validationMessage('valid_phone', 'Please enter a valid phone number');
+                },
                 'validate': function(val) {
                     val = $.trim(val);
                     var regex = /^[0-9+\-().\s]+$/;
@@ -38,7 +46,7 @@
                 }
             },
             'valid_email': {
-                'error': 'Please enter a valid email address',
+                'error': validationMessage('valid_email', 'Please enter a valid email address'),
                 'validate': function(val) {
                     val = $.trim(val);
                     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,7 +54,11 @@
                 }
             },
             'required_email': {
-                'error': 'Please enter a valid email address',
+                'error': function(el, val) {
+                    return '' == $.trim(val || '') ?
+                        validationMessage('enter_email', 'Please enter an email address') :
+                        validationMessage('valid_email', 'Please enter a valid email address');
+                },
                 'validate': function(val) {
                     val = $.trim(val);
                     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,35 +66,43 @@
                 }
             },
             'valid_number': {
-                'error': 'Please enter a valid number',
+                'error': validationMessage('valid_number', 'Please enter a valid number'),
                 'validate': function(val) {
                     val = $.trim(val);
                     return '' == val || /^-?(?:\d+|\d*\.\d+)$/.test(val);
                 }
             },
             'required_number': {
-                'error': 'Please enter a valid number',
+                'error': function(el, val) {
+                    return '' == $.trim(val || '') ?
+                        validationMessage('enter_number', 'Please enter a number') :
+                        validationMessage('valid_number', 'Please enter a valid number');
+                },
                 'validate': function(val) {
                     val = $.trim(val);
                     return '' != val && null != val && /^-?(?:\d+|\d*\.\d+)$/.test(val);
                 }
             },
             'valid_url': {
-                'error': 'Please enter a valid URL',
+                'error': validationMessage('valid_url', 'Please enter a valid URL'),
                 'validate': function(val) {
                     val = $.trim(val);
                     return '' == val || /^(https?:\/\/|mailto:|tel:)/i.test(val);
                 }
             },
             'required_url': {
-                'error': 'Please enter a valid URL',
+                'error': function(el, val) {
+                    return '' == $.trim(val || '') ?
+                        validationMessage('enter_url', 'Please enter a URL') :
+                        validationMessage('valid_url', 'Please enter a valid URL');
+                },
                 'validate': function(val) {
                     val = $.trim(val);
                     return '' != val && null != val && /^(https?:\/\/|mailto:|tel:)/i.test(val);
                 }
             },
             'valid_time': {
-                'error': 'Please select a valid time',
+                'error': validationMessage('valid_time', 'Please select a valid time'),
                 'validate': function(val) {
                     val = $.trim(val);
                     var regex = /^([01]\d|2[0-3]):[0-5]\d$/;
@@ -90,7 +110,11 @@
                 }
             },
             'required_time': {
-                'error': 'Please select a valid time',
+                'error': function(el, val) {
+                    return '' == $.trim(val || '') ?
+                        validationMessage('select_time', 'Please select a time') :
+                        validationMessage('valid_time', 'Please select a valid time');
+                },
                 'validate': function(val) {
                     val = $.trim(val);
                     var regex = /^([01]\d|2[0-3]):[0-5]\d$/;
@@ -98,7 +122,7 @@
                 }
             },
             'required_code_view': {
-                'error': 'Please select a language and enter code',
+                'error': validationMessage('enter_code', 'Please select a language and enter code'),
                 'validate': function(val, el) {
                     var language = $.trim(el.find('.cfs-code-view-language').val() || '');
                     var code = $.trim(el.find('textarea').val() || '');
@@ -109,10 +133,12 @@
                 'error': function(el) {
                     var limits = el.attr('data-validator').split('|')[1].split(',');
                     if (limits[0] == limits[1]) {
-                        return 'Please select ' + limits[0] + ' item(s)';
+                        return validationMessage('select_items', 'Please select %s item(s)').replace('%s', limits[0]);
                     }
                     else {
-                        return 'Please select between ' + limits[0] + ' and ' + limits[1] + ' items';
+                        return validationMessage('select_item_range', 'Please select between %1$s and %2$s items')
+                            .replace('%1$s', limits[0])
+                            .replace('%2$s', limits[1]);
                     }
                 },
                 'validate': function(val, el) {
@@ -180,6 +206,7 @@
         };
 
         CFS.is_draft = false;
+        CFS.validation_notice_active = false;
         $(document).on('click', '#save-post', function() {
             CFS.is_draft = true;
         });
@@ -200,6 +227,7 @@
 
                 $this.find('> .error').hide();
                 $this.removeClass('cfs-field-invalid');
+                $this.removeAttr('data-validation-message');
 
                 if ('object' != typeof CFS.validators[validator]) {
                     return;
@@ -228,7 +256,7 @@
                     $this.addClass('cfs-field-invalid');
 
                     if ($this.find('> .error').length < 1) {
-                        $this.append('<div class="error"></div>');
+                        $this.append('<div class="error" role="alert"></div>');
                     }
 
                     if (options.open_loop && $this.parents('.cfs_loop_body').length > 0) {
@@ -239,10 +267,11 @@
 
                     var error_msg = CFS.validators[validator]['error'];
                     if ('function' == typeof error_msg) {
-                        error_msg = error_msg($this);
+                        error_msg = error_msg($this, val);
                     }
 
                     $this.find('> .error').text(error_msg).show();
+                    $this.attr('data-validation-message', error_msg);
 
                     if (options.collect_errors) {
                         var field_id = $this.attr('id');
@@ -269,18 +298,106 @@
         CFS.render_validation_notice = function() {
             var $notice = $('#cfs-validation-admin-notice');
             var $list = $('#cfs-validation-error-list');
+            var errorCount = 0;
 
             $list.empty();
 
-            $.each(CFS.validation_errors || [], function(index, item) {
+            $('.cfs_input .field.cfs-field-invalid').each(function(index) {
+                var $field = $(this);
+                var fieldId = $field.attr('id');
+                var fieldName = $field.attr('data-name') || '';
+                var label = $.trim($field.find('> label').first().clone().children().remove().end().text());
+                var message = $field.attr('data-validation-message') || $.trim($field.find('> .error').text());
+                var $row = $field.closest('.loop_wrapper').children('.cfs_loop_head').first().find('.label').first();
+
+                if (!fieldId) {
+                    fieldId = 'cfs-validation-field-' + fieldName.replace(/[^a-zA-Z0-9_-]/g, '-') + '-' + index;
+                    $field.attr('id', fieldId);
+                }
+
+                if ($row.length && $.trim($row.text())) {
+                    label = $.trim($row.text()) + ' / ' + label;
+                }
+
                 $('<li></li>').append(
                     $('<a></a>')
-                        .attr('href', '#' + item.id)
-                        .text(item.label + ': ' + item.message)
+                        .attr('href', '#' + fieldId)
+                        .text((label || fieldName) + ': ' + message)
                 ).appendTo($list);
+                errorCount++;
             });
 
-            $notice.show();
+            CFS.refresh_validation_containers();
+
+            if (CFS.validation_notice_active && 0 < errorCount) {
+                $notice.show();
+            }
+            else {
+                $notice.hide();
+            }
+        };
+
+        CFS.refresh_validation_containers = function() {
+            $('.cfs-accordion').each(function() {
+                $(this).toggleClass('cfs-has-error', 0 < $(this).find('.field.cfs-field-invalid').length);
+            });
+
+            $('.cfs-tab-content').each(function() {
+                var $content = $(this);
+                var tabName = null;
+
+                $.each(($content.attr('class') || '').split(/\s+/), function(index, className) {
+                    if (0 === className.indexOf('cfs-tab-content-')) {
+                        tabName = className.substring('cfs-tab-content-'.length);
+                        return false;
+                    }
+                });
+
+                if (tabName) {
+                    $content.parent().children('.cfs-tabs').children('.cfs-tab').filter(function() {
+                        return $(this).attr('rel') === tabName;
+                    }).toggleClass('cfs-has-error', 0 < $content.find('.field.cfs-field-invalid').length);
+                }
+            });
+
+            $('.loop_wrapper').each(function() {
+                var $wrapper = $(this);
+                $wrapper.children('.cfs_loop_head').toggleClass('cfs-has-error', 0 < $wrapper.find('.field.cfs-field-invalid').length);
+            });
+        };
+
+        CFS.reveal_validation_field = function($field) {
+            $field.parents('.cfs_loop_body').each(function() {
+                $(this).addClass('open').siblings('.cfs_loop_head').addClass('open');
+            });
+
+            $field.parents('.cfs-accordion').each(function() {
+                $(this).addClass('open').children('.cfs-accordion-toggle').attr('aria-expanded', 'true');
+            });
+
+            $($field.parents('.cfs-tab-content').get().reverse()).each(function() {
+                var $content = $(this);
+                var tabName = null;
+
+                $.each(($content.attr('class') || '').split(/\s+/), function(index, className) {
+                    if (0 === className.indexOf('cfs-tab-content-')) {
+                        tabName = className.substring('cfs-tab-content-'.length);
+                        return false;
+                    }
+                });
+
+                if (tabName) {
+                    $content.parent().children('.cfs-tabs').children('.cfs-tab').filter(function() {
+                        return $(this).attr('rel') === tabName;
+                    }).trigger('click');
+                }
+            });
+
+            window.setTimeout(function() {
+                $('html, body').animate({
+                    scrollTop: Math.max(0, $field.offset().top - 80)
+                }, 250);
+            }, 0);
         };
 
         CFS.validate_all_fields = function() {
@@ -291,13 +408,15 @@
 
             $.each(CFS.field_rules, function(field_name, obj) {
                 if (!CFS.validate_field(field_name, obj, {
-                    collect_errors: true
+                    collect_errors: true,
+                    open_loop: false
                 })) {
                     passthru = false;
                 }
             });
 
             if (!passthru) {
+                CFS.validation_notice_active = true;
                 CFS.render_validation_notice();
             }
 
@@ -316,6 +435,19 @@
                 show_empty_required: 'input' != event.type,
                 open_loop: false
             });
+            CFS.render_validation_notice();
+        });
+
+        $(document).on('click', '#cfs-validation-error-list a', function(event) {
+            var targetId = ($(this).attr('href') || '').substring(1);
+            var $field = $('#' + targetId);
+
+            if (!$field.length) {
+                return;
+            }
+
+            event.preventDefault();
+            CFS.reveal_validation_field($field);
         });
 
         $('form#post').submit(function() {

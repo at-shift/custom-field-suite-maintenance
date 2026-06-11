@@ -86,6 +86,7 @@ This maintenance build adds the following field types and editor features:
 - Post Tags (投稿タグ - WordPress 標準)
 - Featured Image (アイキャッチ画像 - WordPress 標準)
 - Horizontal Group (横並びグループ)
+- Accordion Group (アコーディオン（開閉グループ）)
 
 These fields are intended to make it easier to migrate existing Custom Field
 Suite sites while keeping front-end output flexible for theme developers. The
@@ -112,6 +113,8 @@ Behavior (動作):
   WordPress taxonomy / featured image data, not CFS-only post meta.
 - Horizontal Group fields arrange multiple child fields side by side in the
   post edit screen, with mobile stacking on narrow screens.
+- Accordion Group fields organize child fields into collapsible sections in
+  the post edit screen.
 - チェックボックスフィールドでは、選択肢を1行ずつ定義し、複数の選択値を保存できます。
 - ラジオボタンフィールドでは、選択肢を1行ずつ定義し、1つの選択値を保存できます。
 - 電話番号、メールアドレス、数字、URL、時間フィールドは、投稿編集画面で形式チェックを行います。
@@ -119,6 +122,7 @@ Behavior (動作):
 - コードフィールドは、投稿編集画面で入力ごとに言語を選択でき、保存したコードを言語ラベル付きのエスケープ済み `<pre><code>` として表示します。任意でコピーボタンを付けられ、コードはその場では実行されず、コピー用として表示されます。
 - 投稿カテゴリー、投稿タグ、アイキャッチ画像フィールドは、CFS 独自メタではなく WordPress 標準のタクソノミー / アイキャッチ画像データを編集します。
 - 横並びグループは、複数の子フィールドを投稿編集画面で横に並べ、狭い画面では縦並びに切り替わります。
+- アコーディオン（開閉グループ）は、複数の子フィールドを投稿編集画面の開閉可能なセクションにまとめます。
 
 ### Native WordPress fields (WordPress 標準フィールド)
 
@@ -162,9 +166,17 @@ Behavior (動作):
 - 横並びグループ内の子フィールドが2つ未満の場合は警告を表示します。
 - 横並びグループの中に、タブ、ループ、別の横並びグループは入れられません。
 
+### Accordion Group (アコーディオン（開閉グループ）)
+
+Accordion Group is a layout field for organizing child fields into a
+collapsible section in the post edit screen. The section can be configured to
+open by default.
+
+アコーディオン（開閉グループ）は、複数の子フィールドを投稿編集画面の開閉可能なセクションにまとめるためのレイアウト用フィールドです。初期状態で開くように設定できます。
+
 ## Installation (インストール方法)
 
-Current maintenance version: 2.6.7.41.5 (現在のメンテナンスバージョン: 2.6.7.41.5)
+Current maintenance version: 2.6.7.41.20 (現在のメンテナンスバージョン: 2.6.7.41.20)
 
 Plugin download (プラグインのダウンロード): https://github.com/at-shift/custom-field-suite-maintenance/archive/refs/heads/main.zip
 
@@ -374,9 +386,9 @@ $tag_ids = array_map( 'intval', (array) CFS()->get( 'wp_tag_field', false, [ 'fo
 // Native featured image ID. (アイキャッチ画像 - WordPress 標準)
 $thumbnail_id = (int) CFS()->get( 'featured_image_field', false, [ 'format' => 'raw' ] );
 
-// Horizontal Group fields are layout-only fields in the admin screen and do not
-// need front-end output escaping.
-// (横並びグループは管理画面用の表示整理フィールドのため、フロントエンド出力は不要です)
+// Horizontal Group and Accordion Group fields are layout-only fields in the
+// admin screen and do not need front-end output escaping.
+// (横並びグループとアコーディオン（開閉グループ）は管理画面用の表示整理フィールドのため、フロントエンド出力は不要です)
 ```
 
 The correct escaping function depends on the output context: use `esc_html()`
@@ -461,6 +473,17 @@ add_action( 'init', function() {
 ```
 
 ## Maintenance Release Notes (メンテナンスリリース履歴)
+
+### 2.6.7.41.20
+
+- Added a new Accordion Group field for organizing fields into collapsible
+  sections.
+- Improved the Field Group editor so the badges and ranges for Tabs, Loops,
+  Horizontal Groups, and Accordion Groups are easier to identify.
+- Other minor fixes.
+- 新たにアコーディオン（開閉グループ）を追加しました。
+- フィールドグループ設定画面で、タブ・ループ・横並びグループ・アコーディオンのバッジと対象範囲がわかりやすくなるように表示方法を改善しました。
+- その他細かな修正
 
 ### [2.6.7.41.5](https://github.com/at-shift/custom-field-suite-maintenance/releases/tag/v2.6.7.41.5)
 

@@ -229,7 +229,7 @@ class cfs_form
                 continue;
             }
 
-            if ( 'group' === $field->type ) {
+            if ( in_array( $field->type, [ 'group', 'accordion' ], true ) ) {
                 $this->validate_field_container( $data, (int) $field->id, $fields_by_parent, $errors );
                 continue;
             }
@@ -337,6 +337,24 @@ class cfs_form
 var CFS = CFS || {};
 CFS['get_field_value'] = {};
 CFS['loop_buffer'] = [];
+CFS['validation_messages'] = <?php echo wp_json_encode( [
+    'enter_value'       => __( 'Please enter a value', 'cfs' ),
+    'valid_date'        => __( 'Please enter a valid date (YYYY-MM-DD HH:MM)', 'cfs' ),
+    'valid_color'       => __( 'Please enter a valid color HEX (#ff0000)', 'cfs' ),
+    'enter_phone'       => __( 'Please enter a phone number', 'cfs' ),
+    'valid_phone'       => __( 'Please enter a valid phone number', 'cfs' ),
+    'enter_email'       => __( 'Please enter an email address', 'cfs' ),
+    'valid_email'       => __( 'Please enter a valid email address', 'cfs' ),
+    'enter_number'      => __( 'Please enter a number', 'cfs' ),
+    'valid_number'      => __( 'Please enter a valid number', 'cfs' ),
+    'enter_url'         => __( 'Please enter a URL', 'cfs' ),
+    'valid_url'         => __( 'Please enter a valid URL', 'cfs' ),
+    'select_time'       => __( 'Please select a time', 'cfs' ),
+    'valid_time'        => __( 'Please select a valid time', 'cfs' ),
+    'enter_code'        => __( 'Please select a language and enter code', 'cfs' ),
+    'select_items'      => __( 'Please select %s item(s)', 'cfs' ),
+    'select_item_range' => __( 'Please select between %1$s and %2$s items', 'cfs' ),
+] ); ?>;
 </script>
 
     <?php
@@ -474,6 +492,7 @@ CFS['loop_buffer'] = [];
         // Detect tabs
         $tabs = [];
         $is_first_tab = true;
+        $tab_content_open = false;
         foreach ( $input_fields as $key => $field ) {
             if ( 'tab' == $field->type && 1 > (int) $field->parent_id ) {
                 $tabs[] = $field;
@@ -563,15 +582,21 @@ CFS['loop_buffer'] = [];
             // Ignore sub-fields
             if ( 1 > (int) $field->parent_id ) {
 
+                if ( $has_tabs && $tab_content_open && ! empty( $field->options['outside_tabs'] ) ) {
+                    echo '</div>';
+                    $tab_content_open = false;
+                }
+
                 // Tab handling
                 if ( 'tab' == $field->type ) {
 
                     if ( $has_tabs ) {
                         // Close the previous tab
-                        if ( $field->name != $tabs[0]->name ) {
+                        if ( $tab_content_open ) {
                             echo '</div>';
                         }
                         echo '<div class="cfs-tab-content cfs-tab-content-' . esc_attr( $field->name ) . '">';
+                        $tab_content_open = true;
 
                         if ( ! empty( $field->notes ) ) {
                             echo '<div class="cfs-tab-notes">' . esc_html( $field->notes ) . '</div>';
@@ -586,11 +611,11 @@ CFS['loop_buffer'] = [];
             <a href="javascript:;" class="cfs_loop_toggle" title="<?php esc_html_e( 'Toggle row visibility', 'cfs' ); ?>"></a>
             <?php endif; ?>
 
-            <?php if ( ! empty( $field->label ) ) : ?>
+            <?php if ( 'accordion' !== $field->type && ! empty( $field->label ) ) : ?>
             <label><?php echo esc_html( $field->label ); ?><?php echo cfs_field::is_required_field( $field ) ? cfs_field::required_badge() : ''; ?></label>
             <?php endif; ?>
 
-            <?php if ( ! empty( $field->notes ) ) : ?>
+            <?php if ( 'accordion' !== $field->type && ! empty( $field->notes ) ) : ?>
             <p class="notes"><?php echo esc_html( $field->notes ); ?></p>
             <?php endif; ?>
 
@@ -601,6 +626,7 @@ CFS['loop_buffer'] = [];
                     'id'            => $field->id,
                     'group_id'      => $field->group_id,
                     'type'          => $field->type,
+                    'label'         => $field->label,
                     'input_name'    => "cfs[input][$field->id][value]",
                     'input_class'   => $field->type,
                     'options'       => $field->options,
@@ -618,7 +644,7 @@ CFS['loop_buffer'] = [];
         }
 
         // Make sure to close tabs
-        if ( $has_tabs ) {
+        if ( $has_tabs && $tab_content_open ) {
             echo '</div>';
         }
 

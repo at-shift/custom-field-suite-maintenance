@@ -281,11 +281,11 @@ class cfs_loop extends cfs_field
     private function render_clone_field( $field, &$loop_field_ids ) {
     ?>
         <div class="field field-<?php echo esc_attr( $field->name ); ?>" data-type="<?php echo esc_attr( $field->type ); ?>" data-name="<?php echo esc_attr( $field->name ); ?>">
-        <?php if ( ! empty( $field->label ) ) : ?>
+        <?php if ( 'accordion' !== $field->type && ! empty( $field->label ) ) : ?>
             <label><?php echo esc_html( $field->label ); ?><?php echo cfs_field::is_required_field( $field ) ? cfs_field::required_badge() : ''; ?></label>
         <?php endif; ?>
 
-        <?php if ( ! empty( $field->notes ) ) : ?>
+        <?php if ( 'accordion' !== $field->type && ! empty( $field->notes ) ) : ?>
             <p class="notes"><?php echo esc_html( $field->notes ); ?></p>
         <?php endif; ?>
 
@@ -297,12 +297,13 @@ class cfs_loop extends cfs_field
             <div class="table_footer">
                 <input type="button" class="button-primary cfs_add_field" value="<?php echo esc_attr( $this->get_option( $field, 'button_label', __( 'Add Row', 'cfs' ) ) ); ?>" data-loop-tag="[clone][<?php echo absint( $field->id ); ?>]" data-rows="0" />
             </div>
-        <?php elseif ( 'group' == $field->type ) : ?>
+        <?php elseif ( in_array( $field->type, [ 'group', 'accordion' ], true ) ) : ?>
         <?php
             CFS()->create_field( [
                 'id' => $field->id,
                 'group_id' => $field->group_id,
                 'type' => $field->type,
+                'label' => $field->label,
                 'input_class' => $field->type,
                 'options' => $field->options,
                 'input_name_template' => 'cfs[input][clone][%d][value][]',
@@ -328,23 +329,24 @@ class cfs_loop extends cfs_field
     private function render_value_field( $field, $group_id, $parent_tag, $row_index, $values ) {
     ?>
         <div class="field field-<?php echo esc_attr( $field->name ); ?>" data-type="<?php echo esc_attr( $field->type ); ?>" data-name="<?php echo esc_attr( $field->name ); ?>">
-        <?php if ( ! empty( $field->label ) ) : ?>
+        <?php if ( 'accordion' !== $field->type && ! empty( $field->label ) ) : ?>
             <label><?php echo esc_html( $field->label ); ?><?php echo cfs_field::is_required_field( $field ) ? cfs_field::required_badge() : ''; ?></label>
         <?php endif; ?>
 
-        <?php if ( ! empty( $field->notes ) ) : ?>
+        <?php if ( 'accordion' !== $field->type && ! empty( $field->notes ) ) : ?>
             <p class="notes"><?php echo esc_html( $field->notes ); ?></p>
         <?php endif; ?>
 
             <div class="cfs_<?php echo esc_attr( $field->type ); ?>">
         <?php if ( 'loop' == $field->type ) : ?>
             <?php $this->recursive_html( $group_id, $field->id, "{$parent_tag}[$row_index][$field->id]", $row_index ); ?>
-        <?php elseif ( 'group' == $field->type ) : ?>
+        <?php elseif ( in_array( $field->type, [ 'group', 'accordion' ], true ) ) : ?>
         <?php
             CFS()->create_field( [
                 'id' => $field->id,
                 'group_id' => $field->group_id,
                 'type' => $field->type,
+                'label' => $field->label,
                 'input_class' => $field->type,
                 'options' => $field->options,
                 'values' => isset( $values[ $row_index ] ) && is_array( $values[ $row_index ] ) ? $values[ $row_index ] : [],
@@ -395,7 +397,7 @@ class cfs_loop extends cfs_field
         foreach ( $fields as $field ) {
             $label_fields[] = $field;
 
-            if ( 'group' != $field->type ) {
+            if ( ! in_array( $field->type, [ 'group', 'accordion' ], true ) ) {
                 continue;
             }
 

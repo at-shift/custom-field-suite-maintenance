@@ -37,6 +37,7 @@
                     var $parent_field = $parent.children('.field');
                     parent_id = $parent_field.find('.field_id').first().val();
                     parent_key = $parent_field.find('.field_key').first().val();
+                    set_outside_tabs($item, false);
                 }
 
                 $item.children('.field').find('.parent_id').first().val(parent_id);
@@ -49,11 +50,86 @@
                 $.trim($item.children('.field').find('.field_meta .field_type').first().text());
         }
 
+        function set_outside_tabs($item, is_outside) {
+            var value = is_outside ? '1' : '0';
+
+            $item.attr('data-outside-tabs', value);
+            $item.children('.field').find('.outside_tabs').first().val(value).attr('value', value);
+        }
+
+        function is_outside_tabs($item) {
+            return '1' == $item.attr('data-outside-tabs') ||
+                '1' == $item.children('.field').find('.outside_tabs').first().val();
+        }
+
+        function move_outside_tabs($item) {
+            var $root = $('ul.fields').first();
+            var $first_tab = $root.children('li').filter(function() {
+                return 'tab' == get_item_type($(this));
+            }).first();
+
+            if (0 < $first_tab.length) {
+                $first_tab.before($item);
+            }
+            else {
+                $root.append($item);
+            }
+        }
+
+        function refresh_structure_markers($context) {
+            var structureTypes = ['tab', 'loop', 'group', 'accordion'];
+            var structureClasses = 'cfs-structure-tab cfs-structure-loop cfs-structure-group cfs-structure-accordion';
+
+            $context.find('li').addBack('li').each(function() {
+                var $item = $(this);
+                var type = get_item_type($item);
+                var $label = $item.children('.field').find('.field_meta .field_label a').first();
+
+                $item.removeClass(structureClasses + ' cfs-tab-range');
+                $label.find('.cfs-structure-badge').remove();
+
+                if (-1 !== $.inArray(type, structureTypes)) {
+                    $item.addClass('cfs-structure-' + type);
+                    $('<span></span>', {
+                        'class': 'cfs-structure-badge cfs-structure-badge-' + type,
+                        text: type.toUpperCase()
+                    }).prependTo($label);
+                }
+            });
+
+            $context.find('ul').addBack('ul').each(function() {
+                var inTab = false;
+
+                $(this).children('li').each(function() {
+                    var $item = $(this);
+
+                    if (is_outside_tabs($item)) {
+                        inTab = false;
+                    }
+
+                    if ($item.hasClass('cfs-structure-tab')) {
+                        inTab = true;
+                        return;
+                    }
+
+                    if (inTab) {
+                        $item.addClass('cfs-tab-range');
+                    }
+                });
+            });
+        }
+
         function get_disallowed_parent_child_message(parent_type, child_type) {
-            if ('group' == parent_type && ('tab' == child_type || 'group' == child_type || 'loop' == child_type)) {
+            if ('group' == parent_type && ('tab' == child_type || 'group' == child_type || 'loop' == child_type || 'accordion' == child_type)) {
                 return CFS.messages && CFS.messages.disallowed_group_child ?
                     CFS.messages.disallowed_group_child :
                     'Tabs, loops, and horizontal groups cannot be placed inside a horizontal group.';
+            }
+
+            if ('accordion' == parent_type && ('tab' == child_type || 'loop' == child_type)) {
+                return CFS.messages && CFS.messages.disallowed_accordion_child ?
+                    CFS.messages.disallowed_accordion_child :
+                    'Tabs and loops cannot be placed inside an accordion.';
             }
 
             return '';
@@ -73,7 +149,7 @@
                 return false;
             }
 
-            $parent.after($item);
+            move_outside_tabs($item);
             sync_parent_ids();
 
             window.alert(message);
@@ -91,7 +167,7 @@
             $context.find('.cfs_add_field_below').each(function() {
                 var $button = $(this);
                 var $item = $button.closest('li');
-                var label = ('loop' == get_item_type($item) || 'group' == get_item_type($item)) ?
+                var label = ('loop' == get_item_type($item) || 'group' == get_item_type($item) || 'accordion' == get_item_type($item)) ?
                     (CFS.messages && CFS.messages.add_field_inside ? CFS.messages.add_field_inside : 'Add field inside') :
                     (CFS.messages && CFS.messages.add_field_below ? CFS.messages.add_field_below : 'Add new field below');
 
@@ -112,10 +188,23 @@
                     connectWith: 'ul.fields, ul.fields ul',
                     placeholder: 'ui-sortable-placeholder',
                     handle: '.field_order',
-                    start: function() {
+                    tolerance: 'pointer',
+                    forcePlaceholderSize: true,
+                    start: function(event, ui) {
+                        var $children = ui.item.children('ul').detach();
+
+                        ui.item.data('cfs-drag-children', $children);
                         $('ul.fields li.loop > ul').addClass('cfs-drop-target');
                     },
-                    stop: function() {
+                    beforeStop: function(event, ui) {
+                        var $children = ui.item.data('cfs-drag-children');
+
+                        if ($children && $children.length) {
+                            ui.item.append($children);
+                        }
+                    },
+                    stop: function(event, ui) {
+                        ui.item.removeData('cfs-drag-children');
                         $('ul.fields li.loop > ul').removeClass('cfs-drop-target cfs-drop-target-active');
                     },
                     over: function() {
@@ -127,10 +216,16 @@
                     update: function(event, ui) {
                         zebra_stripes();
                         enforce_group_child_rules(ui.item);
+
+                        if (1 > get_parent_item(ui.item).length && 'tab' != get_item_type(ui.item)) {
+                            set_outside_tabs(ui.item, false);
+                        }
+
                         ensure_child_containers($('ul.fields'));
                         init_sortables($('ul.fields, ul.fields ul'));
                         sync_parent_ids();
                         update_add_field_button_labels($('ul.fields'));
+                        refresh_structure_markers($('ul.fields'));
                     }
                 });
             });
@@ -142,6 +237,7 @@
         init_sortables($('ul.fields, ul.fields ul'));
         sync_parent_ids();
         update_add_field_button_labels($('ul.fields'));
+        refresh_structure_markers($('ul.fields'));
 
         // Setup checkboxes
         $(document).on('change click', 'input[type="checkbox"]', function() {
@@ -153,14 +249,16 @@
         $(document).on('click', '.cfs_add_field', function() {
             var html = CFS.field_clone.replace(/\[clone\]/g, '['+CFS.field_index+']');
             var $new_field = $('<li>' + html + '</li>');
-            $('.fields').append($new_field);
+            $('ul.fields').first().append($new_field);
             $new_field.find('.field_key').first().val(CFS.field_index);
             $new_field.find('.field_label a').click();
             $new_field.find('.field_type select').change();
+            set_outside_tabs($new_field, true);
             CFS.field_index = CFS.field_index + 1;
             init_tooltip();
             sync_parent_ids();
             update_add_field_button_labels($('ul.fields'));
+            refresh_structure_markers($('ul.fields'));
         });
 
         // Add a new field immediately below the current field
@@ -174,7 +272,7 @@
             $new_field.find('.field_key').first().val(CFS.field_index);
             $new_field.find('.parent_id').first().val(parent_id);
 
-            if ('loop' == current_type || 'group' == current_type) {
+            if ('loop' == current_type || 'group' == current_type || 'accordion' == current_type) {
                 ensure_child_containers($current);
                 $current.children('ul').first().append($new_field);
             }
@@ -191,11 +289,13 @@
             init_sortables($('ul.fields, ul.fields ul'));
             sync_parent_ids();
             update_add_field_button_labels($('ul.fields'));
+            refresh_structure_markers($('ul.fields'));
         });
 
         // Delete a field
         $(document).on('click', '.cfs_delete_field', function() {
             $(this).closest('li').remove();
+            refresh_structure_markers($('ul.fields'));
         });
 
         // Pop open the edit fields
@@ -207,6 +307,8 @@
 
         // Add or replace field_type options
         $(document).on('change', '.field_form .field_type select', function() {
+            var $item = $(this).closest('li');
+            var was_in_tab = $item.hasClass('cfs-tab-range');
             var type = $(this).val();
             var input_name = $(this).attr('name').replace('[type]', '');
             var $options = $(CFS.options_html[type]);
@@ -216,12 +318,11 @@
                 this.name = this.name.replace(/cfs\[fields\]\[clone\]/g, input_name);
             });
 
-            $(this).closest('.field').find('.field_meta .field_type').text(type);
+            $(this).closest('.field').find('.field_meta .field_type a').text(type);
             $(this).closest('.field').find('.field_option').remove();
             $(this).closest('.field_basics').after($options);
 
-            var $item = $(this).closest('li');
-            if ('loop' == type || 'group' == type) {
+            if ('loop' == type || 'group' == type || 'accordion' == type) {
                 $item.addClass('loop');
                 if ($item.children('ul').length < 1) {
                     $item.append('<ul></ul>');
@@ -233,13 +334,22 @@
                 $item.children('ul').remove();
             }
 
+            if ('tab' == type && was_in_tab && 1 > get_parent_item($item).length) {
+                set_outside_tabs($item, true);
+            }
+
             init_tooltip();
             enforce_group_child_rules($item);
             sync_parent_ids();
             update_add_field_button_labels($('ul.fields'));
+            refresh_structure_markers($('ul.fields'));
         });
 
         $(document).on('submit', '#post', function() {
+            $('ul.fields li').each(function() {
+                var $item = $(this);
+                set_outside_tabs($item, is_outside_tabs($item));
+            });
             sync_parent_ids();
         });
 
@@ -273,7 +383,7 @@
             var val = $(this).val();
 
             // browser autofill support
-            $(this).closest('.field').find('.field_meta .field_label a').text(val);
+            $(this).closest('.field').find('.field_meta .cfs-field-label-text').text(val);
 
             var name = $(this).closest('tr').find('.field_name input');
             if ('' == name.val()) {
@@ -289,7 +399,7 @@
         $(document).on('keyup paste', '.field_form .field_label input', function() {
             var $this = $(this);
             setTimeout(function() {
-                $this.closest('.field').find('.field_meta .field_label a').text($this.val());
+                $this.closest('.field').find('.field_meta .cfs-field-label-text').text($this.val());
             }, 1);
         });
 

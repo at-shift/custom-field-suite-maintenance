@@ -45,7 +45,8 @@ if ( 'cfs' == $screen->post_type ) {
     wp_add_inline_script(
         'cfs-fields',
         'CFS.messages = ' . wp_json_encode( [
-            'disallowed_group_child' => __( 'Tabs, loops, and horizontal groups cannot be placed inside a horizontal group.', 'cfs' ),
+            'disallowed_group_child' => __( 'Tabs, loops, accordions, and horizontal groups cannot be placed inside a horizontal group.', 'cfs' ),
+            'disallowed_accordion_child' => __( 'Tabs and loops cannot be placed inside an accordion.', 'cfs' ),
             'add_field_below'        => __( 'Add new field below', 'cfs' ),
             'add_field_inside'       => __( 'Add field inside', 'cfs' ),
         ] ) . ';',

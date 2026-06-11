@@ -280,7 +280,10 @@ class cfs_field_group
             if ( 0 < (int) $field['parent_id'] && isset( $field_types_by_id[ (int) $field['parent_id'] ] ) ) {
                 $parent_type = $field_types_by_id[ (int) $field['parent_id'] ];
 
-                if ( 'group' === $parent_type && in_array( $field['type'], [ 'tab', 'group', 'loop' ], true ) ) {
+                if ( 'group' === $parent_type && in_array( $field['type'], [ 'tab', 'group', 'loop', 'accordion' ], true ) ) {
+                    $field['parent_id'] = 0;
+                }
+                elseif ( 'accordion' === $parent_type && in_array( $field['type'], [ 'tab', 'loop' ], true ) ) {
                     $field['parent_id'] = 0;
                 }
             }

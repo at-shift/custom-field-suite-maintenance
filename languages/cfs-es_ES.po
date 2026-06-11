@@ -776,16 +776,16 @@ msgstr "Alineado a la izquierda"
 msgid "CFS placement warning:"
 msgstr "Advertencia de ubicacion de CFS:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Este grupo de campos no tiene reglas de ubicacion. Puede coincidir con cualquier pantalla editable de entradas, asi que define un tipo de contenido u otra regla de ubicacion salvo que sea intencionado."
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Guardado, pero este grupo de campos no tiene reglas de ubicacion. Puede coincidir con cualquier pantalla editable de entradas, asi que define un tipo de contenido u otra regla de ubicacion salvo que sea intencionado."
 
 msgid "No placement rules"
 msgstr "Sin reglas de ubicacion"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "Este grupo de campos puede coincidir con cualquier pantalla editable de entradas."
 
 msgid "Add two or more fields to this horizontal group."

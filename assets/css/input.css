@@ -68,12 +68,38 @@
 }
 
 .cfs_input .error {
+    position: relative;
+    display: inline-block;
     padding: 7px 10px;
-    margin: 5px 0;
-    background: #ffebe8;
-    border: 1px solid #dcc6d7;
-    border-left: 4px solid #dc3232;
+    margin: 9px 0 3px;
+    background: #fff1f1;
+    border: 1px solid #d63638;
+    border-radius: 3px;
+    color: #8a2424;
     font-weight: bold;
+}
+
+.cfs_input .error:before,
+.cfs_input .error:after {
+    position: absolute;
+    bottom: 100%;
+    left: 14px;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    content: '';
+}
+
+.cfs_input .error:before {
+    margin-left: -7px;
+    border-width: 7px;
+    border-bottom-color: #d63638;
+}
+
+.cfs_input .error:after {
+    margin-left: -6px;
+    border-width: 6px;
+    border-bottom-color: #fff1f1;
 }
 
 .cfs_input .field.cfs-field-invalid {
@@ -91,6 +117,74 @@
 
 #cfs-validation-error-list a {
     font-weight: 600;
+}
+
+/*---------------------------------------------------------------------------------------------
+    Accordion
+---------------------------------------------------------------------------------------------*/
+
+.cfs-accordion {
+    border: 1px solid #c3c4c7;
+    background: #fff;
+}
+
+.cfs-accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    background: #f6f7f7;
+    color: #1d2327;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+}
+
+.cfs-accordion-toggle:hover,
+.cfs-accordion-toggle:focus {
+    background: #f0f0f1;
+}
+
+.cfs-accordion-icon:before {
+    content: '+';
+    font-size: 16px;
+    line-height: 1;
+}
+
+.cfs-accordion.open > .cfs-accordion-toggle .cfs-accordion-icon:before {
+    content: '-';
+}
+
+.cfs-accordion-body {
+    display: none;
+}
+
+.cfs-accordion.open > .cfs-accordion-body {
+    display: block;
+}
+
+.cfs-accordion-notes {
+    margin: 0;
+    padding: 10px 12px;
+    color: #646970;
+    border-top: 1px solid #dcdcde;
+}
+
+.cfs-accordion.cfs-has-error > .cfs-accordion-toggle,
+.cfs-tab.cfs-has-error,
+.cfs_loop_head.cfs-has-error {
+    box-shadow: inset 4px 0 0 #d63638;
+}
+
+.cfs-accordion.cfs-has-error > .cfs-accordion-toggle:after,
+.cfs-tab.cfs-has-error:before,
+.cfs_loop_head.cfs-has-error .label:after {
+    margin-left: 8px;
+    color: #d63638;
+    content: '!';
+    font-weight: 700;
 }
 
 .hidden {

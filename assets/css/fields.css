@@ -59,6 +59,73 @@
     margin: 0 0 0 10px;
 }
 
+#cfs_fields .cfs-structure-badge {
+    display: inline-block;
+    min-width: 64px;
+    margin-right: 8px;
+    padding: 2px 7px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    text-align: center;
+    vertical-align: 1px;
+}
+
+#cfs_fields .cfs-structure-badge-tab {
+    background: #2271b1;
+}
+
+#cfs_fields .cfs-structure-badge-loop {
+    background: #7e57c2;
+}
+
+#cfs_fields .cfs-structure-badge-group {
+    background: #238636;
+}
+
+#cfs_fields .cfs-structure-badge-accordion {
+    background: #d97706;
+}
+
+#cfs_fields li.cfs-structure-loop > ul,
+#cfs_fields li.cfs-structure-group > ul,
+#cfs_fields li.cfs-structure-accordion > ul {
+    margin-left: 10px;
+    padding: 0 8px 8px;
+    border-width: 0 2px 2px;
+    border-style: solid;
+}
+
+#cfs_fields li.cfs-structure-loop > ul {
+    border-color: #7e57c2;
+    background: #f2eef9;
+}
+
+#cfs_fields li.cfs-structure-group > ul {
+    border-color: #238636;
+    background: #edf7ef;
+}
+
+#cfs_fields li.cfs-structure-accordion > ul {
+    border-color: #d97706;
+    background: #fff3e3;
+}
+
+#cfs_fields li.cfs-tab-range {
+    margin-left: 10px;
+    border-left: 3px solid #2271b1;
+    background: #edf5fb;
+}
+
+#cfs_fields li.cfs-structure-tab[data-outside-tabs="1"] {
+    margin-top: 0;
+    border-top: 10px solid #fff;
+}
+
 #cfs_fields .fields li.loop ul {
     min-height: 28px;
     padding-bottom: 8px;

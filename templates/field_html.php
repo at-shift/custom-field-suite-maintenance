@@ -2,6 +2,7 @@
 global $post;
 
 $child_count = 0;
+$structure_types = [ 'tab', 'loop', 'group', 'accordion' ];
 
 if ( 'group' === $field->type && ! empty( $field->id ) ) {
     $child_fields = CFS()->api->get_input_fields( [
@@ -19,7 +20,12 @@ if ( 'group' === $field->type && ! empty( $field->id ) ) {
 
                 </td>
                 <td class="field_label">
-                    <a class="cfs_edit_field row-title"><?php echo esc_html( $field->label ); ?></a>
+                    <a class="cfs_edit_field row-title">
+                        <?php if ( in_array( $field->type, $structure_types, true ) ) : ?>
+                        <span class="cfs-structure-badge cfs-structure-badge-<?php echo esc_attr( $field->type ); ?>"><?php echo esc_html( strtoupper( $field->type ) ); ?></span>
+                        <?php endif; ?>
+                        <span class="cfs-field-label-text"><?php echo esc_html( $field->label ); ?></span>
+                    </a>
                 </td>
                 <td class="field_name">
                     <?php echo esc_html( $field->name ); ?>
@@ -98,10 +104,11 @@ if ( 'group' === $field->type && ! empty( $field->id ) ) {
                 <tr class="field_actions">
                     <td class="label"></td>
                     <td style="vertical-align:middle">
-                        <input type="hidden" name="cfs[fields][<?php echo absint( $field->weight ); ?>][id]" class="field_id" value="<?php echo absint( $field->id ); ?>" />
-                        <input type="hidden" name="cfs[fields][<?php echo absint( $field->weight ); ?>][key]" class="field_key" value="<?php echo absint( $field->weight ); ?>" />
-                        <input type="hidden" name="cfs[fields][<?php echo absint( $field->weight ); ?>][parent_id]" class="parent_id" value="<?php echo absint( $field->parent_id ); ?>" />
-                        <input type="hidden" name="cfs[fields][<?php echo absint( $field->weight ); ?>][parent_key]" class="parent_key" value="" />
+                        <input type="hidden" name="cfs[fields][<?php echo esc_attr( $field->weight ); ?>][id]" class="field_id" value="<?php echo absint( $field->id ); ?>" />
+                        <input type="hidden" name="cfs[fields][<?php echo esc_attr( $field->weight ); ?>][key]" class="field_key" value="<?php echo absint( $field->weight ); ?>" />
+                        <input type="hidden" name="cfs[fields][<?php echo esc_attr( $field->weight ); ?>][parent_id]" class="parent_id" value="<?php echo absint( $field->parent_id ); ?>" />
+                        <input type="hidden" name="cfs[fields][<?php echo esc_attr( $field->weight ); ?>][parent_key]" class="parent_key" value="" />
+                        <input type="hidden" name="cfs[fields][<?php echo esc_attr( $field->weight ); ?>][options][outside_tabs]" class="outside_tabs" value="<?php echo empty( $field->options['outside_tabs'] ) ? 0 : 1; ?>" />
                         <input type="button" value="<?php _e( 'Close', 'cfs' ); ?>" class="button-secondary cfs_edit_field" />
                         &nbsp; -<?php _e( 'or', 'cfs' ); ?>- &nbsp; <span class="cfs_delete_field"><?php _e( 'delete', 'cfs' ); ?></span>
                         &nbsp; -<?php _e( 'or', 'cfs' ); ?>- &nbsp; <input type="button" value="<?php esc_attr_e( 'Add new field below', 'cfs' ); ?>" class="button-primary cfs_add_field_below" />

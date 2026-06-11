@@ -689,16 +689,16 @@ msgstr "تراز چپ"
 msgid "CFS placement warning:"
 msgstr "هشدار جای‌گذاری CFS:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "این گروه فیلد هیچ قانون جای‌گذاری ندارد. ممکن است با همه صفحه‌های قابل ویرایش نوشته مطابقت پیدا کند؛ بنابراین اگر عمدی نیست، یک نوع نوشته یا قانون جای‌گذاری دیگر تعیین کنید."
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "ذخیره شد، اما این گروه فیلد هیچ قانون جای‌گذاری ندارد. ممکن است با همه صفحه‌های قابل ویرایش نوشته مطابقت پیدا کند؛ بنابراین اگر عمدی نیست، یک نوع نوشته یا قانون جای‌گذاری دیگر تعیین کنید."
 
 msgid "No placement rules"
 msgstr "بدون قانون جای‌گذاری"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "این گروه فیلد می‌تواند با همه صفحه‌های قابل ویرایش نوشته مطابقت پیدا کند."
 
 msgid "Add two or more fields to this horizontal group."

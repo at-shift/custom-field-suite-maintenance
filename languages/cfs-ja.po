@@ -604,10 +604,10 @@ msgstr "左寄せ"
 
 #: ../templates/field_html.php:84
 msgid "Add new field below"
-msgstr "この下に新規フィールドを作る。"
+msgstr "この下に新規フィールドを追加"
 
 msgid "Add field inside"
-msgstr "この中に新規フィールドを作る。"
+msgstr "この中に新規フィールドを追加"
 
 msgid "CFS Field Groups"
 msgstr "CFSフィールドグループ"
@@ -663,17 +663,17 @@ msgstr "子を選択したとき親カテゴリーも選択する"
 msgid "CFS placement warning:"
 msgstr "CFS配置の警告:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
-msgstr "このフィールドグループには配置ルールがありません。編集可能なすべての投稿画面に一致する可能性があるため、意図していない場合は投稿タイプなどの配置ルールを設定してください。"
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
+msgstr "このフィールドグループには配置ルールがありません。編集可能なすべての投稿画面に表示されるため、意図していない場合は投稿タイプなどの配置ルールを設定してください。"
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
-msgstr "保存しましたが、このフィールドグループには配置ルールがありません。編集可能なすべての投稿画面に一致する可能性があるため、意図していない場合は投稿タイプなどの配置ルールを設定してください。"
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
+msgstr "保存しましたが、このフィールドグループには配置ルールがありません。編集可能なすべての投稿画面に表示されるため、意図していない場合は投稿タイプなどの配置ルールを設定してください。"
 
 msgid "No placement rules"
 msgstr "配置ルールなし"
 
-msgid "This field group can match every editable post screen."
-msgstr "このフィールドグループは編集可能なすべての投稿画面に一致する可能性があります。"
+msgid "This field group will appear on all editable post screens."
+msgstr "このフィールドグループは編集可能なすべての投稿画面に表示されます。"
 
 msgid "A newer version %s is available on GitHub."
 msgstr "GitHub上に最新版 %s が出ています。"
@@ -706,3 +706,66 @@ msgid "Language"
 msgstr "言語"
 msgid "This plugin is a maintenance build of Custom Field Suite that lets you visually add custom fields to your WordPress edit pages."
 msgstr "このプラグインは、WordPressの編集画面にカスタムフィールドを視覚的に追加できる Custom Field Suite のメンテナンスビルド版です。"
+
+msgid "Accordion Group"
+msgstr "アコーディオン (開閉グループ)"
+
+msgid "Initial State"
+msgstr "初期状態"
+
+msgid "Open by default"
+msgstr "デフォルトで開く"
+
+msgid "Tabs, loops, accordions, and horizontal groups cannot be placed inside a horizontal group."
+msgstr "タブ、ループ、アコーディオン、横並びグループは、横並びグループの中には配置できません。"
+
+msgid "Tabs and loops cannot be placed inside an accordion."
+msgstr "タブとループは、アコーディオンの中には配置できません。"
+
+msgid "Please enter a value"
+msgstr "入力してください"
+
+msgid "Please enter a valid date (YYYY-MM-DD HH:MM)"
+msgstr "正しい日付を入力してください (YYYY-MM-DD HH:MM)"
+
+msgid "Please enter a valid color HEX (#ff0000)"
+msgstr "正しいカラーコードを入力してください (#ff0000)"
+
+msgid "Please enter a phone number"
+msgstr "電話番号を入力してください"
+
+msgid "Please enter a valid phone number"
+msgstr "正しい電話番号を入力してください"
+
+msgid "Please enter an email address"
+msgstr "メールアドレスを入力してください"
+
+msgid "Please enter a valid email address"
+msgstr "正しいメールアドレスを入力してください"
+
+msgid "Please enter a number"
+msgstr "数値を入力してください"
+
+msgid "Please enter a valid number"
+msgstr "正しい数値を入力してください"
+
+msgid "Please enter a URL"
+msgstr "URLを入力してください"
+
+msgid "Please enter a valid URL"
+msgstr "正しいURLを入力してください"
+
+msgid "Please select a time"
+msgstr "時刻を選択してください"
+
+msgid "Please select a valid time"
+msgstr "正しい時刻を選択してください"
+
+msgid "Please select a language and enter code"
+msgstr "言語を選択してコードを入力してください"
+
+msgid "Please select %s item(s)"
+msgstr "%s件を選択してください"
+
+msgid "Please select between %1$s and %2$s items"
+msgstr "%1$s件から%2$s件の範囲で選択してください"

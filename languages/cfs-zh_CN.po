@@ -656,16 +656,16 @@ msgstr "左对齐"
 msgid "CFS placement warning:"
 msgstr "CFS 位置规则警告："
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "此字段组没有位置规则。它可能匹配所有可编辑的文章页面，因此除非这是有意设置，请指定文章类型或其他位置规则。"
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "已保存，但此字段组没有位置规则。它可能匹配所有可编辑的文章页面，因此除非这是有意设置，请指定文章类型或其他位置规则。"
 
 msgid "No placement rules"
 msgstr "没有位置规则"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "此字段组可能匹配所有可编辑的文章页面。"
 
 msgid "Add two or more fields to this horizontal group."

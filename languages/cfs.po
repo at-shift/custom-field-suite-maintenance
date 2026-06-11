@@ -659,16 +659,16 @@ msgstr ""
 msgid "CFS placement warning:"
 msgstr ""
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr ""
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr ""
 
 msgid "No placement rules"
 msgstr ""
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr ""
 
 msgid "A newer version %s is available on GitHub."
@@ -701,4 +701,67 @@ msgstr ""
 msgid "Language"
 msgstr ""
 msgid "This plugin is a maintenance build of Custom Field Suite that lets you visually add custom fields to your WordPress edit pages."
+msgstr ""
+
+msgid "Accordion Group"
+msgstr ""
+
+msgid "Initial State"
+msgstr ""
+
+msgid "Open by default"
+msgstr ""
+
+msgid "Tabs, loops, accordions, and horizontal groups cannot be placed inside a horizontal group."
+msgstr ""
+
+msgid "Tabs and loops cannot be placed inside an accordion."
+msgstr ""
+
+msgid "Please enter a value"
+msgstr ""
+
+msgid "Please enter a valid date (YYYY-MM-DD HH:MM)"
+msgstr ""
+
+msgid "Please enter a valid color HEX (#ff0000)"
+msgstr ""
+
+msgid "Please enter a phone number"
+msgstr ""
+
+msgid "Please enter a valid phone number"
+msgstr ""
+
+msgid "Please enter an email address"
+msgstr ""
+
+msgid "Please enter a valid email address"
+msgstr ""
+
+msgid "Please enter a number"
+msgstr ""
+
+msgid "Please enter a valid number"
+msgstr ""
+
+msgid "Please enter a URL"
+msgstr ""
+
+msgid "Please enter a valid URL"
+msgstr ""
+
+msgid "Please select a time"
+msgstr ""
+
+msgid "Please select a valid time"
+msgstr ""
+
+msgid "Please select a language and enter code"
+msgstr ""
+
+msgid "Please select %s item(s)"
+msgstr ""
+
+msgid "Please select between %1$s and %2$s items"
 msgstr ""

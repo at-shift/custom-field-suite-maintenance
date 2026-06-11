@@ -50,6 +50,7 @@ This package is a maintenance build based on the upstream Custom Field Suite 2.6
 * Loop (repeatable fields)
 * Tab
 * Horizontal Group
+* Accordion Group (collapsible group)
 
 = Added features in this maintenance build =
 
@@ -60,7 +61,11 @@ This package is a maintenance build based on the upstream Custom Field Suite 2.6
 * Time field with hour and minute select menus.
 * Native WordPress Post Categories, Post Tags, and Featured Image fields inside CFS field groups.
 * Horizontal Group field for arranging multiple fields side by side, with evenly distributed and left-aligned layout options.
-* Field Group editor button to add a new field directly below an existing field.
+* Accordion Group field for organizing child fields into collapsible sections on post edit screens.
+* Field Group editor buttons to add a new field directly below an existing field or inside a Loop, Horizontal Group, or Accordion Group.
+* Color-coded structure badges and matching range backgrounds for Tabs, Loops, Horizontal Groups, and Accordion Groups.
+* Improved drag-and-drop and Tab boundary handling in the Field Group editor.
+* Inline validation messages and an error summary that opens the containing Tab, Loop, or Accordion Group and scrolls to the selected invalid field.
 * Field type list ordering grouped by common editing workflows.
 * Field Group parent / child synchronization to reduce cases where nested fields disappear from the post edit screen.
 * Placement rule warnings for field groups that have no placement rules.
@@ -84,6 +89,12 @@ For rich text fields, use an appropriate HTML sanitizer such as `wp_kses_post()`
 Horizontal Group is a layout field for placing multiple child fields side by side on the post edit screen. On narrow screens, the fields stack vertically.
 
 Horizontal Groups are intended to contain multiple normal fields. Tabs, Loops, and other Horizontal Groups cannot be placed inside a Horizontal Group.
+
+= Accordion Group notes =
+
+Accordion Group is a layout field for placing child fields inside a collapsible section on the post edit screen. It can be configured to open by default.
+
+Tabs and Loops cannot be placed inside an Accordion Group.
 
 = WordPress native field notes =
 
@@ -113,6 +124,14 @@ When redistributing this package, keep the GPLv2 license notice, preserve the or
 
 == Changelog ==
 
+= 2.6.7.41.20 =
+* Added a new Accordion Group field for organizing fields into collapsible sections.
+* Improved the Field Group editor so the badges and ranges for Tabs, Loops, Horizontal Groups, and Accordion Groups are easier to identify.
+* Other minor fixes.
+* 新たにアコーディオン（開閉グループ）を追加しました。
+* フィールドグループ設定画面で、タブ・ループ・横並びグループ・アコーディオンのバッジと対象範囲がわかりやすくなるように表示方法を改善しました。
+* その他細かな修正
+
 = 2.6.7.41.5 =
 * Prevented public CFS forms from exposing private post titles or WordPress login names through Relationship and User fields.
 * Added server-side validation for required fields and item limits, including fields inside Loops and Horizontal Groups.
@@ -127,7 +146,7 @@ When redistributing this package, keep the GPLv2 license notice, preserve the or
 * Improved drag-and-drop behavior when moving fields into Loop (repeatable field) and Horizontal Group fields in the Field Group editor.
 * Improved the "Add new field below" button in the Field Group editor so fields can be added directly inside Loop (repeatable field) and Horizontal Group fields.
 * フィールドグループ内の「ループ(複製フィールド)」と「横並びグループ」へフィールドをドラッグ移動しやすくしました。
-* フィールドグループ内の「この下に新規フィールドを作る。」ボタンを改善し、「ループ(複製フィールド)」と「横並びグループ」内へ直接フィールドを追加できるようにしました。
+* フィールドグループ内の「この下に新規フィールドを追加」ボタンを改善し、「ループ(複製フィールド)」と「横並びグループ」内へ直接フィールドを追加できるようにしました。
 
 = 2.6.7.41.3 =
 * Added a Code View field for showing examples such as HTML code on the front end.

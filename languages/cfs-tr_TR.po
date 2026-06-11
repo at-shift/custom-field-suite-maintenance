@@ -673,16 +673,16 @@ msgstr "Sola hizali"
 msgid "CFS placement warning:"
 msgstr "CFS yerlesim uyarisi:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Bu alan grubunun yerlesim kurali yok. Duzenlenebilir tum yazi ekranlariyla eslesebilir; bu kasitli degilse bir yazi turu veya baska bir yerlesim kurali belirleyin."
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Kaydedildi, ancak bu alan grubunun yerlesim kurali yok. Duzenlenebilir tum yazi ekranlariyla eslesebilir; bu kasitli degilse bir yazi turu veya baska bir yerlesim kurali belirleyin."
 
 msgid "No placement rules"
 msgstr "Yerlesim kurali yok"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "Bu alan grubu duzenlenebilir tum yazi ekranlariyla eslesebilir."
 
 msgid "Add two or more fields to this horizontal group."

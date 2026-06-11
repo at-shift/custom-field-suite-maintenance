@@ -658,16 +658,16 @@ msgstr "Alineat a l esquerra"
 msgid "CFS placement warning:"
 msgstr "Avis d ubicacio de CFS:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Aquest grup de camps no te regles d ubicacio. Pot coincidir amb qualsevol pantalla d edicio d entrades, aixi que definiu un tipus d entrada o una altra regla d ubicacio tret que sigui intencionat."
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "S ha desat, pero aquest grup de camps no te regles d ubicacio. Pot coincidir amb qualsevol pantalla d edicio d entrades, aixi que definiu un tipus d entrada o una altra regla d ubicacio tret que sigui intencionat."
 
 msgid "No placement rules"
 msgstr "Sense regles d ubicacio"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "Aquest grup de camps pot coincidir amb qualsevol pantalla d edicio d entrades."
 
 msgid "Add two or more fields to this horizontal group."

@@ -778,16 +778,16 @@ msgstr "Linksbuendig"
 msgid "CFS placement warning:"
 msgstr "CFS-Platzierungswarnung:"
 
-msgid "This field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "This field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Diese Feldgruppe hat keine Platzierungsregeln. Sie kann auf jede bearbeitbare Beitragsansicht zutreffen. Legen Sie daher einen Beitragstyp oder eine andere Platzierungsregel fest, sofern dies nicht beabsichtigt ist."
 
-msgid "Saved, but this field group has no placement rules. It can match every editable post screen, so set a Post Type or another placement rule unless that is intentional."
+msgid "Saved, but this field group has no placement rules. It will appear on all editable post screens, so set a Post Type or another placement rule unless that is intentional."
 msgstr "Gespeichert, aber diese Feldgruppe hat keine Platzierungsregeln. Sie kann auf jede bearbeitbare Beitragsansicht zutreffen. Legen Sie daher einen Beitragstyp oder eine andere Platzierungsregel fest, sofern dies nicht beabsichtigt ist."
 
 msgid "No placement rules"
 msgstr "Keine Platzierungsregeln"
 
-msgid "This field group can match every editable post screen."
+msgid "This field group will appear on all editable post screens."
 msgstr "Diese Feldgruppe kann auf jede bearbeitbare Beitragsansicht zutreffen."
 
 msgid "Add two or more fields to this horizontal group."
