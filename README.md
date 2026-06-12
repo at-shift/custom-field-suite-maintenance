@@ -33,7 +33,19 @@ Custom Field Suite data can continue to be used.
 - User
 - Loop
 - Tab
-- Additional fields introduced by at-shift CFS
+- Phone
+- Email Address
+- Number
+- URL
+- Time
+- Code View
+- Checkbox
+- Radio Button
+- Post Categories
+- Post Tags
+- Featured Image
+- Horizontal Group
+- Accordion Group
 
 For setup instructions and field output examples, see the at-shift CFS
 documentation: https://cfs.at-shift.net/en/
@@ -62,7 +74,7 @@ at-shift CFS は、WordPress の投稿編集画面にカスタムフィールド
 元版のデータ構造と API 互換性を維持しているため、既存の Custom Field Suite の
 データを引き続き利用できます。
 
-### Custom Field Suite (CFS) はwordpressで以下のカスタムフィールドが利用できます:
+### at-shift CFS はwordpressで以下のカスタムフィールドが利用できます:
 
 - 単一行テキスト
 - テキストエリア
@@ -70,127 +82,33 @@ at-shift CFS は、WordPress の投稿編集画面にカスタムフィールド
 - 日付フォーマット
 - カラーピッカー
 - ハイパーリンク
-- 真/偽 (簡易チェックボックス)
-- セレクト (ドロップダウンメニュー)
+- 真/偽・簡易チェックボックス
+- セレクト・ドロップダウンメニュー
 - ファイルのアップロード
 - 関連ポスト選択
 - ターム
 - ユーザー
-- ループ (複製フィールド)
+- ループ・複製フィールド
 - タブ
-- そして、メンテナンスビルド版で新たに追加した各種フィールド
+- 電話番号
+- メールアドレス
+- 数字
+- URL・ハイパーリンクではない
+- 時間
+- コード
+- チェックボックス
+- ラジオボタン
+- 投稿カテゴリー・WordPress 標準
+- 投稿タグ・WordPress 標準
+- アイキャッチ画像・WordPress 標準
+- 横並びグループ
+- アコーディオン・開閉グループ
 
 設定方法と各フィールドの出力例は、at-shift CFS のドキュメントをご覧ください: https://cfs.at-shift.net/
 
 Custom Field Suite (CFS) は、作者による開発が 2024年8月以降停止しており、at-shift CFS は、未修正のセキュリティ上の問題へ対応するため、GPLv2 ライセンスに基づいて公開しています。
 
 このリポジトリのバージョン番号は、上流版 Custom Field Suite 2.6.7 をベースにして、メンテナンス用の末尾番号を追加する形式です。
-
-## Added Field Types (新たに追加した機能)
-
-This maintenance build adds the following field types and editor features:
-
-このメンテナンスビルド版では、以下のフィールドタイプおよび編集機能を追加しています。上流版に戻した際にはこれらのフィールドや設定は使用することができません。
-
-- Phone (電話番号)
-- Email Address (メールアドレス)
-- Number (数字)
-- URL (Not Hyperlink / ハイパーリンクではない)
-- Time (時間)
-- Code View (コード)
-- Checkbox (チェックボックス)
-- Radio Button (ラジオボタン)
-- Post Categories (投稿カテゴリー - WordPress 標準)
-- Post Tags (投稿タグ - WordPress 標準)
-- Featured Image (アイキャッチ画像 - WordPress 標準)
-- Horizontal Group (横並びグループ)
-- Accordion Group (アコーディオン（開閉グループ）)
-
-These fields are intended to make it easier to migrate existing Custom Field
-Suite sites while keeping front-end output flexible for theme developers. The
-plugin stores and returns data only; it does not generate fixed front-end HTML
-for most fields. Code View returns escaped display markup for showing code
-examples on the front end.
-
-これらのフィールドは、既存の Custom Field Suite サイトを移行しやすくしつつ、フロントエンド出力はテーマ開発者が自由にデザインできるようにすることを目的としています。多くのフィールドでは値の保存と取得のみを行います。Code View では、フロントエンドでコード例を表示するためのエスケープ済み表示用マークアップを返します。
-
-Behavior (動作):
-
-- Checkbox fields can define choices one per line and save multiple selected
-  values.
-- Radio Button fields can define choices one per line and save one selected
-  value.
-- Phone, Email Address, Number, URL, and Time fields provide format validation
-  in the post edit screen.
-- Time fields use hour and minute select menus. The configured minute interval
-  is reflected in the minute options.
-- Code View fields let editors choose a language per entry and render saved
-  code as escaped `<pre><code>` output with a language label and optional copy
-  button, so the code is displayed for copying and is not executed in place.
-- Post Categories, Post Tags, and Featured Image fields edit the native
-  WordPress taxonomy / featured image data, not CFS-only post meta.
-- Horizontal Group fields arrange multiple child fields side by side in the
-  post edit screen, with mobile stacking on narrow screens.
-- Accordion Group fields organize child fields into collapsible sections in
-  the post edit screen.
-- チェックボックスフィールドでは、選択肢を1行ずつ定義し、複数の選択値を保存できます。
-- ラジオボタンフィールドでは、選択肢を1行ずつ定義し、1つの選択値を保存できます。
-- 電話番号、メールアドレス、数字、URL、時間フィールドは、投稿編集画面で形式チェックを行います。
-- 時間フィールドは時・分のセレクトメニュー形式で、設定した分の刻み幅が分の選択肢に反映されます。
-- コードフィールドは、投稿編集画面で入力ごとに言語を選択でき、保存したコードを言語ラベル付きのエスケープ済み `<pre><code>` として表示します。任意でコピーボタンを付けられ、コードはその場では実行されず、コピー用として表示されます。
-- 投稿カテゴリー、投稿タグ、アイキャッチ画像フィールドは、CFS 独自メタではなく WordPress 標準のタクソノミー / アイキャッチ画像データを編集します。
-- 横並びグループは、複数の子フィールドを投稿編集画面で横に並べ、狭い画面では縦並びに切り替わります。
-- アコーディオン（開閉グループ）は、複数の子フィールドを投稿編集画面の開閉可能なセクションにまとめます。
-
-### Native WordPress fields (WordPress 標準フィールド)
-
-Post Categories, Post Tags, and Featured Image fields are intended for moving
-standard WordPress sidebar controls into a CFS field group. These fields update
-the same WordPress data as the standard editor UI.
-
-投稿カテゴリー、投稿タグ、アイキャッチ画像フィールドは、WordPress 標準のサイドバー入力欄を CFS フィールドグループ内へ移動するためのフィールドです。これらは標準の編集画面と同じ WordPress データを更新します。
-
-Category behavior (カテゴリーの動作):
-
-- Selecting a child or grandchild category automatically selects its parent
-  categories.
-- Unchecking a parent category also unchecks its child and grandchild
-  categories.
-- When another category is selected, the default category is automatically
-  unchecked.
-
-- 子カテゴリーや孫カテゴリーを選択すると、親カテゴリーも自動で選択します。
-- 親カテゴリーのチェックを外すと、配下の子カテゴリー・孫カテゴリーのチェックも外します。
-- 他のカテゴリーを選択すると、デフォルトカテゴリーのチェックは自動で外れます。
-
-### Horizontal Group (横並びグループ)
-
-Horizontal Group is a layout field for arranging multiple child fields side by
-side in the post edit screen. It is useful for related fields such as first /
-last name, phone / email, or date / time combinations.
-
-横並びグループは、複数の子フィールドを投稿編集画面で横に並べるためのレイアウト用フィールドです。姓 / 名、電話番号 / メールアドレス、日付 / 時間など、関連する入力欄をまとめたい場合に利用できます。
-
-Behavior (動作):
-
-- Fields are displayed side by side on desktop and stacked on narrow screens.
-- Alignment can be set to evenly distributed or left aligned.
-- A warning is shown when a Horizontal Group has fewer than two child fields.
-- Tabs, Loops, and other Horizontal Groups cannot be placed inside a Horizontal
-  Group.
-
-- デスクトップでは横並び、狭い画面では縦並びで表示します。
-- 配置は均等配置または左寄せを選択できます。
-- 横並びグループ内の子フィールドが2つ未満の場合は警告を表示します。
-- 横並びグループの中に、タブ、ループ、別の横並びグループは入れられません。
-
-### Accordion Group (アコーディオン（開閉グループ）)
-
-Accordion Group is a layout field for organizing child fields into a
-collapsible section in the post edit screen. The section can be configured to
-open by default.
-
-アコーディオン（開閉グループ）は、複数の子フィールドを投稿編集画面の開閉可能なセクションにまとめるためのレイアウト用フィールドです。初期状態で開くように設定できます。
 
 ## Installation (インストール方法)
 
@@ -502,41 +420,6 @@ add_action( 'init', function() {
 - 既存の Custom Field Suite データと API 互換性を維持することを明記。
 - 日付フィールドのカレンダーをWordPressのユーザー言語に合わせて翻訳。
 - カレンダーの年月見出しを各言語・地域の標準的な順序で表示。
-
-### 2.6.7.41.21
-
-- Renamed the plugin to at-shift CFS.
-- Added configurable placeholders for Text, Phone, Email Address, Hyperlink, and URL fields.
-- Added explanatory tooltips to the Default Value and Placeholder settings.
-- プラグイン名を at-shift CFS に変更。
-- 単一行テキスト、電話番号、メールアドレス、ハイパーリンク、URLにプレースホルダー設定を追加。
-- デフォルト値とプレースホルダー設定に説明ツールチップを追加。
-
-### 2.6.7.41.20
-
-- Added a new Accordion Group field for organizing fields into collapsible
-  sections.
-- Improved the Field Group editor so the badges and ranges for Tabs, Loops,
-  Horizontal Groups, and Accordion Groups are easier to identify.
-- Other minor fixes.
-- 新たにアコーディオン（開閉グループ）を追加しました。
-- フィールドグループ設定画面で、タブ・ループ・横並びグループ・アコーディオンのバッジと対象範囲がわかりやすくなるように表示方法を改善しました。
-- その他細かな修正
-
-### [2.6.7.41.5](https://github.com/at-shift/at-shift-cfs/releases/tag/v2.6.7.41.5)
-
-- Prevented public CFS forms from exposing private post titles or WordPress
-  login names through Relationship and User fields.
-- Added server-side validation for required fields and item limits, including
-  fields inside Loops and Horizontal Groups.
-- Hardened field saves against malformed nested input and strengthened CFS
-  session ID generation while retaining the existing session format.
-- Consolidated required badge handling and limited Code View assets to pages
-  where they are needed.
-- 公開CFSフォームの関連ポスト選択・ユーザーフィールドから、非公開投稿タイトルやWordPressログイン名が表示される問題を修正しました。
-- ループ・横並びグループ内を含む必須フィールドと件数制限について、サーバー側でも入力チェックを行うようにしました。
-- 不正な多重入力による保存エラーを防止し、既存形式を維持したままCFSセッションIDの生成を強化しました。
-- 必須バッジの処理を共通化し、コードフィールドのCSS・JavaScriptを必要なページだけで読み込むようにしました。
 
 Past release notes are available on the [Releases page](https://github.com/at-shift/at-shift-cfs/releases).
 
