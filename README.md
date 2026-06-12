@@ -17,7 +17,7 @@ Custom Field Suite project.
 The original data structure and API compatibility are preserved, so existing
 Custom Field Suite data can continue to be used.
 
-### Custom Field Suite (CFS) supports the following WordPress custom fields:
+### at-shift CFS supports the following WordPress custom fields:
 
 - Single-line text
 - Textarea
