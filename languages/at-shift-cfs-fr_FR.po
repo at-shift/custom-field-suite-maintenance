@@ -746,3 +746,18 @@ msgstr "Cette extension est une version de maintenance de Custom Field Suite qui
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Effacer"
+
+msgid "TAB"
+msgstr "Onglet"
+
+msgid "LOOP"
+msgstr "Répétition"
+
+msgid "GROUP"
+msgstr "Horizontal"
+
+msgid "ACCORDION"
+msgstr "Repliable"
+
+msgid "CONDITION"
+msgstr "Condition"

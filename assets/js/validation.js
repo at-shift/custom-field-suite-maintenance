@@ -229,6 +229,10 @@
                 $this.removeClass('cfs-field-invalid');
                 $this.removeAttr('data-validation-message');
 
+                if ($this.closest('.cfs-conditional-branch[hidden]').length) {
+                    return;
+                }
+
                 if ('object' != typeof CFS.validators[validator]) {
                     return;
                 }

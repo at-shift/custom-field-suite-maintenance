@@ -819,3 +819,18 @@ msgstr "Este plugin es una versión de mantenimiento de Custom Field Suite que p
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Borrar"
+
+msgid "TAB"
+msgstr "Pestaña"
+
+msgid "LOOP"
+msgstr "Repetición"
+
+msgid "GROUP"
+msgstr "Horizontal"
+
+msgid "ACCORDION"
+msgstr "Desplegable"
+
+msgid "CONDITION"
+msgstr "Condición"

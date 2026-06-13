@@ -221,6 +221,9 @@ class cfs_field_group
 
             // Save empty array for fields without options
             $field['options'] = empty( $field['options'] ) ? [] : $field['options'];
+            if ( isset( $field['options']['conditional_value'] ) ) {
+                $field['options']['conditional_value'] = sanitize_text_field( $field['options']['conditional_value'] );
+            }
 
             if ( 0 < (int) $field['id'] && isset( $other_field_ids[ (int) $field['id'] ] ) ) {
                 $field['remapped_from'] = (int) $field['id'];
@@ -280,10 +283,13 @@ class cfs_field_group
             if ( 0 < (int) $field['parent_id'] && isset( $field_types_by_id[ (int) $field['parent_id'] ] ) ) {
                 $parent_type = $field_types_by_id[ (int) $field['parent_id'] ];
 
-                if ( 'group' === $parent_type && in_array( $field['type'], [ 'tab', 'group', 'loop', 'accordion' ], true ) ) {
+                if ( 'group' === $parent_type && in_array( $field['type'], [ 'tab', 'group', 'loop', 'accordion', 'conditional' ], true ) ) {
                     $field['parent_id'] = 0;
                 }
                 elseif ( 'accordion' === $parent_type && in_array( $field['type'], [ 'tab', 'loop' ], true ) ) {
+                    $field['parent_id'] = 0;
+                }
+                elseif ( 'conditional' === $parent_type && in_array( $field['type'], [ 'tab', 'loop', 'conditional' ], true ) ) {
                     $field['parent_id'] = 0;
                 }
             }

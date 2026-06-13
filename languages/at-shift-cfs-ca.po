@@ -701,3 +701,18 @@ msgstr "Aquest connector és una versió de manteniment de Custom Field Suite qu
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Neteja"
+
+msgid "TAB"
+msgstr "Pestanya"
+
+msgid "LOOP"
+msgstr "Repetició"
+
+msgid "GROUP"
+msgstr "Horitzontal"
+
+msgid "ACCORDION"
+msgstr "Desplegable"
+
+msgid "CONDITION"
+msgstr "Condició"

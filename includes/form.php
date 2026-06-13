@@ -219,13 +219,37 @@ class cfs_form
     }
 
 
-    private function validate_field_container( $data, $parent_id, $fields_by_parent, &$errors ) {
+    private function validate_field_container( $data, $parent_id, $fields_by_parent, &$errors, $conditional_value = null ) {
         if ( empty( $fields_by_parent[ $parent_id ] ) ) {
             return;
         }
 
         foreach ( $fields_by_parent[ $parent_id ] as $field ) {
+            if ( null !== $conditional_value ) {
+                $field_conditional_value = isset( $field->options['conditional_value'] ) ? (string) $field->options['conditional_value'] : '';
+                if ( $field_conditional_value !== $conditional_value ) {
+                    continue;
+                }
+            }
+
             if ( 'tab' === $field->type ) {
+                continue;
+            }
+
+            if ( 'conditional' === $field->type ) {
+                $field_data = isset( $data[ $field->id ] ) ? $data[ $field->id ] : [];
+                $selected = is_array( $field_data ) && array_key_exists( 'value', $field_data ) ? (string) $field_data['value'] : '';
+                $choices = isset( $field->options['choices'] ) && is_array( $field->options['choices'] ) ? $field->options['choices'] : [];
+                $display_type = isset( $field->options['display_type'] ) ? $field->options['display_type'] : 'radio';
+
+                if ( 'select' !== $display_type && ! isset( $choices[ $selected ] ) ) {
+                    $default_value = isset( $field->options['default_value'] ) ? (string) $field->options['default_value'] : '';
+                    $selected = isset( $choices[ $default_value ] ) ? $default_value : (string) key( $choices );
+                }
+
+                if ( '' !== $selected ) {
+                    $this->validate_field_container( $data, (int) $field->id, $fields_by_parent, $errors, $selected );
+                }
                 continue;
             }
 

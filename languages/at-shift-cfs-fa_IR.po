@@ -732,3 +732,18 @@ msgstr "این افزونه نسخه نگهداری Custom Field Suite است ک
 msgctxt "date picker"
 msgid "Clear"
 msgstr "پاک کردن"
+
+msgid "TAB"
+msgstr "زبانه"
+
+msgid "LOOP"
+msgstr "تکرار"
+
+msgid "GROUP"
+msgstr "افقی"
+
+msgid "ACCORDION"
+msgstr "بازشو"
+
+msgid "CONDITION"
+msgstr "شرط"

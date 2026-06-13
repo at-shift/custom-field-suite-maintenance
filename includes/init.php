@@ -131,6 +131,7 @@ class cfs_init
             'tab'           => CFS_DIR . '/includes/fields/tab.php',
             'accordion'     => CFS_DIR . '/includes/fields/accordion.php',
             'group'         => CFS_DIR . '/includes/fields/group.php',
+            'conditional'   => CFS_DIR . '/includes/fields/conditional.php',
         ] );
 
         foreach ( $field_types as $type => $path ) {
@@ -336,7 +337,7 @@ class cfs_init
         $items = [];
 
         foreach ( $fields as $field ) {
-            if ( empty( $field['name'] ) || in_array( $field['type'], [ 'tab', 'group', 'accordion' ], true ) ) {
+            if ( empty( $field['name'] ) || in_array( $field['type'], [ 'tab', 'group', 'accordion', 'conditional' ], true ) ) {
                 continue;
             }
 

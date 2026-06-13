@@ -723,3 +723,18 @@ msgstr "Этот плагин является поддерживаемой ве
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Очистить"
+
+msgid "TAB"
+msgstr "Вкладка"
+
+msgid "LOOP"
+msgstr "Повтор"
+
+msgid "GROUP"
+msgstr "Горизонтально"
+
+msgid "ACCORDION"
+msgstr "Раскрытие"
+
+msgid "CONDITION"
+msgstr "Условие"

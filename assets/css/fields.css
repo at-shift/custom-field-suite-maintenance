@@ -91,6 +91,10 @@
     background: #d97706;
 }
 
+#cfs_fields .cfs-structure-badge-conditional {
+    background: #0f766e;
+}
+
 #cfs_fields li.cfs-structure-loop > ul,
 #cfs_fields li.cfs-structure-group > ul,
 #cfs_fields li.cfs-structure-accordion > ul {
@@ -113,6 +117,30 @@
 #cfs_fields li.cfs-structure-accordion > ul {
     border-color: #d97706;
     background: #fff3e3;
+}
+
+#cfs_fields li.cfs-structure-conditional > ul {
+    margin-left: 10px;
+    padding: 0 8px 8px;
+    border-width: 0 2px 2px;
+    border-style: solid;
+    border-color: #0f766e;
+    background: #e0f2f1;
+}
+
+#cfs_fields .field_conditional_value,
+#cfs_fields .field_conditional_separator {
+    display: none;
+}
+
+#cfs_fields .field_conditional_separator td {
+    padding: 0 12px;
+}
+
+#cfs_fields .field_conditional_separator hr {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #dcdcde;
 }
 
 #cfs_fields li.cfs-tab-range {

@@ -77,8 +77,8 @@
         }
 
         function refresh_structure_markers($context) {
-            var structureTypes = ['tab', 'loop', 'group', 'accordion'];
-            var structureClasses = 'cfs-structure-tab cfs-structure-loop cfs-structure-group cfs-structure-accordion';
+            var structureTypes = ['tab', 'loop', 'group', 'accordion', 'conditional'];
+            var structureClasses = 'cfs-structure-tab cfs-structure-loop cfs-structure-group cfs-structure-accordion cfs-structure-conditional';
 
             $context.find('li').addBack('li').each(function() {
                 var $item = $(this);
@@ -92,7 +92,9 @@
                     $item.addClass('cfs-structure-' + type);
                     $('<span></span>', {
                         'class': 'cfs-structure-badge cfs-structure-badge-' + type,
-                        text: type.toUpperCase()
+                        text: CFS.messages && CFS.messages.structure_badges && CFS.messages.structure_badges[type] ?
+                            CFS.messages.structure_badges[type] :
+                            ('conditional' == type ? 'CONDITION' : type.toUpperCase())
                     }).prependTo($label);
                 }
             });
@@ -120,7 +122,7 @@
         }
 
         function get_disallowed_parent_child_message(parent_type, child_type) {
-            if ('group' == parent_type && ('tab' == child_type || 'group' == child_type || 'loop' == child_type || 'accordion' == child_type)) {
+            if ('group' == parent_type && ('tab' == child_type || 'group' == child_type || 'loop' == child_type || 'accordion' == child_type || 'conditional' == child_type)) {
                 return CFS.messages && CFS.messages.disallowed_group_child ?
                     CFS.messages.disallowed_group_child :
                     'Tabs, loops, and horizontal groups cannot be placed inside a horizontal group.';
@@ -130,6 +132,12 @@
                 return CFS.messages && CFS.messages.disallowed_accordion_child ?
                     CFS.messages.disallowed_accordion_child :
                     'Tabs and loops cannot be placed inside an accordion.';
+            }
+
+            if ('conditional' == parent_type && ('tab' == child_type || 'loop' == child_type || 'conditional' == child_type)) {
+                return CFS.messages && CFS.messages.disallowed_conditional_child ?
+                    CFS.messages.disallowed_conditional_child :
+                    'Tabs, loops, and conditional groups cannot be placed inside a Conditional Group.';
             }
 
             return '';
@@ -163,11 +171,64 @@
             }).append('<ul></ul>');
         }
 
+        function parse_conditional_choices(value) {
+            var choices = [];
+
+            $.each(String(value || '').split(/\r?\n/), function(index, line) {
+                line = $.trim(line);
+                if (!line) {
+                    return;
+                }
+
+                var separator = line.indexOf(' : ');
+                choices.push({
+                    value: $.trim(-1 === separator ? line : line.substring(0, separator)),
+                    label: $.trim(-1 === separator ? line : line.substring(separator + 3))
+                });
+            });
+
+            return choices;
+        }
+
+        function refresh_conditional_assignments($context) {
+            $context.find('li').addBack('li').each(function() {
+                var $item = $(this);
+                var $parent = get_parent_item($item);
+                var $row = $item.children('.field').find('.field_conditional_value').first();
+                var $separator = $item.children('.field').find('.field_conditional_separator').first();
+                var $select = $row.find('.cfs-conditional-value');
+                var $defaultRow = $item.children('.field').find('[name*="[options][default_value]"]').first().closest('tr');
+
+                if ($defaultRow.length) {
+                    $row.add($separator).insertBefore($defaultRow);
+                }
+
+                if (1 > $parent.length || 'conditional' != get_item_type($parent)) {
+                    $row.add($separator).hide();
+                    return;
+                }
+
+                var selected = String($select.val() || '');
+                var choices = parse_conditional_choices($parent.children('.field').find('.cfs-conditional-choices').first().val());
+
+                $select.empty().append($('<option>', { value: '', text: '' }));
+                $.each(choices, function(index, choice) {
+                    $select.append($('<option>', { value: choice.value, text: choice.label + ' (' + choice.value + ')' }));
+                });
+                $select.val(selected);
+                $row.add($separator).show();
+            });
+
+            $context.find('.cfs-conditional-display-type').each(function() {
+                $(this).closest('.field').find('.cfs-conditional-default-row').toggle('radio' == $(this).val());
+            });
+        }
+
         function update_add_field_button_labels($context) {
             $context.find('.cfs_add_field_below').each(function() {
                 var $button = $(this);
                 var $item = $button.closest('li');
-                var label = ('loop' == get_item_type($item) || 'group' == get_item_type($item) || 'accordion' == get_item_type($item)) ?
+                var label = ('loop' == get_item_type($item) || 'group' == get_item_type($item) || 'accordion' == get_item_type($item) || 'conditional' == get_item_type($item)) ?
                     (CFS.messages && CFS.messages.add_field_inside ? CFS.messages.add_field_inside : 'Add field inside') :
                     (CFS.messages && CFS.messages.add_field_below ? CFS.messages.add_field_below : 'Add new field below');
 
@@ -226,6 +287,7 @@
                         sync_parent_ids();
                         update_add_field_button_labels($('ul.fields'));
                         refresh_structure_markers($('ul.fields'));
+                        refresh_conditional_assignments($('ul.fields'));
                     }
                 });
             });
@@ -238,6 +300,7 @@
         sync_parent_ids();
         update_add_field_button_labels($('ul.fields'));
         refresh_structure_markers($('ul.fields'));
+        refresh_conditional_assignments($('ul.fields'));
 
         // Setup checkboxes
         $(document).on('change click', 'input[type="checkbox"]', function() {
@@ -259,6 +322,7 @@
             sync_parent_ids();
             update_add_field_button_labels($('ul.fields'));
             refresh_structure_markers($('ul.fields'));
+            refresh_conditional_assignments($('ul.fields'));
         });
 
         // Add a new field immediately below the current field
@@ -272,7 +336,7 @@
             $new_field.find('.field_key').first().val(CFS.field_index);
             $new_field.find('.parent_id').first().val(parent_id);
 
-            if ('loop' == current_type || 'group' == current_type || 'accordion' == current_type) {
+            if ('loop' == current_type || 'group' == current_type || 'accordion' == current_type || 'conditional' == current_type) {
                 ensure_child_containers($current);
                 $current.children('ul').first().append($new_field);
             }
@@ -290,12 +354,14 @@
             sync_parent_ids();
             update_add_field_button_labels($('ul.fields'));
             refresh_structure_markers($('ul.fields'));
+            refresh_conditional_assignments($('ul.fields'));
         });
 
         // Delete a field
         $(document).on('click', '.cfs_delete_field', function() {
             $(this).closest('li').remove();
             refresh_structure_markers($('ul.fields'));
+            refresh_conditional_assignments($('ul.fields'));
         });
 
         // Pop open the edit fields
@@ -322,7 +388,7 @@
             $(this).closest('.field').find('.field_option').remove();
             $(this).closest('.field_basics').after($options);
 
-            if ('loop' == type || 'group' == type || 'accordion' == type) {
+            if ('loop' == type || 'group' == type || 'accordion' == type || 'conditional' == type) {
                 $item.addClass('loop');
                 if ($item.children('ul').length < 1) {
                     $item.append('<ul></ul>');
@@ -343,6 +409,15 @@
             sync_parent_ids();
             update_add_field_button_labels($('ul.fields'));
             refresh_structure_markers($('ul.fields'));
+            refresh_conditional_assignments($('ul.fields'));
+        });
+
+        $(document).on('input change', '.cfs-conditional-choices', function() {
+            refresh_conditional_assignments($(this).closest('li'));
+        });
+
+        $(document).on('change', '.cfs-conditional-display-type', function() {
+            $(this).closest('.field').find('.cfs-conditional-default-row').toggle('radio' == $(this).val());
         });
 
         $(document).on('submit', '#post', function() {

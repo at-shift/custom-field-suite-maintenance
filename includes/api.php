@@ -548,7 +548,7 @@ class cfs_api
         return in_array( $field_type, [
             'text', 'textarea', 'wysiwyg', 'phone', 'email', 'url', 'number',
             'radio', 'date', 'file', 'color', 'true_false', 'wp_tag',
-            'featured_image',
+            'featured_image', 'conditional',
         ], true );
     }
 

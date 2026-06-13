@@ -799,3 +799,30 @@
     max-width: 150px;
     height: auto;
 }
+
+/*---------------------------------------------------------------------------------------------
+    Conditional groups
+---------------------------------------------------------------------------------------------*/
+
+.cfs-conditional-control {
+    margin-bottom: 14px;
+}
+
+.cfs-conditional-control-select select {
+    min-width: 220px;
+}
+
+.cfs-conditional-branch[hidden] {
+    display: none !important;
+}
+
+.cfs-conditional-branch > .field {
+    margin: 0;
+    padding: 12px;
+    border-left: 3px solid #0f766e;
+    background: #f4fbfa;
+}
+
+.cfs-conditional-branch + .cfs-conditional-branch > .field {
+    margin-top: 8px;
+}

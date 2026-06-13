@@ -15,6 +15,34 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
+#: ../includes/fields/conditional.php:7
+msgid "Conditional Group"
+msgstr ""
+
+#: ../includes/fields/conditional.php:107
+msgid "Display Type"
+msgstr ""
+
+#: ../includes/fields/conditional.php:120
+msgid "Dropdown"
+msgstr ""
+
+#: ../includes/fields/conditional.php:147
+msgid "Used for radio buttons. The first choice is used when left blank."
+msgstr ""
+
+#: ../templates/field_html.php:94
+msgid "Display for choice"
+msgstr ""
+
+#: ../templates/field_html.php:95
+msgid "Choose the parent Conditional Group value that displays this field."
+msgstr ""
+
+#: ../templates/admin_head.php:50
+msgid "Tabs, loops, and conditional groups cannot be placed inside a Conditional Group."
+msgstr ""
+
 #: ../includes/field.php:16 ../includes/fields/text.php:8
 msgid "Text"
 msgstr ""
@@ -728,7 +756,7 @@ msgstr ""
 msgid "Open by default"
 msgstr ""
 
-msgid "Tabs, loops, accordions, and horizontal groups cannot be placed inside a horizontal group."
+msgid "Tabs, loops, accordions, conditional groups, and horizontal groups cannot be placed inside a horizontal group."
 msgstr ""
 
 msgid "Tabs and loops cannot be placed inside an accordion."
@@ -780,4 +808,19 @@ msgid "Please select %s item(s)"
 msgstr ""
 
 msgid "Please select between %1$s and %2$s items"
+msgstr ""
+
+msgid "TAB"
+msgstr ""
+
+msgid "LOOP"
+msgstr ""
+
+msgid "GROUP"
+msgstr ""
+
+msgid "ACCORDION"
+msgstr ""
+
+msgid "CONDITION"
 msgstr ""

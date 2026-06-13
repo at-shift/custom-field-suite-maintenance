@@ -699,3 +699,18 @@ msgstr "此插件是 Custom Field Suite 的维护版本，可让您在 WordPress
 msgctxt "date picker"
 msgid "Clear"
 msgstr "清除"
+
+msgid "TAB"
+msgstr "标签"
+
+msgid "LOOP"
+msgstr "重复"
+
+msgid "GROUP"
+msgstr "横向"
+
+msgid "ACCORDION"
+msgstr "折叠"
+
+msgid "CONDITION"
+msgstr "条件"

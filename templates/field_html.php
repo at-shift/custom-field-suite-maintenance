@@ -2,7 +2,15 @@
 global $post;
 
 $child_count = 0;
-$structure_types = [ 'tab', 'loop', 'group', 'accordion' ];
+$structure_types = [ 'tab', 'loop', 'group', 'accordion', 'conditional' ];
+$structure_badges = [
+    'tab'         => __( 'TAB', 'at-shift-cfs' ),
+    'loop'        => __( 'LOOP', 'at-shift-cfs' ),
+    'group'       => __( 'GROUP', 'at-shift-cfs' ),
+    'accordion'   => __( 'ACCORDION', 'at-shift-cfs' ),
+    'conditional' => __( 'CONDITION', 'at-shift-cfs' ),
+];
+$structure_badge = isset( $structure_badges[ $field->type ] ) ? $structure_badges[ $field->type ] : strtoupper( $field->type );
 
 if ( 'group' === $field->type && ! empty( $field->id ) ) {
     $child_fields = CFS()->api->get_input_fields( [
@@ -22,7 +30,7 @@ if ( 'group' === $field->type && ! empty( $field->id ) ) {
                 <td class="field_label">
                     <a class="cfs_edit_field row-title">
                         <?php if ( in_array( $field->type, $structure_types, true ) ) : ?>
-                        <span class="cfs-structure-badge cfs-structure-badge-<?php echo esc_attr( $field->type ); ?>"><?php echo esc_html( strtoupper( $field->type ) ); ?></span>
+                        <span class="cfs-structure-badge cfs-structure-badge-<?php echo esc_attr( $field->type ); ?>"><?php echo esc_html( $structure_badge ); ?></span>
                         <?php endif; ?>
                         <span class="cfs-field-label-text"><?php echo esc_html( $field->label ); ?></span>
                     </a>
@@ -87,6 +95,23 @@ if ( 'group' === $field->type && ! empty( $field->id ) ) {
                 </tr>
 
                 <?php CFS()->fields[ $field->type ]->options_html( $field->weight, $field ); ?>
+
+                <tr class="field_conditional_value">
+                    <td class="label">
+                        <label><?php _e( 'Display for choice', 'at-shift-cfs' ); ?></label>
+                        <p class="description"><?php _e( 'Choose the parent Conditional Group value that displays this field.', 'at-shift-cfs' ); ?></p>
+                    </td>
+                    <td>
+                        <select name="cfs[fields][<?php echo esc_attr( $field->weight ); ?>][options][conditional_value]" class="cfs-conditional-value">
+                            <?php if ( ! empty( $field->options['conditional_value'] ) ) : ?>
+                            <option value="<?php echo esc_attr( $field->options['conditional_value'] ); ?>" selected><?php echo esc_html( $field->options['conditional_value'] ); ?></option>
+                            <?php endif; ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="field_conditional_separator">
+                    <td colspan="2"><hr /></td>
+                </tr>
 
                 <tr class="field_notes">
                     <td class="label">

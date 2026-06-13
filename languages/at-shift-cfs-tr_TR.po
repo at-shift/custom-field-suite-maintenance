@@ -716,3 +716,18 @@ msgstr "Bu eklenti, WordPress düzenleme ekranlarına görsel olarak özel alanl
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Temizle"
+
+msgid "TAB"
+msgstr "Sekme"
+
+msgid "LOOP"
+msgstr "Tekrar"
+
+msgid "GROUP"
+msgstr "Yatay"
+
+msgid "ACCORDION"
+msgstr "Açılır"
+
+msgid "CONDITION"
+msgstr "Koşul"

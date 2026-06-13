@@ -685,3 +685,18 @@ msgstr "Ez a bővítmény a Custom Field Suite karbantartott változata, amellye
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Töröl"
+
+msgid "TAB"
+msgstr "Lap"
+
+msgid "LOOP"
+msgstr "Ismétlés"
+
+msgid "GROUP"
+msgstr "Vízszintes"
+
+msgid "ACCORDION"
+msgstr "Lenyitható"
+
+msgid "CONDITION"
+msgstr "Feltétel"

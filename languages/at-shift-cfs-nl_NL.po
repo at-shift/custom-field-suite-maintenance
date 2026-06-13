@@ -699,3 +699,18 @@ msgstr "Deze plugin is een onderhoudsversie van Custom Field Suite waarmee je vi
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Wissen"
+
+msgid "TAB"
+msgstr "Tab"
+
+msgid "LOOP"
+msgstr "Herhaling"
+
+msgid "GROUP"
+msgstr "Horizontaal"
+
+msgid "ACCORDION"
+msgstr "Inklapbaar"
+
+msgid "CONDITION"
+msgstr "Voorwaarde"

@@ -770,3 +770,18 @@ msgstr "Ta wtyczka jest wersją konserwacyjną Custom Field Suite, która umożl
 msgctxt "date picker"
 msgid "Clear"
 msgstr "Wyczyść"
+
+msgid "TAB"
+msgstr "Karta"
+
+msgid "LOOP"
+msgstr "Powielanie"
+
+msgid "GROUP"
+msgstr "Poziomo"
+
+msgid "ACCORDION"
+msgstr "Rozwijane"
+
+msgid "CONDITION"
+msgstr "Warunek"
