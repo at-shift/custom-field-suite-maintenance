@@ -255,10 +255,14 @@ add_action( 'init', function() {
 - Clarified that existing Custom Field Suite data and API compatibility are preserved.
 - Localized the Date field calendar using the WordPress user language.
 - Displayed calendar year and month headings in each locale's standard order.
+- Added the Conditional Group field for showing child fields based on a Radio Button or Dropdown selection.
+- Applied other minor fixes and documentation updates.
 - Custom Field Suite Maintenance から at-shift CFS への名称変更を明記。
 - 既存の Custom Field Suite データと API 互換性を維持することを明記。
 - 日付フィールドのカレンダーをWordPressのユーザー言語に合わせて翻訳。
 - カレンダーの年月見出しを各言語・地域の標準的な順序で表示。
+- ラジオボタンまたはドロップダウンの選択に応じて子フィールドを表示する条件分岐グループを追加。
+- その他の細かな修正とドキュメント更新。
 
 Past release notes are available on the [Releases page](https://github.com/at-shift/at-shift-cfs/releases).
 
